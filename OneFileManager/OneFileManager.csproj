@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="HandyControl" Version="3.0.0-rc.1" />
+		<PackageReference Include="AvalonEdit" Version="6.0.1" />
+		<PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
+
+
+</Project>

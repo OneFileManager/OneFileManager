@@ -1,0 +1,89 @@
+﻿<hc:Window
+    x:Class="HandyControlDemo.Window.BlurWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="OneFileManager"
+    MinWidth="800"
+    MinHeight="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <DockPanel>
+        <Grid
+            Margin="0,0,0,0"
+            Background="AliceBlue"
+            DockPanel.Dock="Top"
+            ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="10,0,10,0"
+                Orientation="Horizontal">
+                <Button
+                    Margin="10,0,0,0"
+                    hc:BorderElement.CornerRadius="15"
+                    hc:IconElement.Geometry="{StaticResource LeftGeometry}"
+                    Foreground="Black"
+                    Style="{StaticResource ButtonIcon}" />
+                <Button
+                    Margin="10,0,0,0"
+                    hc:BorderElement.CornerRadius="15"
+                    hc:IconElement.Geometry="{StaticResource RightGeometry}"
+                    Foreground="Black"
+                    Style="{StaticResource ButtonIcon}" />
+                <Button
+                    Margin="10,0,0,0"
+                    hc:BorderElement.CornerRadius="15"
+                    hc:IconElement.Geometry="{StaticResource RotateRightGeometry}"
+                    Foreground="Black"
+                    Style="{StaticResource ButtonIcon}" />
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <hc:TextBox MinWidth="200" />
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="2"
+                Background="Aquamarine">
+                <hc:SearchBar
+                    MinWidth="100"
+                    Margin="10,0,10,0"
+                    Command="{Binding SearchCmd}"
+                    CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" />
+            </StackPanel>
+        </Grid>
+        <hc:TabControl
+            IsAnimationEnabled="True"
+            IsDraggable="True"
+            IsScrollable="True"
+            ShowCloseButton="True"
+            ShowScrollButton="True"
+            TabItemWidth="200">
+
+            <hc:TabItem Header="TabItem1">
+                <hc:SimplePanel Background="{DynamicResource RegionBrush}" />
+            </hc:TabItem>
+            <hc:TabItem Header="TabItem2" IsSelected="True">
+                <hc:SimplePanel Background="#FFE8563F" />
+            </hc:TabItem>
+            <hc:TabItem Header="TabItem3">
+                <hc:SimplePanel Background="#FF3F4EE8" />
+            </hc:TabItem>
+
+        </hc:TabControl>
+    </DockPanel>
+
+</hc:Window>
