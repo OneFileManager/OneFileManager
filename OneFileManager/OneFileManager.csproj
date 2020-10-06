@@ -6,6 +6,25 @@
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+    <Page Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Img\Flag\ca-Es.png" />
+    <None Remove="Resources\Img\Flag\cn.png" />
+    <None Remove="Resources\Img\Flag\en.png" />
+    <None Remove="Resources\Img\Flag\fa.png" />
+    <None Remove="Resources\Img\Flag\fr.png" />
+    <None Remove="Resources\Img\Flag\ko-KR.png" />
+    <None Remove="Resources\Img\Flag\pt-BR.png" />
+    <None Remove="Resources\Img\Flag\ru.png" />
+    <None Remove="Resources\Img\Flag\tr.png" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.0.0-rc.1" />
 		<PackageReference Include="AvalonEdit" Version="6.0.1" />
@@ -16,7 +35,15 @@
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Properties\" />
+	  <Resource Include="Resources\Img\Flag\ca-Es.png" />
+	  <Resource Include="Resources\Img\Flag\cn.png" />
+	  <Resource Include="Resources\Img\Flag\en.png" />
+	  <Resource Include="Resources\Img\Flag\fa.png" />
+	  <Resource Include="Resources\Img\Flag\fr.png" />
+	  <Resource Include="Resources\Img\Flag\ko-KR.png" />
+	  <Resource Include="Resources\Img\Flag\pt-BR.png" />
+	  <Resource Include="Resources\Img\Flag\ru.png" />
+	  <Resource Include="Resources\Img\Flag\tr.png" />
 	</ItemGroup>
 
 

@@ -1,4 +1,5 @@
 ﻿using HandyControl.Controls;
+using OneFileManager.UserControl.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,23 @@ namespace OneFileManager
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
+        public MainWindow()
+        {
+            InitializeComponent();
+          
+        }
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
-            
+
         }
-        
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-             this.DragMove();
-            
+            DragMove();
+
         }
     }
 }
