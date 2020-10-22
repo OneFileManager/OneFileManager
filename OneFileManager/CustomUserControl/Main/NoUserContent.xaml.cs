@@ -22,10 +22,6 @@ namespace OneFileManager.CustomUserControl.Main
             InitializeComponent();
         }
 
-        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("");
-           Application.Current.MainWindow.DragMove();
-        }
+      
     }
 }
