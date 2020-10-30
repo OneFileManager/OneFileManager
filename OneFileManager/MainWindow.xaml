@@ -7,6 +7,7 @@
     xmlns:main="clr-namespace:OneFileManager.CustomUserControl.Main"
     xmlns:main1="clr-namespace:OneFileManager.CustomUserControl.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:OneFileManager.View"
     Title="OneFileManager"
     MinWidth="800"
     MinHeight="450"
@@ -74,10 +75,12 @@
             ShowScrollButton="True"
             TabItemWidth="200">
 
-            <hc:TabItem Header="我的电脑">
-                <hc:SimplePanel Background="{DynamicResource RegionBrush}" />
+            <hc:TabItem Header="我的电脑" IsSelected="True">
+                <hc:SimplePanel Background="{DynamicResource RegionBrush}">
+                    <view:FileListViewControl />
+                </hc:SimplePanel>
             </hc:TabItem>
-            <hc:TabItem Header="文档" IsSelected="True">
+            <hc:TabItem Header="文档">
                 <hc:SimplePanel Background="#FFE8563F" />
             </hc:TabItem>
             <hc:TabItem Header="C盘">
