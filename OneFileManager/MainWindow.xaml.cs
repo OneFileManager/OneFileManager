@@ -1,5 +1,5 @@
 ﻿using HandyControl.Controls;
-using OneFileManager.UserControl.Main;
+using OneFileManager.CustomUserControl.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +32,16 @@ namespace OneFileManager
 
         }
 
-       
-    }
+        private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+ 
+        }
+        //初始化相关“查看”选项
+        private void InitViewChecks()
+        {
+
+        }
+ 
+        }
+    
 }

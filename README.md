@@ -33,3 +33,14 @@
 - [ ] 支持对常见的视频文件快速预览
 - [ ] 支持虚拟文件夹\库
 - [ ] 支持公文包和特殊视图文件夹模式
+
+# 感谢清单
+[1-RX-Explorer](https://github.com/zhuxb711/RX-Explorer)
+
+[2-xyplorer](http://www.xyplorer.com/)
+
+[3-everything](https://www.voidtools.com/zh-cn/)
+
+[4-handyorg](https://handyorg.github.io/handycontrol/quick_start/)
+
+[5-MyFileManager](https://github.com/Yuziquan/MyFileManager)

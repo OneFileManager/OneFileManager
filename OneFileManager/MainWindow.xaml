@@ -12,6 +12,7 @@
     MinWidth="800"
     MinHeight="450"
     Background="White"
+    Loaded="Window_Loaded"
     ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -77,7 +78,7 @@
 
             <hc:TabItem Header="我的电脑" IsSelected="True">
                 <hc:SimplePanel Background="{DynamicResource RegionBrush}">
-                    <view:FileListViewControl />
+                    <view:FileExplorerView />
                 </hc:SimplePanel>
             </hc:TabItem>
             <hc:TabItem Header="文档">

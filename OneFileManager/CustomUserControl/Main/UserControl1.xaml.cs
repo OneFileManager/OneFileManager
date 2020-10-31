@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace OneFileManager.UserControl.Main
+namespace OneFileManager.CustomUserControl.Main
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
