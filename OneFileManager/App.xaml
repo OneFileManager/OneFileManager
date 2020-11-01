@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!--  Toggle Button  -->
+      
         </ResourceDictionary>
     </Application.Resources>
 </Application>
