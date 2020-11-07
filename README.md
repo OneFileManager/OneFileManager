@@ -1,6 +1,10 @@
-# More files ,One file manager.
+# OneFileManager.
+> Large number of files,OneFileManager  
+> 整理文件，举重若轻
 
-> 计划中
+# 状态
+
+开发中
 
 ## 基本功能
 
@@ -9,7 +13,7 @@
 - [ ] 支持多标签
 - [ ] 支持多标签拆分
 - [ ] 支持对文件进行tag标记
-- [ ] 支持高级加密算法
+- [ ] 支持AES高级加密算法
 - [ ] 支持基于插件的功能扩展
 - [ ] 支持备份、单向同步、双向同步
 - [ ] 支持文件比较、校验
