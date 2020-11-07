@@ -1,4 +1,5 @@
 ﻿using OneFileManager.Model;
+using OneFileManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,10 +79,6 @@ namespace OneFileManager.CustomUserControl.Main
                             Tag = info.Name
                         };
                         myComputer.Items.Add(driveNode);
-                        //真正的路径
-
-                        // driveNode.ImageIndex = IconsIndexes.FixedDrive;
-                        //driveNode.SelectedImageIndex = IconsIndexes.FixedDrive;
 
                         break;
 
@@ -122,7 +119,92 @@ namespace OneFileManager.CustomUserControl.Main
                         // driveNode.SelectedImageIndex = IconsIndexes.RemovableDisk;
 
                         break;
+                    case DriveType.Network:
+
+                        //显示的名称
+                        driveNode = new TreeViewItem()
+                        {
+                            Header = "网络(" + info.Name.Split('\\')[0] + ")",
+                            Tag = info.Name
+                        };
+                        
+                        myComputer.Items.Add(driveNode);
+                        
+                        break;
+                    case DriveType.Ram:
+
+                        //显示的名称
+                        driveNode = new TreeViewItem()
+                        {
+                            Header = "Ram(" + info.Name.Split('\\')[0] + ")",
+                            Tag = info.Name
+                        };
+                        myComputer.Items.Add(driveNode);
+                        break;
+                    case DriveType.Unknown:
+
+                        //显示的名称
+                        driveNode = new TreeViewItem()
+                        {
+                            Header = "Unknown(" + info.Name.Split('\\')[0] + ")",
+                            Tag = info.Name
+                        };
+                        myComputer.Items.Add(driveNode);
+                        break;
                 }
+            }
+            //加载每个磁盘下的子目录
+            foreach (TreeViewItem node in myComputer.Items)
+            {
+                
+                if (((string)node.Tag).Equals("最近访问")||DiskUtil.CheckBitLockerIsOn((string)node.Tag))
+                {
+                    continue;
+                }
+                LoadChildNodes(node);
+
+            }
+        }
+
+        //加载子节点（加载当前目录下的子目录）
+        private void LoadChildNodes(TreeViewItem node)
+        {
+            try
+            {
+                //清除空节点，然后才加载子节点
+                node.Items.Clear();
+
+                if (node.Tag.ToString() == "最近访问")
+                {
+                    return;
+                }
+                else
+                {
+                   
+                    DirectoryInfo directoryInfo = new DirectoryInfo(node.Tag.ToString());
+                    DirectoryInfo[] directoryInfos = directoryInfo.GetDirectories();
+
+                    foreach (DirectoryInfo info in directoryInfos)
+                    {
+                        
+                        //显示的名称
+                        TreeViewItem childNode = new TreeViewItem();
+
+                        childNode.Header = info.Name;
+                     
+                        //真正的路径
+                        childNode.Tag = info.FullName;
+
+                        //加载空节点，以实现“+”号
+                        childNode.Items.Add("");
+                        node.Items.Add(childNode);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                //MessageBox.Show(e.Message);
             }
         }
 
