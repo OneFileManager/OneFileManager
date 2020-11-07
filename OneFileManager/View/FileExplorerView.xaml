@@ -4,22 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:OneFileManager.View"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:main="clr-namespace:OneFileManager.CustomUserControl.Main"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
     <DockPanel LastChildFill="True">
-        <TreeView
-            x:Name="tvwDirectory"
-            MinWidth="225"
-            DockPanel.Dock="Left">
-            <TreeViewItem
-                x:Name="myComputer"
-                Header="我的电脑"
-                IsExpanded="True" />
-        </TreeView>
+        <main:DiskTreeControl></main:DiskTreeControl>
         <local:FileListView />
     </DockPanel>
 </UserControl>

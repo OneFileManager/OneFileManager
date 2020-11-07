@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="OneFileManager.CustomUserControl.Main.DiskTreeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneFileManager.CustomUserControl.Main"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <TreeView
+            x:Name="tvwDirectory"
+            MinWidth="225"
+            DockPanel.Dock="Left">
+            <TreeViewItem
+                x:Name="myComputer"
+                Header="我的电脑"
+                IsExpanded="True" />
+        </TreeView>
+    </Grid>
+</UserControl>
