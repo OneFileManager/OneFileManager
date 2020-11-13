@@ -1,5 +1,6 @@
 ﻿using OneFileManager.Model;
 using OneFileManager.Utils;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,13 +40,14 @@ namespace OneFileManager.View
 
         //是否第一次初始化tvwDirectory
         private readonly bool isInitializeTvwDirectory = true;
-
+  
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
           
         }
-
      
 
+
+
+        }
     }
-}
