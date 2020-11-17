@@ -27,7 +27,7 @@
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Height" Value="40" />
                         <Setter Property="FontSize" Value="15" />
-                        <Setter Property="Background" Value="#fff" />
+                        <!--<Setter Property="Background" Value="#fff" />-->
 
                         <Setter Property="BorderBrush" Value="transparent" />
                         <Setter Property="BorderThickness" Value="0" />
@@ -57,10 +57,24 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListView x:Name="lvwFiles" Style="{StaticResource listview}">
-            <ListView.View>
-                <GridView>
+        <ListView
+            x:Name="lvwFiles"
+            MouseDoubleClick="lvwFiles_MouseDoubleClick"
+            SelectionMode="Extended"
+            Style="{StaticResource listview}">
 
+            <ListView.View>
+
+                <GridView>
+                    <GridViewColumn Width="40">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="30" Source="{Binding ImagePath}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn
                         Width="300"
                         DisplayMemberBinding="{Binding Name}"
@@ -70,17 +84,54 @@
                         DisplayMemberBinding="{Binding LastWriteTime}"
                         Header="修改日期" />
                     <GridViewColumn
-                        Width="100"
+                        Width="200"
                         DisplayMemberBinding="{Binding Extension}"
                         Header="类型" />
                     <GridViewColumn
-                        Width="100"
+                        Width="200"
                         DisplayMemberBinding="{Binding Length}"
                         Header="大小" />
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="打开" />
+                    <MenuItem Header="稍后用于">
+                        <MenuItem Header="本地同步" />
+                        <MenuItem Header="云端同步" />
+                        <MenuItem Header="本地备份" />
+                        <MenuItem Header="云端同步" />
+                        <MenuItem Header="文件比较" />
+                        <MenuItem Header="哈希计算">
+                            <MenuItem Header="复制MD5到剪贴板" />
+                            <MenuItem Header="复制SHA1到剪贴板" />
+                            <MenuItem Header="复制SHA256到剪贴板" />
+                            <MenuItem Header="复制SHA512到剪贴板" />
+                        </MenuItem>
+                        <MenuItem Header="安全处理">
+                            <MenuItem Header="安全加密" />
+                            <MenuItem Header="安全擦除" />
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="打开方式" />
+                    <Separator />
+                    <MenuItem Header="复制" />
+                    <MenuItem Header="剪切" />
+                    <MenuItem Header="删除" />
+                    <MenuItem Header="重命名" />
+                    <Separator />
 
-
+                    <MenuItem Header="文件发送">
+                        <MenuItem Header="我的快传" />
+                        <MenuItem Header="我的邮箱" />
+                    </MenuItem>
+                    <MenuItem Header="批量处理">
+                        <MenuItem Header="批量重命名" />
+                        <MenuItem Header="图片转换" />
+                    </MenuItem>
+                    <MenuItem Header="属性" />
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
     </Grid>
 </UserControl>

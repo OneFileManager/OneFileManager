@@ -16,6 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Img\1.jpg" />
+    <None Remove="Resources\Img\Avatar\avatar1.png" />
+    <None Remove="Resources\Img\Avatar\avatar2.png" />
+    <None Remove="Resources\Img\Avatar\avatar3.png" />
+    <None Remove="Resources\Img\Avatar\avatar4.png" />
+    <None Remove="Resources\Img\Avatar\avatar5.png" />
+    <None Remove="Resources\Img\Avatar\avatar6.png" />
+    <None Remove="Resources\Img\Background\bg1.jpg" />
     <None Remove="Resources\Img\Flag\ca-Es.png" />
     <None Remove="Resources\Img\Flag\cn.png" />
     <None Remove="Resources\Img\Flag\en.png" />
@@ -25,6 +33,8 @@
     <None Remove="Resources\Img\Flag\pt-BR.png" />
     <None Remove="Resources\Img\Flag\ru.png" />
     <None Remove="Resources\Img\Flag\tr.png" />
+    <None Remove="Resources\UI\Default\File.png" />
+    <None Remove="Resources\UI\Default\FolderOrange.png" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.0.0-rc.1" />
@@ -37,6 +47,14 @@
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Resource Include="Resources\Img\1.jpg" />
+	  <Resource Include="Resources\Img\Avatar\avatar1.png" />
+	  <Resource Include="Resources\Img\Avatar\avatar2.png" />
+	  <Resource Include="Resources\Img\Avatar\avatar3.png" />
+	  <Resource Include="Resources\Img\Avatar\avatar4.png" />
+	  <Resource Include="Resources\Img\Avatar\avatar5.png" />
+	  <Resource Include="Resources\Img\Avatar\avatar6.png" />
+	  <Resource Include="Resources\Img\Background\bg1.jpg" />
 	  <Resource Include="Resources\Img\Flag\ca-Es.png" />
 	  <Resource Include="Resources\Img\Flag\cn.png" />
 	  <Resource Include="Resources\Img\Flag\en.png" />
@@ -46,6 +64,8 @@
 	  <Resource Include="Resources\Img\Flag\pt-BR.png" />
 	  <Resource Include="Resources\Img\Flag\ru.png" />
 	  <Resource Include="Resources\Img\Flag\tr.png" />
+	  <Resource Include="Resources\UI\Default\File.png" />
+	  <Resource Include="Resources\UI\Default\FolderOrange.png" />
 	</ItemGroup>
 
 

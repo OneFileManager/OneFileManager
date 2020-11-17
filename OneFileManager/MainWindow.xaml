@@ -15,7 +15,6 @@
     Loaded="Window_Loaded"
     ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
-   
     mc:Ignorable="d">
     <hc:Window.NonClientAreaContent>
         <main1:NoUserContent />
