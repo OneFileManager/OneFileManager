@@ -115,7 +115,7 @@
                     </MenuItem>
                     <MenuItem Header="打开方式" />
                     <Separator />
-                    <MenuItem Header="复制" />
+                    <MenuItem Header="复制"  Click="DoCopyFile"/>
                     <MenuItem Header="剪切" />
                     <MenuItem Header="删除" />
                     <MenuItem Header="重命名" />

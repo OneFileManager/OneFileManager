@@ -1,16 +1,19 @@
-﻿using OneFileManager.Model;
+﻿using OneFileManager.CustomUserControl.Main;
+using OneFileManager.Model;
 using OneFileManager.Utils;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace OneFileManager.View
 {
     /// <summary>
     /// FileListViewControl.xaml 的交互逻辑
     /// </summary>
-    public partial class FileExplorerView : UserControl
+    public partial class FileExplorerView : UserControl, INotifyPropertyChanged
     {
         public FileExplorerView()
         {
@@ -40,14 +43,69 @@ namespace OneFileManager.View
 
         //是否第一次初始化tvwDirectory
         private readonly bool isInitializeTvwDirectory = true;
-  
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+
           
         }
-     
 
+        public bool CanGoBack()
+        {
+            return this.fileListControl.CanGoBack();
+        }
+        public bool CanGoForward()
+        {
+            return this.fileListControl.CanGoForward();
+        }
+        public void GoBack()
+        {
+             this.fileListControl.GoBack( );
+        }
+        public void GoForward()
+        {
+             this.fileListControl.GoForward();
+        }
+        public void Navigate(string path)
+        {
+             this.fileListControl.Navigate(path);
+        }
+        public string URI
+        {
+            get { return this.fileListControl.DirectoryPath; }
+            set
+            {
+                if (PropertyChanged!=null)
+                {
+                    this.PropertyChanged(this, new PropertyChangedEventArgs("URI"));
+                }
+                this.fileListControl.DirectoryPath=value;
+            }
+            
+            
+        }
 
+        private void UserControl_Initialized(object sender, System.EventArgs e)
+        {
+            fileListControl.PropertyChanged += FileListControl_PropertyChanged;
+        }
 
+        private void FileListControl_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("DirectoryPath"))
+            {
+                this.URI = this.fileListControl.DirectoryPath;
+            }
+            
+        }
+
+        private void DiskTreeControl_OnSelectedDiskChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            TreeViewItem treeViewItem = (TreeViewItem) e.NewValue;
+           
+            this.fileListControl.Navigate(treeViewItem.Tag as string);
         }
     }
+}

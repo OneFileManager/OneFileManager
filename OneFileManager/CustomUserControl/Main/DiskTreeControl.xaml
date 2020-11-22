@@ -12,12 +12,14 @@
     mc:Ignorable="d">
     <Grid>
         <TreeView
-            x:Name="tvwDirectory"
+            x:Name="diskTreeView"
             MinWidth="225"
             Background="transparent"
-            DockPanel.Dock="Left">
+            DockPanel.Dock="Left"
+            SelectedItemChanged="DodiskTreeView_OnSelectedItemChanged">
             <TreeViewItem
                 x:Name="myComputer"
+                Expanded="MyComputer_OnExpanded"
                 Header="我的电脑"
                 IsExpanded="True" />
         </TreeView>

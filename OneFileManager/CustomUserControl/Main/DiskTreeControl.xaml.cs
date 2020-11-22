@@ -3,6 +3,7 @@ using OneFileManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediaDevices;
 
 namespace OneFileManager.CustomUserControl.Main
 {
@@ -86,7 +88,7 @@ namespace OneFileManager.CustomUserControl.Main
                     case DriveType.CDRom:
 
                         //显示的名称
-                        //driveNode = tvwDirectory.Nodes.Add("光驱(" + info.Name.Split('\\')[0] + ")");
+                        //driveNode = diskTreeView.Nodes.Add("光驱(" + info.Name.Split('\\')[0] + ")");
                         driveNode = new TreeViewItem()
                         {
                             Header = "光驱(" + info.Name.Split('\\')[0] + ")",
@@ -105,7 +107,7 @@ namespace OneFileManager.CustomUserControl.Main
                     case DriveType.Removable:
 
                         //显示的名称
-                        // driveNode = tvwDirectory.Nodes.Add("可移动磁盘(" + info.Name.Split('\\')[0] + ")");
+                        // driveNode = diskTreeView.Nodes.Add("可移动磁盘(" + info.Name.Split('\\')[0] + ")");
                         driveNode = new TreeViewItem()
                         {
                             Header = "可移动磁盘(" + info.Name.Split('\\')[0] + ")",
@@ -151,8 +153,21 @@ namespace OneFileManager.CustomUserControl.Main
                         };
                         myComputer.Items.Add(driveNode);
                         break;
+                    case DriveType.NoRootDirectory:
+                        break;
+                    default:
+                        driveNode = new TreeViewItem()
+                        {
+                            Header = "Unknown(" + info.Name.Split('\\')[0] + ")",
+                            Tag = info.Name
+                        };
+                        myComputer.Items.Add(driveNode);
+                        break;
                 }
             }
+
+
+
             //加载每个磁盘下的子目录
             foreach (TreeViewItem node in myComputer.Items)
             {
@@ -164,6 +179,23 @@ namespace OneFileManager.CustomUserControl.Main
                 LoadChildNodes(node);
 
             }
+
+            //加载移动设备
+            // var devices = MediaDevice.GetDevices();
+            // foreach (var item in devices)
+            // {
+            //     
+            //     TreeViewItem driveNode = new TreeViewItem()
+            //     {
+            //         Header = "移动终端(" + item.FriendlyName.Split('\\')[0] + ")",
+            //         Tag = item.FriendlyName
+            //
+            //     };
+            //     myComputer.Items.Add(driveNode);
+            //     
+            //
+            // }
+
         }
 
         //加载子节点（加载当前目录下的子目录）
@@ -174,7 +206,7 @@ namespace OneFileManager.CustomUserControl.Main
                 //清除空节点，然后才加载子节点
                 node.Items.Clear();
 
-                if (node.Tag.ToString() == "最近访问")
+                if (node.Tag==null||node.Tag.ToString() == "最近访问")
                 {
                     return;
                 }
@@ -217,6 +249,34 @@ namespace OneFileManager.CustomUserControl.Main
         {
             InitDisplay();
 
+        }
+
+        public event RoutedPropertyChangedEventHandler<object>  SelectedDiskChanged
+        {
+            add
+            {
+                base.AddHandler(TreeView.SelectedItemChangedEvent, value);
+            }
+            remove
+            {
+                RemoveHandler(TreeView.SelectedItemChangedEvent, value);
+            }
+        }
+        
+        private void DiskTreeView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DodiskTreeView_OnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            
+        }
+
+        private void MyComputer_OnExpanded(object sender, RoutedEventArgs e)
+        {
+           TreeViewItem treeViewItem=e.Source as TreeViewItem;
+           LoadChildNodes(treeViewItem);
         }
     }
 }
