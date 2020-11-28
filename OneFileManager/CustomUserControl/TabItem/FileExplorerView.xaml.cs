@@ -1,5 +1,6 @@
-﻿using OneFileManager.CustomUserControl.Main;
-using OneFileManager.Model;
+﻿using System;
+using OneFileManager.CustomUserControl.Main;
+using OneFileManager.Core.Model;
 using OneFileManager.Utils;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +14,30 @@ namespace OneFileManager.View
     /// <summary>
     /// FileListViewControl.xaml 的交互逻辑
     /// </summary>
-    public partial class FileExplorerView : UserControl, INotifyPropertyChanged
+    public partial class FileExplorerView : UserControl
     {
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+            "Source",
+            typeof(string),
+            typeof(FileExplorerView),
+            new PropertyMetadata(@"F:\",ChangeSource)
+        );
         public FileExplorerView()
         {
             InitializeComponent();
+          
         }
-
+        private static  void ChangeSource(DependencyObject obj, DependencyPropertyChangedEventArgs r)
+        {
+            FileExplorerView fileView = (FileExplorerView) obj;
+            fileView.Source = (string)r.NewValue;
+            fileView.fileListControl.Navigate( fileView.Source);
+        }
+        public string Source
+        {
+            get => (string)GetValue(SourceProperty);
+            set => SetValue(SourceProperty, value);
+        }
         //当前路径
         private readonly string curFilePath = "";
 
@@ -44,7 +62,7 @@ namespace OneFileManager.View
         //是否第一次初始化tvwDirectory
         private readonly bool isInitializeTvwDirectory = true;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -72,23 +90,10 @@ namespace OneFileManager.View
         {
              this.fileListControl.Navigate(path);
         }
-        public string URI
-        {
-            get { return this.fileListControl.DirectoryPath; }
-            set
-            {
-                if (PropertyChanged!=null)
-                {
-                    this.PropertyChanged(this, new PropertyChangedEventArgs("URI"));
-                }
-                this.fileListControl.DirectoryPath=value;
-            }
-            
-            
-        }
+
 
         private void UserControl_Initialized(object sender, System.EventArgs e)
-        {
+        { 
             fileListControl.PropertyChanged += FileListControl_PropertyChanged;
         }
 
@@ -96,7 +101,11 @@ namespace OneFileManager.View
         {
             if (e.PropertyName.Equals("DirectoryPath"))
             {
-                this.URI = this.fileListControl.DirectoryPath;
+                if ( this.Source != this.fileListControl.DirectoryPath)
+                {
+                    this.Source = this.fileListControl.DirectoryPath;
+                }
+       
             }
             
         }

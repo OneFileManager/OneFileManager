@@ -37,9 +37,10 @@
     <None Remove="Resources\UI\Default\FolderOrange.png" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="HandyControl" Version="3.0.0-rc.1" />
+		<PackageReference Include="HandyControl" Version="3.0.0" />
 		<PackageReference Include="AvalonEdit" Version="6.0.1" />
 		<PackageReference Include="MediaDevices" Version="1.8.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.664.37" />
 		<PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
 		<PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
@@ -72,6 +73,10 @@
 	  <Folder Include="Cache\FileIcon\" />
 	  <Folder Include="Cache\ExtensionIcon\" />
 	  <Folder Include="View\TabView\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\OneFileManager.Core\OneFileManager.Core.csproj" />
+	  <ProjectReference Include="..\OneFileManager.Everything\OneFileManager.EverythingSDK.csproj" />
 	</ItemGroup>
 
 

@@ -1,4 +1,4 @@
-﻿using OneFileManager.Model;
+﻿using OneFileManager.Core.Model;
 using OneFileManager.Utils;
 using System;
 using System.Collections.Generic;

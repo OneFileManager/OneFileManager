@@ -4,28 +4,30 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OneFileManager.Core.Model;
 
-namespace OneFileManager.Model
+namespace OneFileManager.Core.Model
 {
     public class FileListViewNode
     {
-        public FileListViewNodeType FileType { get;set;}
+        public FileType FileType { get;set;}
         public string ImagePath { get;set;}
         public string Name { get;set;}
         public string FullName { get; set; }
-        public string LastWriteTime { get;}
-        public string Extension { get;}
-        public string Length { get;}
+        public string LastWriteTime { get;set;}
+        public string Extension { get;set;}
+        public string Length { get;set;}
 
-     
-        public enum FileListViewNodeType
+
+        public FileListViewNode()
         {
-            File, Directory
+
         }
+     
         public FileListViewNode(FileInfo fileInfo)
         {
             this.ImagePath="/Resources/UI/Default/File.png";
-            this.FileType= FileListViewNodeType.File;
+            this.FileType= FileType.File;
             this.Name=fileInfo.Name;
             this.FullName = fileInfo.FullName;
             this.LastWriteTime = fileInfo.LastWriteTime.ToString("G");
@@ -35,7 +37,7 @@ namespace OneFileManager.Model
         public FileListViewNode(DirectoryInfo directoryInfo)
         {
             this.ImagePath = "/Resources/UI/Default/FolderOrange.png";
-            this.FileType = FileListViewNodeType.Directory;
+            this.FileType = FileType.Directory;
             
             this.Name = directoryInfo.Name;
             this.FullName = directoryInfo.FullName;

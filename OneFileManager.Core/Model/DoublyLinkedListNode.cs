@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OneFileManager.Model
+namespace OneFileManager.Core.Model
 {
     //双向链表节点类(用来存储用户的历史访问路径)
-    class DoublyLinkedListNode
+    public class DoublyLinkedListNode
     {
           //保存的路径
             public string Path { set; get; }
