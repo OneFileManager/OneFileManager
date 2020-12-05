@@ -18,9 +18,9 @@ namespace OneFileManager.CustomUserControl.TabItem
     /// <summary>
     /// EdgeWebViewControl.xaml 的交互逻辑
     /// </summary>
-    public partial class EdgeWebViewControl : UserControl
+    public partial class EdgeWebView2 : UserControl
     {
-        public EdgeWebViewControl()
+        public EdgeWebView2()
         {
             InitializeComponent();
         }

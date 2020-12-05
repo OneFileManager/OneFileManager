@@ -36,24 +36,36 @@
                     Margin="10,0,0,0"
                     hc:BorderElement.CornerRadius="15"
                     hc:IconElement.Geometry="{StaticResource LeftGeometry}"
+                    Click="DoGOBack"
+                    Cursor="Hand"
                     Foreground="Black"
+                    IsEnabled="{Binding ElementName=fileListControl, Path=CanGoBack}"
                     Style="{StaticResource ButtonIcon}" />
                 <Button
                     Margin="10,0,0,0"
                     hc:BorderElement.CornerRadius="15"
                     hc:IconElement.Geometry="{StaticResource RightGeometry}"
+                    Click="DoGoForward"
+                    Cursor="Hand"
                     Foreground="Black"
+                    IsEnabled="{Binding ElementName=fileListControl, Path=CanGoForward}"
                     Style="{StaticResource ButtonIcon}" />
                 <Button
                     Margin="10,0,0,0"
                     hc:BorderElement.CornerRadius="15"
                     hc:IconElement.Geometry="{StaticResource RotateRightGeometry}"
+                    Click="DoReLoad"
+                    Cursor="Hand"
                     Foreground="Black"
                     Style="{StaticResource ButtonIcon}" />
 
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1">
-                <hc:TextBox MinWidth="200" Text="{Binding ElementName=tabControl, Path=SelectedItem.Path, Mode=OneWay}" />
+                <hc:TextBox
+                    Name="pathBox"
+                    MinWidth="200"
+                    KeyDown="UIElement_OnKeyDown"
+                    Text="{Binding ElementName=tabControl, Path=SelectedItem.Path, Mode=OneWay}" />
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <hc:SearchBar MinWidth="100" Margin="10,0,10,0" CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" />

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.IO;
 
+
 namespace OneFileManager.Core.Model
 {
     public class TabPage : INotifyPropertyChanged
@@ -16,6 +17,7 @@ namespace OneFileManager.Core.Model
             set
             {
                 path = value;
+               
                 DirectoryInfo directoryInfo=new DirectoryInfo(Path);
                 Header = directoryInfo.Name;
                 if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Path"));

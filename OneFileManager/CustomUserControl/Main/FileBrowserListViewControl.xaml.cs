@@ -15,7 +15,7 @@ namespace OneFileManager.CustomUserControl.Main
     /// </summary>
     public partial class FileListControl : UserControl, INotifyPropertyChanged
     {
-        private readonly ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
+        private  ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
         private DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
@@ -45,35 +45,40 @@ namespace OneFileManager.CustomUserControl.Main
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool CanGoBack()
+        public bool CanGoBack
         {
-            return nowNode.PreNode != null;
+            get=>nowNode.PreNode != null;
+         
         }
 
-        public bool CanGoForward()
+        public bool CanGoForward
         {
-            return nowNode.NextNode != null;
+            get=> nowNode.NextNode != null;
         }
 
         public void GoBack()
         {
-            if (CanGoBack())
+            if (CanGoBack)
             {
                 nowNode = nowNode.PreNode;
                 ShowFilesList(nowNode.Path);
                 if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
             }
         }
 
         public void GoForward()
         {
-            if (CanGoForward())
+            if (CanGoForward)
             {
                 nowNode = nowNode.NextNode;
                 ShowFilesList(nowNode.Path);
             }
 
             if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
         }
 
         public void Navigate(string path)
@@ -90,6 +95,7 @@ namespace OneFileManager.CustomUserControl.Main
                     };
                     nowNode = secondNode;
                     ShowFilesList(path);
+                   
                 }
                 else
                 {
@@ -104,6 +110,8 @@ namespace OneFileManager.CustomUserControl.Main
                 }
                
                 if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
             }
         }
 
@@ -136,7 +144,9 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-            lvwFiles.ItemsSource = fileList;
+        
+          
+            fileListGView.ItemsSource = fileList;
             // ShowFilesList(@"C:\");
             // historyNode = new DoublyLinkedListNode
             // {
@@ -147,7 +157,7 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void lvwFiles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var file = lvwFiles.SelectedItem as FileListViewNode;
+            var file = fileListGView.SelectedItem as FileListViewNode;
             if (file == null) return;
             
             switch (file.FileType)
@@ -164,11 +174,11 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoCopyFile(object sender, RoutedEventArgs e)
         {
-            if (lvwFiles.SelectedItems.Count > 0)
+            if (fileListGView.SelectedItems.Count > 0)
             {
                 var files = new StringCollection();
 
-                foreach (var item in lvwFiles.SelectedItems)
+                foreach (var item in fileListGView.SelectedItems)
                 {
                     var node = item as FileListViewNode;
                     ;
@@ -240,6 +250,66 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void DoOpenFile(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoSynchronizationAndBackup(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoOpenWith(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoDelete(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoRename(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoRapidSharing(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoFileEncryption(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoEraseFile(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoBatchRenaming(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoFileConversion(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void DoOpenProperty(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

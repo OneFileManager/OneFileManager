@@ -22,6 +22,7 @@
         <view:TabDataTemplateSelector x:Key="datatemplateSelector" />
         <DataTemplate x:Key="Disk">
             <hc:SimplePanel Background="{DynamicResource RegionBrush}">
+                <ContentControl />
                 <view:FileExplorerView Source="{Binding Path=Path, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </hc:SimplePanel>
         </DataTemplate>
@@ -35,7 +36,6 @@
         <main1:NoUserContent />
     </hc:Window.NonClientAreaContent>
     <DockPanel>
-
         <hc:TabControl
             x:Name="tabControl"
             Background="White"
@@ -44,6 +44,7 @@
             IsDraggable="True"
             IsScrollable="True"
             ItemsSource="{Binding Path=TabViewModelList, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+            SelectionChanged="TabControl_OnSelectionChanged"
             ShowCloseButton="True"
             ShowScrollButton="True"
             TabItemWidth="200">

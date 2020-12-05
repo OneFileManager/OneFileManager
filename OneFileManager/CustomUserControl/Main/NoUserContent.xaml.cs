@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
+using HandyControl.Data;
+using HandyControl.Tools;
+
 
 namespace OneFileManager.CustomUserControl.Main
 {
@@ -22,6 +19,29 @@ namespace OneFileManager.CustomUserControl.Main
             InitializeComponent();
         }
 
-      
+      private void ButtonLangs_OnClick(object sender, RoutedEventArgs e)
+      {
+          if (e.OriginalSource is Button button && button.Tag is string langName)
+          {
+              PopupConfig.IsOpen = false;
+              
+          }
+      }
+
+      private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
+
+      private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
+      {
+          if (e.OriginalSource is Button button && button.Tag is SkinType tag)
+          {
+              PopupConfig.IsOpen = false;
+            
+          }
+      }
+
+      private void MenuAbout_OnClick(object sender, RoutedEventArgs e)
+      {
+  
+      }
     }
 }

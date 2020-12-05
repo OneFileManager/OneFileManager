@@ -8,6 +8,9 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
+using HandyControl.Data;
+using OneFileManager.EverythingSDK;
 
 namespace OneFileManager.View
 {
@@ -69,14 +72,36 @@ namespace OneFileManager.View
 
           
         }
+        private void DoGOBack(object sender, System.Windows.RoutedEventArgs e)
+        {
+            GoBack();
+        }
+        private void DoGoForward(object sender, System.Windows.RoutedEventArgs e)
+        {
+           GoForward();
+
+        }
+
+        private void SearchBar_OnSearchStarted(object? sender, FunctionEventArgs<string> e)
+        {
+            SearchService searchService=new SearchService();
+            var files= searchService.GetSearchFile(e.Info);
+            if (files.Count>0)
+            {
+                MessageBox.Show(files[0].FullName);
+            }
+            MessageBox.Show(searchService.GetVersion()+"");
+            MessageBox.Show(searchService.GetBuildNumber()+"");
+
+        }
 
         public bool CanGoBack()
         {
-            return this.fileListControl.CanGoBack();
+            return this.fileListControl.CanGoBack;
         }
         public bool CanGoForward()
         {
-            return this.fileListControl.CanGoForward();
+            return this.fileListControl.CanGoForward;
         }
         public void GoBack()
         {
@@ -115,6 +140,23 @@ namespace OneFileManager.View
             TreeViewItem treeViewItem = (TreeViewItem) e.NewValue;
            
             this.fileListControl.Navigate(treeViewItem.Tag as string);
+        }
+
+        private void DoReLoad(object sender, RoutedEventArgs e)
+        {
+            this.fileListControl.Refresh(true);
+        }
+
+        private void UIElement_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Enter)
+            {
+                string path = pathBox.Text;
+                if (Directory.Exists(path))
+                {
+                    this.fileListControl.Navigate(path );
+                }
+            }
         }
     }
 }
