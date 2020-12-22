@@ -10,7 +10,7 @@ namespace OneFileManager.Core.Model
         private string header;
         public DisplayType Display { get; set; }
 
-   
+        
         public string Path
         {
             get => path;

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace OneFileManager.CustomUserControl.TabItem
+namespace OneFileManager.CustomUserControl.MyTabItem
 {
     /// <summary>
     /// EdgeWebViewControl.xaml 的交互逻辑

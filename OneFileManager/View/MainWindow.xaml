@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:ikriv="clr-namespace:OneFileManager.CustomUserControl.Behaviors"
     xmlns:main="clr-namespace:OneFileManager.CustomUserControl.Main"
     xmlns:main1="clr-namespace:OneFileManager.CustomUserControl.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -38,6 +39,8 @@
     <DockPanel>
         <hc:TabControl
             x:Name="tabControl"
+            ikriv:TabContent.IsCached="True"
+            ikriv:TabContent.TemplateSelector="{StaticResource datatemplateSelector}"
             Background="White"
             ContentTemplateSelector="{StaticResource datatemplateSelector}"
             IsAnimationEnabled="True"
