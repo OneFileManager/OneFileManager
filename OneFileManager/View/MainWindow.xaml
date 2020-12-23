@@ -42,7 +42,6 @@
             ikriv:TabContent.IsCached="True"
             ikriv:TabContent.TemplateSelector="{StaticResource datatemplateSelector}"
             Background="White"
-            ContentTemplateSelector="{StaticResource datatemplateSelector}"
             IsAnimationEnabled="True"
             IsDraggable="True"
             IsScrollable="True"
@@ -56,30 +55,6 @@
                     <TextBlock Text="{Binding Path=Header, Mode=OneWay}" />
                 </DataTemplate>
             </TabControl.ItemTemplate>
-
-
-            <!-- <TabControl.ContentTemplate> -->
-            <!--     <DataTemplate> -->
-            <!--         <hc:SimplePanel Background="{DynamicResource RegionBrush}"> -->
-            <!--             <view:FileExplorerView Source="{Binding ModelUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" /> -->
-            <!--         </hc:SimplePanel> -->
-            <!--     </DataTemplate> -->
-            <!--    -->
-            <!-- </TabControl.ContentTemplate> -->
-            <!--  ContentTemplateSelector="{StaticResource datatemplateSelector}"  -->
-            <!-- <hc:TabItem Header="我的电脑" IsSelected="True"> -->
-            <!--     <hc:SimplePanel Background="{DynamicResource RegionBrush}"> -->
-            <!--         <view:FileExplorerView x:Name="fileExplorerView" /> -->
-            <!--     </hc:SimplePanel> -->
-            <!-- </hc:TabItem> -->
-            <!-- <hc:TabItem Header="文档"> -->
-            <!--     <hc:SimplePanel Background="#FFE8563F"> -->
-            <!--         <wv2:WebView2 Name="webView" Source="https://ie.icoa.cn/" /> -->
-            <!--     </hc:SimplePanel> -->
-            <!-- </hc:TabItem> -->
-            <!-- <hc:TabItem Header="C盘"> -->
-            <!--     <hc:SimplePanel Background="#FF3F4EE8" /> -->
-            <!-- </hc:TabItem> -->
 
         </hc:TabControl>
 
