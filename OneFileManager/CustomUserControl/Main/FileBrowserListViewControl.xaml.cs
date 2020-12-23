@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneFileManager.Core.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -6,7 +7,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using OneFileManager.Core.Model;
 
 namespace OneFileManager.CustomUserControl.Main
 {
@@ -15,21 +15,19 @@ namespace OneFileManager.CustomUserControl.Main
     /// </summary>
     public partial class FileListControl : UserControl, INotifyPropertyChanged
     {
-        private  ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
+        private ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
         private DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
-  
 
         public FileListControl()
         {
             InitializeComponent();
-      
         }
 
         public string DirectoryPath
         {
-            get => nowNode==null?null:nowNode.Path;
+            get => nowNode == null ? null : nowNode.Path;
             set
             {
                 if (value.Equals(nowNode.Path))
@@ -48,13 +46,12 @@ namespace OneFileManager.CustomUserControl.Main
 
         public bool CanGoBack
         {
-            get=>nowNode.PreNode != null;
-         
+            get => nowNode.PreNode != null;
         }
 
         public bool CanGoForward
         {
-            get=> nowNode.NextNode != null;
+            get => nowNode.NextNode != null;
         }
 
         public void GoBack()
@@ -86,8 +83,7 @@ namespace OneFileManager.CustomUserControl.Main
         {
             if (Directory.Exists(path))
             {
-
-                if (nowNode==null)
+                if (nowNode == null)
                 {
                     var secondNode = new DoublyLinkedListNode
                     {
@@ -96,7 +92,6 @@ namespace OneFileManager.CustomUserControl.Main
                     };
                     nowNode = secondNode;
                     ShowFilesList(path);
-                   
                 }
                 else
                 {
@@ -109,7 +104,7 @@ namespace OneFileManager.CustomUserControl.Main
                     nowNode = secondNode;
                     ShowFilesList(path);
                 }
-               
+
                 if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
                 if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
                 if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
@@ -145,8 +140,6 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-        
-          
             fileListGView.ItemsSource = fileList;
             // ShowFilesList(@"C:\");
             // historyNode = new DoublyLinkedListNode
@@ -160,15 +153,15 @@ namespace OneFileManager.CustomUserControl.Main
         {
             var file = fileListGView.SelectedItem as FileListViewNode;
             if (file == null) return;
-            
+
             switch (file.FileType)
             {
                 case FileType.File:
                     break;
-            
+
                 case FileType.Directory:
                     Navigate(file.FullName);
-            
+
                     break;
             }
         }
@@ -186,7 +179,6 @@ namespace OneFileManager.CustomUserControl.Main
                     files.Add(node.FullName);
                 }
 
-
                 Clipboard.SetFileDropList(files);
             }
         }
@@ -198,31 +190,33 @@ namespace OneFileManager.CustomUserControl.Main
                 foreach (var item in files)
                 {
                     var directory = new DirectoryInfo(DirectoryPath);
-                  
+
                     if (File.Exists(item))
-                    {  var file = new FileInfo(item);
+                    {
+                        var file = new FileInfo(item);
                         var destFileName = directory.FullName + "\\" + file.Name;
                         File.Copy(item, destFileName);
-                    }else if (Directory.Exists(item))
+                    }
+                    else if (Directory.Exists(item))
                     {
-                        var dir=new DirectoryInfo(item);
-                        CopyFolder(item, directory.FullName+"\\"+dir.Name);
+                        var dir = new DirectoryInfo(item);
+                        CopyFolder(item, directory.FullName + "\\" + dir.Name);
                     }
                     else
                     {
                         MessageBox.Show("文件不存在");
                     }
-                    
                 }
 
             Refresh(true);
         }
+
         /// <summary>
         /// Copy one folder to a new folder. if destDir is not exists, then create it.
         /// </summary>
         /// <param name="sourceDir"></param>
         /// <param name="destDir"></param>
-        private  void CopyFolder(string sourceDir, string destDir)
+        private void CopyFolder(string sourceDir, string destDir)
         {
             if (!Directory.Exists(destDir))
             {
@@ -242,7 +236,6 @@ namespace OneFileManager.CustomUserControl.Main
                     File.Copy(Path.Combine(sourceDir, fName), Path.Combine(destDir, fName), true);
                 }
             }
-
             catch (DirectoryNotFoundException dirNotFound)
             {
                 MessageBox.Show(dirNotFound.Message);
@@ -255,7 +248,14 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (fileListGView.SelectedItems.Count > 0)
+            {
+                foreach (var item in fileListGView.SelectedItems)
+                {
+                    var node = item as FileListViewNode;
+                    System.Diagnostics.Process.Start("explorer.exe", node.FullName);
+                }
+            }
         }
 
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
@@ -275,7 +275,24 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoDelete(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (fileListGView.SelectedItems.Count > 0)
+            {
+                try
+                {
+                    foreach (var item in fileListGView.SelectedItems)
+                    {
+                        var node = item as FileListViewNode;
+                        File.Delete(node.FullName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                 Refresh(true);
+               
+            }
+
         }
 
         private void DoRename(object sender, RoutedEventArgs e)
@@ -292,22 +309,38 @@ namespace OneFileManager.CustomUserControl.Main
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 擦除文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoEraseFile(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 批量命名
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoBatchRenaming(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 文件转换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoFileConversion(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 属性
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoOpenProperty(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();

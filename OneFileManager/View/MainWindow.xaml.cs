@@ -41,6 +41,7 @@ namespace OneFileManager.View
         {
             //初始化命令绑定
             InitCommandBindings();
+ 
 
         }
 

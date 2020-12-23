@@ -49,14 +49,7 @@
             SelectionChanged="TabControl_OnSelectionChanged"
             ShowCloseButton="True"
             ShowScrollButton="True"
-            TabItemWidth="200">
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Header, Mode=OneWay}" />
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-
-        </hc:TabControl>
+            TabItemWidth="200" />
 
     </DockPanel>
 
