@@ -60,6 +60,7 @@ namespace OneFileManager.View
                 Display = DisplayType.Disk,
                 Path = @"C:\",
             });
+            tabControl.SelectedIndex=tabControl.Items.Count-1;
         }
 
         protected override void OnContentRendered(EventArgs e)
