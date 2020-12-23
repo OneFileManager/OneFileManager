@@ -33,8 +33,13 @@ namespace OneFileManager.View
         private static  void ChangeSource(DependencyObject obj, DependencyPropertyChangedEventArgs r)
         {
             FileExplorerView fileView = (FileExplorerView) obj;
-            fileView.Source = (string)r.NewValue;
-            fileView.fileListControl.Navigate( fileView.Source);
+            if (fileView.fileListControl.DirectoryPath==null||fileView.fileListControl.DirectoryPath!=(string)r.NewValue)
+            {
+                 fileView.Source = (string)r.NewValue;
+                 fileView.fileListControl.Navigate( fileView.Source);
+
+            }
+           
         }
         public string Source
         {

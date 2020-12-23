@@ -24,11 +24,12 @@ namespace OneFileManager.CustomUserControl.Main
         public FileListControl()
         {
             InitializeComponent();
+      
         }
 
         public string DirectoryPath
         {
-            get => nowNode.Path;
+            get => nowNode==null?null:nowNode.Path;
             set
             {
                 if (value.Equals(nowNode.Path))
