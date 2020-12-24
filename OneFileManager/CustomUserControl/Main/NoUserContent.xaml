@@ -34,18 +34,15 @@
                 <MenuItem Header="GitHub" />
             </MenuItem>
             <MenuItem Height="29" Header="历史记录">
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
+                <MenuItem Header="管理历史记录" />
+                <MenuItem Header="清除历史记录" />
+                <Separator />
+                <MenuItem Header="今天" />
+                <MenuItem Header="最近一周" />
             </MenuItem>
             <MenuItem Height="29" Header="扩展">
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
-                <MenuItem Header="GitHub" />
+
+                <MenuItem Header="管理扩展" />
             </MenuItem>
             <MenuItem Height="29" Header="运行">
                 <MenuItem Header="GitHub" />

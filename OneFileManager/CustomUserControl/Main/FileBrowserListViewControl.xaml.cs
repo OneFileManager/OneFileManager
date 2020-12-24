@@ -245,7 +245,17 @@ namespace OneFileManager.CustomUserControl.Main
                 MessageBox.Show(exception.Message);
             }
         }
-
+        private void DoOpenFileWithExplorer(object sender, RoutedEventArgs e)
+        {
+            if (fileListGView.SelectedItems.Count > 0)
+            {
+                foreach (var item in fileListGView.SelectedItems)
+                {
+                    var node = item as FileListViewNode;
+                    System.Diagnostics.Process.Start("explorer.exe", node.FullName);
+                }
+            }
+        }
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
             if (fileListGView.SelectedItems.Count > 0)
@@ -260,17 +270,18 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("此功能未实现");
         }
 
         private void DoSynchronizationAndBackup(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+          MessageBox.Show("此功能未实现");
         }
 
         private void DoOpenWith(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+           
+            MessageBox.Show("此功能未实现");
         }
 
         private void DoDelete(object sender, RoutedEventArgs e)
@@ -290,24 +301,23 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show(ex.Message);
                 }
                  Refresh(true);
-               
             }
 
         }
 
         private void DoRename(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+          MessageBox.Show("此功能未实现");
         }
 
         private void DoRapidSharing(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+         MessageBox.Show("此功能未实现");
         }
 
         private void DoFileEncryption(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("此功能未实现");
         }
         /// <summary>
         /// 擦除文件
@@ -316,7 +326,7 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoEraseFile(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+          MessageBox.Show("此功能未实现");
         }
         /// <summary>
         /// 批量命名
@@ -325,7 +335,7 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoBatchRenaming(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+           MessageBox.Show("此功能未实现");
         }
         /// <summary>
         /// 文件转换
@@ -334,7 +344,7 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoFileConversion(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+          MessageBox.Show("此功能未实现");
         }
         /// <summary>
         /// 属性
@@ -343,7 +353,7 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoOpenProperty(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("此功能未实现");
         }
     }
 }

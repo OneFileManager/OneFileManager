@@ -2,6 +2,10 @@
 > Large number of files,OneFileManager  
 > 整理文件，举重若轻
 
+美感、敏捷、充满力量，这是对于工具的追求和期望。
+
+当然，为了达到目的，它也可以粗暴简单。
+
 # 状态
 
 开发中
@@ -39,6 +43,9 @@
 - [ ] 支持公文包和特殊视图文件夹模式
 
 # 感谢清单
+
+排名不分先后，以下软件的设计和开源代码提供了众多的灵感和基础设施，在此予以感谢。
+
 [1-RX-Explorer](https://github.com/zhuxb711/RX-Explorer)
 
 [2-xyplorer](http://www.xyplorer.com/)

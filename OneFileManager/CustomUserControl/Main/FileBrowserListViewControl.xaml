@@ -88,6 +88,7 @@
                         <MenuItem Click="DoSynchronizationAndBackup" Header="同步与备份" />
                     </MenuItem>
                     <MenuItem Click="DoOpenWith" Header="打开方式" />
+                    <MenuItem Click="DoOpenWith" Header="使用Explorer中打开" />
                     <Separator />
                     <MenuItem Click="DoCopyFile" Header="复制" />
                     <MenuItem Header="剪切" />

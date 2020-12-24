@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="FileManager_128x128.ico" />
     <None Remove="Resources\Img\1.jpg" />
     <None Remove="Resources\Img\Avatar\avatar1.png" />
     <None Remove="Resources\Img\Avatar\avatar2.png" />
@@ -35,6 +36,7 @@
     <None Remove="Resources\Img\Flag\tr.png" />
     <None Remove="Resources\UI\Default\File.png" />
     <None Remove="Resources\UI\Default\FolderOrange.png" />
+    <None Remove="View\FileManager_128x128.ico" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.0.0" />
@@ -49,6 +51,7 @@
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Content Include="FileManager_128x128.ico" />
 	  <Resource Include="Resources\Img\1.jpg" />
 	  <Resource Include="Resources\Img\Avatar\avatar1.png" />
 	  <Resource Include="Resources\Img\Avatar\avatar2.png" />
@@ -68,6 +71,7 @@
 	  <Resource Include="Resources\Img\Flag\tr.png" />
 	  <Resource Include="Resources\UI\Default\File.png" />
 	  <Resource Include="Resources\UI\Default\FolderOrange.png" />
+	  <Resource Include="View\FileManager_128x128.ico" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Cache\FileIcon\" />
