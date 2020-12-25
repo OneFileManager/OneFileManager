@@ -272,7 +272,10 @@ namespace OneFileManager.CustomUserControl.Main
         {
             MessageBox.Show("此功能未实现");
         }
-
+            private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("此功能未实现");
+        }
         private void DoSynchronizationAndBackup(object sender, RoutedEventArgs e)
         {
           MessageBox.Show("此功能未实现");
@@ -281,6 +284,10 @@ namespace OneFileManager.CustomUserControl.Main
         private void DoOpenWith(object sender, RoutedEventArgs e)
         {
            
+            MessageBox.Show("此功能未实现");
+        }
+        private void DoCut(object sender, RoutedEventArgs e)
+        {
             MessageBox.Show("此功能未实现");
         }
 
