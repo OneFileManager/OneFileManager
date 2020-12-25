@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneFileManager.SecurityTest
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UWP", "UWP", "{5E04542F-D584-43E3-B468-2BD12CA3777F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneFileManager.SimpleCrypto", "OneFileManager.SimpleCrypto\OneFileManager.SimpleCrypto.csproj", "{B32B962D-D40E-44BA-940A-74AF6260BD7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneFileManager.SimpleCrypto", "OneFileManager.SimpleCrypto\OneFileManager.SimpleCrypto.csproj", "{B32B962D-D40E-44BA-940A-74AF6260BD7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "发布", "发布", "{71F8DF93-B269-474C-86FD-A0ABC65240C7}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MoreFileManagerInstallationPackage", "MoreFileManagerInstallationPackage\MoreFileManagerInstallationPackage.vdproj", "{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +187,16 @@ Global
 		{B32B962D-D40E-44BA-940A-74AF6260BD7E}.Release|x64.Build.0 = Release|Any CPU
 		{B32B962D-D40E-44BA-940A-74AF6260BD7E}.Release|x86.ActiveCfg = Release|Any CPU
 		{B32B962D-D40E-44BA-940A-74AF6260BD7E}.Release|x86.Build.0 = Release|Any CPU
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Debug|Any CPU.ActiveCfg = Debug
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Debug|ARM.ActiveCfg = Debug
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Debug|ARM64.ActiveCfg = Debug
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Debug|x64.ActiveCfg = Debug
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Debug|x86.ActiveCfg = Debug
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Release|Any CPU.ActiveCfg = Release
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Release|ARM.ActiveCfg = Release
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Release|ARM64.ActiveCfg = Release
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Release|x64.ActiveCfg = Release
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +204,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1DF77F05-9A9A-471A-8B7F-65A069274588} = {5E04542F-D584-43E3-B468-2BD12CA3777F}
 		{FFF54E4C-E1A6-420A-ACA5-2BAE6F960024} = {7E4EA543-1E3F-4423-9792-C045B392282F}
+		{4B8C2DA6-D6B5-4D09-A7A9-DF52BE595C40} = {71F8DF93-B269-474C-86FD-A0ABC65240C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3247D6B4-B116-463B-9CCA-EF759279E673}
