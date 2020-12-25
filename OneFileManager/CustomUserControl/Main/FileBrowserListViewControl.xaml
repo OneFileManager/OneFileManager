@@ -84,30 +84,37 @@
                 <ContextMenu>
                     <MenuItem Click="DoOpenFile" Header="打开" />
                     <MenuItem Header="稍后用于">
-                        <MenuItem Click="DoOpenFolderWithNewTab" Header="新标签打开" />
+
                         <MenuItem Click="DoSynchronizationAndBackup" Header="同步与备份" />
                     </MenuItem>
                     <MenuItem Click="DoOpenWith" Header="打开方式" />
                     <MenuItem Click="DoOpenWith" Header="使用Explorer中打开" />
+                    <MenuItem Click="DoOpenFile" Header="更多">
+                        <MenuItem Click="DoOpenFolderWithNewTab" Header="新标签打开" />
+                        <MenuItem Click="DoOpenFolderWithNewTab" Header="新窗口打开" />
+                    </MenuItem>
                     <Separator />
                     <MenuItem Click="DoCopyFile" Header="复制" />
+                    <MenuItem Click="DoCopyFile" Header="复制路径" />
                     <MenuItem Header="剪切" />
                     <MenuItem Click="DoPasteFile" Header="粘贴" />
                     <MenuItem Click="DoDelete" Header="删除" />
                     <MenuItem Click="DoRename" Header="重命名" />
                     <Separator />
-                    <MenuItem Header="文件分享">
+                    <MenuItem Header="共享">
                         <MenuItem Click="DoRapidSharing" Header="文件快传" />
 
                     </MenuItem>
-                    <MenuItem Header="高级处理">
-                        <MenuItem Header="安全处理">
+
+                    <MenuItem Header="工具">
+                        <MenuItem Header="安全工具">
                             <MenuItem Click="DoFileEncryption" Header="安全加密" />
                             <MenuItem Click="DoEraseFile" Header="安全擦除" />
                         </MenuItem>
                         <MenuItem Click="DoBatchRenaming" Header="批量重命名" />
                         <MenuItem Click="DoFileConversion" Header="文件转换" />
                     </MenuItem>
+
                     <MenuItem Click="DoOpenProperty" Header="属性" />
                 </ContextMenu>
             </ListView.ContextMenu>
