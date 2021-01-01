@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -182,6 +183,26 @@ namespace OneFileManager.CustomUserControl.Main
                 Clipboard.SetFileDropList(files);
             }
         }
+        private void DoCopyFilePath(object sender, RoutedEventArgs e)
+        {
+            if (fileListGView.SelectedItems.Count > 0)
+            {
+                StringBuilder stringBuilder=new StringBuilder();
+               
+                foreach (var item in fileListGView.SelectedItems)
+                {
+                    var node = item as FileListViewNode;
+                    ;
+                    stringBuilder.Append(node.FullName);
+                    if (fileListGView.SelectedItems.Count>1)
+                    {
+                         stringBuilder.Append("\r\n");
+                    }
+                }
+
+                Clipboard.SetText(stringBuilder.ToString());
+            }
+        }
 
         private void DoPasteFile(object sender, RoutedEventArgs e)
         {
@@ -258,13 +279,17 @@ namespace OneFileManager.CustomUserControl.Main
         }
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
-            if (fileListGView.SelectedItems.Count > 0)
+       var file = fileListGView.SelectedItem as FileListViewNode;
+            if (file == null) return;
+
+            switch (file.FileType)
             {
-                foreach (var item in fileListGView.SelectedItems)
-                {
-                    var node = item as FileListViewNode;
-                    System.Diagnostics.Process.Start("explorer.exe", node.FullName);
-                }
+                case FileType.File:
+                    break;
+                case FileType.Directory:
+                    Navigate(file.FullName);
+
+                    break;
             }
         }
 
