@@ -1,0 +1,62 @@
+﻿<Window
+    x:Class="OneFileManager.View.FilePropertyWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:OneFileManager.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="文件属性"
+    Width="400"
+    Height="500"
+    MinWidth="400"
+    MinHeight="500"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="MyLableStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="Width" Value="250" />
+
+            <Setter Property="MaxLines" Value="100" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+        <Style x:Key="MyStackPanelStyle" TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+    </Window.Resources>
+    <TabControl>
+        <TabItem Header="常规">
+            <StackPanel MinWidth="350" Margin="20" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="文件名称：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="文件类型：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Extension}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="文件路径：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding FullName}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="文件大小：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Length}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="创建时间：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding CreationTime}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label Content="修改时间：" />
+                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding LastWriteTime}" />
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="文件校验">
+            <hc:SimplePanel />
+        </TabItem>
+    </TabControl>
+</Window>

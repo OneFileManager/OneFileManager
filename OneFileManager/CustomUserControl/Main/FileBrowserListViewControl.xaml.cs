@@ -1,4 +1,5 @@
 ﻿using OneFileManager.Core.Model;
+using OneFileManager.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -150,7 +151,7 @@ namespace OneFileManager.CustomUserControl.Main
             // nowNode = historyNode;
         }
 
-        private void lvwFiles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DoMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var file = fileListGView.SelectedItem as FileListViewNode;
             if (file == null) return;
@@ -158,8 +159,9 @@ namespace OneFileManager.CustomUserControl.Main
             switch (file.FileType)
             {
                 case FileType.File:
+                    //todoo:完善双击打开的逻辑
+                        System.Diagnostics.Process.Start("explorer.exe", file.FullName);
                     break;
-
                 case FileType.Directory:
                     Navigate(file.FullName);
 
@@ -279,7 +281,7 @@ namespace OneFileManager.CustomUserControl.Main
         }
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
-       var file = fileListGView.SelectedItem as FileListViewNode;
+            var file = fileListGView.SelectedItem as FileListViewNode;
             if (file == null) return;
 
             switch (file.FileType)
@@ -385,7 +387,22 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoOpenProperty(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("此功能未实现");
+
+            var file = fileListGView.SelectedItem as FileListViewNode;
+            if (file == null) return;
+
+            switch (file.FileType)
+            {
+                case FileType.File:
+                    FilePropertyWindow filePropertyWindow=new FilePropertyWindow(file);
+                    filePropertyWindow.Show();
+                    break;
+                case FileType.Directory:
+                  
+                    break;
+            }
         }
+
+
     }
 }
