@@ -23,30 +23,6 @@ namespace OneFileManager.CustomUserControl.Main
     /// </summary>
     public partial class DiskTreeControl : UserControl
     {
-        //当前路径
-        private readonly string curFilePath = "";
-
-        //当前选中的树节点（目录节点）
-        private System.Windows.Forms.TreeNode curSelectedNode = null;
-
-        //是否移动文件
-        private readonly bool isMove = false;
-
-        //待复制并粘贴的文件\文件夹的源路径
-        private readonly string[] copyFilesSourcePaths = new string[200];
-
-        //用户的历史访问路径的第一个路径节点
-        private DoublyLinkedListNode firstPathNode = new DoublyLinkedListNode();
-
-        //当前路径节点
-        private DoublyLinkedListNode curPathNode = null;
-
-        //要搜索的文件名
-        private readonly string fileName;
-
-        //是否第一次初始化tvwDirectory
-        private readonly bool isInitializeTvwDirectory = true;
-
         public DiskTreeControl()
         {
             InitializeComponent();
@@ -272,10 +248,19 @@ namespace OneFileManager.CustomUserControl.Main
         {
             
         }
-
+        /// <summary>
+        /// 当点击展开按钮 的时候
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MyComputer_OnExpanded(object sender, RoutedEventArgs e)
         {
            TreeViewItem treeViewItem=e.Source as TreeViewItem;
+            if (treeViewItem.Header.Equals("我的电脑"))
+            {
+                return;
+
+            }
            LoadChildNodes(treeViewItem);
         }
     }
