@@ -17,9 +17,9 @@ namespace OneFileManager.CustomUserControl.Main
     /// </summary>
     public partial class FileListControl : UserControl, INotifyPropertyChanged
     {
-        private ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
+        private readonly ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
-        private DoublyLinkedListNode historyNode;
+        private readonly DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
 
         public FileListControl()
@@ -39,22 +39,19 @@ namespace OneFileManager.CustomUserControl.Main
                 else
                 {
                     Navigate(value);
-                    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                    }
                 }
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool CanGoBack
-        {
-            get => nowNode.PreNode != null;
-        }
+        public bool CanGoBack => nowNode.PreNode != null;
 
-        public bool CanGoForward
-        {
-            get => nowNode.NextNode != null;
-        }
+        public bool CanGoForward => nowNode.NextNode != null;
 
         public void GoBack()
         {
@@ -62,9 +59,20 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 nowNode = nowNode.PreNode;
                 ShowFilesList(nowNode.Path);
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                }
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+                }
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+                }
             }
         }
 
@@ -76,9 +84,20 @@ namespace OneFileManager.CustomUserControl.Main
                 ShowFilesList(nowNode.Path);
             }
 
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+            }
+
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+            }
+
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+            }
         }
 
         public void Navigate(string path)
@@ -87,7 +106,7 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 if (nowNode == null)
                 {
-                    var secondNode = new DoublyLinkedListNode
+                    DoublyLinkedListNode secondNode = new DoublyLinkedListNode
                     {
                         Path = path,
                         PreNode = null
@@ -97,7 +116,7 @@ namespace OneFileManager.CustomUserControl.Main
                 }
                 else
                 {
-                    var secondNode = new DoublyLinkedListNode
+                    DoublyLinkedListNode secondNode = new DoublyLinkedListNode
                     {
                         Path = path,
                         PreNode = nowNode
@@ -107,9 +126,20 @@ namespace OneFileManager.CustomUserControl.Main
                     ShowFilesList(path);
                 }
 
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
-                if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DirectoryPath"));
+                }
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CanGoForward"));
+                }
+
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("CanGoBack"));
+                }
             }
         }
 
@@ -122,20 +152,20 @@ namespace OneFileManager.CustomUserControl.Main
         {
             //清除视图
             fileList.Clear();
-            var dirs = Directory.GetDirectories(path);
+            string[] dirs = Directory.GetDirectories(path);
 
-            foreach (var item in dirs)
+            foreach (string item in dirs)
             {
-                var dirInfo = new DirectoryInfo(item);
-                var flvm = new FileListViewNode(dirInfo);
+                DirectoryInfo dirInfo = new DirectoryInfo(item);
+                FileListViewNode flvm = new FileListViewNode(dirInfo);
                 fileList.Add(flvm);
             }
 
-            var files = Directory.GetFiles(path);
-            foreach (var item in files)
+            string[] files = Directory.GetFiles(path);
+            foreach (string item in files)
             {
-                var fileinfo = new FileInfo(item);
-                var flm = new FileListViewNode(fileinfo);
+                FileInfo fileinfo = new FileInfo(item);
+                FileListViewNode flm = new FileListViewNode(fileinfo);
                 fileList.Add(flm);
             }
         }
@@ -153,8 +183,11 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var file = fileListGView.SelectedItem as FileListViewNode;
-            if (file == null) return;
+            FileListViewNode file = fileListGView.SelectedItem as FileListViewNode;
+            if (file == null)
+            {
+                return;
+            }
 
             switch (file.FileType)
             {
@@ -173,11 +206,11 @@ namespace OneFileManager.CustomUserControl.Main
         {
             if (fileListGView.SelectedItems.Count > 0)
             {
-                var files = new StringCollection();
+                StringCollection files = new StringCollection();
 
-                foreach (var item in fileListGView.SelectedItems)
+                foreach (object item in fileListGView.SelectedItems)
                 {
-                    var node = item as FileListViewNode;
+                    FileListViewNode node = item as FileListViewNode;
                     ;
                     files.Add(node.FullName);
                 }
@@ -191,9 +224,9 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 StringBuilder stringBuilder=new StringBuilder();
                
-                foreach (var item in fileListGView.SelectedItems)
+                foreach (object item in fileListGView.SelectedItems)
                 {
-                    var node = item as FileListViewNode;
+                    FileListViewNode node = item as FileListViewNode;
                     ;
                     stringBuilder.Append(node.FullName);
                     if (fileListGView.SelectedItems.Count>1)
@@ -208,21 +241,22 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoPasteFile(object sender, RoutedEventArgs e)
         {
-            var files = Clipboard.GetFileDropList();
+            StringCollection files = Clipboard.GetFileDropList();
             if (files.Count > 0)
-                foreach (var item in files)
+            {
+                foreach (string item in files)
                 {
-                    var directory = new DirectoryInfo(DirectoryPath);
+                    DirectoryInfo directory = new DirectoryInfo(DirectoryPath);
 
                     if (File.Exists(item))
                     {
-                        var file = new FileInfo(item);
-                        var destFileName = directory.FullName + "\\" + file.Name;
+                        FileInfo file = new FileInfo(item);
+                        string destFileName = directory.FullName + "\\" + file.Name;
                         File.Copy(item, destFileName);
                     }
                     else if (Directory.Exists(item))
                     {
-                        var dir = new DirectoryInfo(item);
+                        DirectoryInfo dir = new DirectoryInfo(item);
                         CopyFolder(item, directory.FullName + "\\" + dir.Name);
                     }
                     else
@@ -230,6 +264,7 @@ namespace OneFileManager.CustomUserControl.Main
                         MessageBox.Show("文件不存在");
                     }
                 }
+            }
 
             Refresh(true);
         }
@@ -272,17 +307,20 @@ namespace OneFileManager.CustomUserControl.Main
         {
             if (fileListGView.SelectedItems.Count > 0)
             {
-                foreach (var item in fileListGView.SelectedItems)
+                foreach (object item in fileListGView.SelectedItems)
                 {
-                    var node = item as FileListViewNode;
+                    FileListViewNode node = item as FileListViewNode;
                     System.Diagnostics.Process.Start("explorer.exe", node.FullName);
                 }
             }
         }
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
-            var file = fileListGView.SelectedItem as FileListViewNode;
-            if (file == null) return;
+            FileListViewNode file = fileListGView.SelectedItem as FileListViewNode;
+            if (file == null)
+            {
+                return;
+            }
 
             switch (file.FileType)
             {
@@ -324,11 +362,28 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 try
                 {
-                    foreach (var item in fileListGView.SelectedItems)
+                    foreach (FileListViewNode item in fileListGView.SelectedItems)
                     {
-                        var node = item as FileListViewNode;
-                        File.Delete(node.FullName);
+                        switch (item.FileType)
+                        {
+                            case FileType.File:
+                                  File.Delete(item.FullName);
+                                break;
+                            case FileType.Directory:
+                                Directory.Delete(item.FullName);
+                                break;
+                            case FileType.Volume:
+                                break;
+                            case FileType.Mtp:
+                                break;
+                            case FileType.Unknown:
+                                break;
+                            default:
+                                break;
+                        }
+                       
                     }
+
                 }
                 catch (Exception ex)
                 {
@@ -388,8 +443,11 @@ namespace OneFileManager.CustomUserControl.Main
         private void DoOpenProperty(object sender, RoutedEventArgs e)
         {
 
-            var file = fileListGView.SelectedItem as FileListViewNode;
-            if (file == null) return;
+            FileListViewNode file = fileListGView.SelectedItem as FileListViewNode;
+            if (file == null)
+            {
+                return;
+            }
 
             switch (file.FileType)
             {
