@@ -2,7 +2,6 @@
 > Large number of files,OneFileManager  
 > 整理文件，举重若轻
 
-美感、敏捷、充满力量，这是对于OneFileManager的追求和期望。
 
 <img src="https://www.morenote.top/api/file/getImage?fileId=0000000012af892440821000">
 
