@@ -22,6 +22,12 @@
                 Expanded="MyComputer_OnExpanded"
                 Header="我的电脑"
                 IsExpanded="True" />
+            <TreeViewItem Header="我的云盘">
+                <TreeViewItem Header="未完成" />
+            </TreeViewItem>
+            <TreeViewItem Header="我的笔记">
+                <TreeViewItem Header="未完成" />
+            </TreeViewItem>
         </TreeView>
     </Grid>
 </UserControl>
