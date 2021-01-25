@@ -124,13 +124,17 @@
 
         </Menu>
     </StackPanel>
-    <Button
-        Name="ButtonConfig"
-        Grid.Column="1"
-        hc:IconElement.Geometry="{StaticResource ConfigGeometry}"
-        Click="ButtonConfig_OnClick"
-        Foreground="{DynamicResource PrimaryTextBrush}"
-        Style="{StaticResource ButtonIcon}" />
+    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+        <Button
+            Name="ButtonConfig"
+            Grid.Column="1"
+            hc:IconElement.Geometry="{StaticResource ConfigGeometry}"
+            Click="ButtonConfig_OnClick"
+            Foreground="{DynamicResource PrimaryTextBrush}"
+            Style="{StaticResource ButtonIcon}" />
+    </StackPanel>
+
     <Popup
         Name="PopupConfig"
         Grid.Column="1"

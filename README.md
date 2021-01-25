@@ -2,6 +2,7 @@
 > Large number of files,OneFileManager  
 > 整理文件，举重若轻
 
+这是一个WPF写个文件资源管理器
 
 <img src="https://www.morenote.top/api/file/getImage?fileId=0000000012af892440821000">
 

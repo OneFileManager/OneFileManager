@@ -38,6 +38,7 @@
     <None Remove="Resources\Img\Flag\tr.png" />
     <None Remove="Resources\UI\Default\File.png" />
     <None Remove="Resources\UI\Default\FolderOrange.png" />
+    <None Remove="Resources\UI\Default\login.png" />
     <None Remove="View\FileManager_128x128.ico" />
   </ItemGroup>
 	<ItemGroup>
@@ -81,6 +82,9 @@
 	  <Resource Include="Resources\Img\Flag\tr.png" />
 	  <Resource Include="Resources\UI\Default\File.png" />
 	  <Resource Include="Resources\UI\Default\FolderOrange.png" />
+	  <Resource Include="Resources\UI\Default\login.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	  <Resource Include="View\FileManager_128x128.ico" />
 	</ItemGroup>
 	<ItemGroup>
