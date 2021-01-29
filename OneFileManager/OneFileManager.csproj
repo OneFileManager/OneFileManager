@@ -100,9 +100,20 @@
 	  <ProjectReference Include="..\OneFileManager.Everything\OneFileManager.EverythingSDK.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Update="View\Dialog\CreatFolderDialog.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
 	  <None Update="InstallPackage_blue_128.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="View\Dialog\CreatFolderDialog.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
 	</ItemGroup>
 
 

@@ -8,7 +8,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -146,7 +145,11 @@ namespace OneFileManager.CustomUserControl.Main
             }
         }
 
-        public void Refresh(bool noCache)
+        /// <summary>
+        /// 刷新当前视图
+        /// </summary>
+        /// <param name="clearCache">清除缓存和预处理数据，重新读取信息</param>
+        public void Refresh(bool clearCache)
         {
             ShowFilesList(nowNode.Path);
         }
@@ -196,8 +199,9 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 case FileType.File:
                     //todoo:完善双击打开的逻辑
-                        System.Diagnostics.Process.Start("explorer.exe", file.FullName);
+                    System.Diagnostics.Process.Start("explorer.exe", file.FullName);
                     break;
+
                 case FileType.Directory:
                     Navigate(file.FullName);
 
@@ -221,20 +225,21 @@ namespace OneFileManager.CustomUserControl.Main
                 Clipboard.SetFileDropList(files);
             }
         }
+
         private void DoCopyFilePath(object sender, RoutedEventArgs e)
         {
             if (fileListGView.SelectedItems.Count > 0)
             {
-                StringBuilder stringBuilder=new StringBuilder();
-               
+                StringBuilder stringBuilder = new StringBuilder();
+
                 foreach (object item in fileListGView.SelectedItems)
                 {
                     FileListViewNode node = item as FileListViewNode;
                     ;
                     stringBuilder.Append(node.FullName);
-                    if (fileListGView.SelectedItems.Count>1)
+                    if (fileListGView.SelectedItems.Count > 1)
                     {
-                         stringBuilder.Append("\r\n");
+                        stringBuilder.Append("\r\n");
                     }
                 }
 
@@ -306,6 +311,7 @@ namespace OneFileManager.CustomUserControl.Main
                 MessageBox.Show(exception.Message);
             }
         }
+
         private void DoOpenFileWithExplorer(object sender, RoutedEventArgs e)
         {
             if (fileListGView.SelectedItems.Count > 0)
@@ -317,6 +323,7 @@ namespace OneFileManager.CustomUserControl.Main
                 }
             }
         }
+
         private void DoOpenFile(object sender, RoutedEventArgs e)
         {
             FileListViewNode file = fileListGView.SelectedItem as FileListViewNode;
@@ -329,6 +336,7 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 case FileType.File:
                     break;
+
                 case FileType.Directory:
                     Navigate(file.FullName);
 
@@ -340,20 +348,22 @@ namespace OneFileManager.CustomUserControl.Main
         {
             MessageBox.Show("此功能未实现");
         }
-            private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
+
+        private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("此功能未实现");
         }
+
         private void DoSynchronizationAndBackup(object sender, RoutedEventArgs e)
         {
-          MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
 
         private void DoOpenWith(object sender, RoutedEventArgs e)
         {
-           
             MessageBox.Show("此功能未实现");
         }
+
         private void DoCut(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("此功能未实现");
@@ -370,47 +380,50 @@ namespace OneFileManager.CustomUserControl.Main
                         switch (item.FileType)
                         {
                             case FileType.File:
-                                  File.Delete(item.FullName);
+                                File.Delete(item.FullName);
                                 break;
+
                             case FileType.Directory:
                                 Directory.Delete(item.FullName);
                                 break;
+
                             case FileType.Volume:
                                 break;
+
                             case FileType.Mtp:
                                 break;
+
                             case FileType.Unknown:
                                 break;
+
                             default:
                                 break;
                         }
-                       
                     }
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                 Refresh(true);
+                Refresh(true);
             }
-
         }
 
         private void DoRename(object sender, RoutedEventArgs e)
         {
-          MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
 
         private void DoRapidSharing(object sender, RoutedEventArgs e)
         {
-         MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
 
         private void DoFileEncryption(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("此功能未实现");
         }
+
         /// <summary>
         /// 擦除文件
         /// </summary>
@@ -418,8 +431,9 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoEraseFile(object sender, RoutedEventArgs e)
         {
-          MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
+
         /// <summary>
         /// 批量命名
         /// </summary>
@@ -427,8 +441,9 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoBatchRenaming(object sender, RoutedEventArgs e)
         {
-           MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
+
         /// <summary>
         /// 文件转换
         /// </summary>
@@ -436,8 +451,9 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoFileConversion(object sender, RoutedEventArgs e)
         {
-          MessageBox.Show("此功能未实现");
+            MessageBox.Show("此功能未实现");
         }
+
         /// <summary>
         /// 属性
         /// </summary>
@@ -445,7 +461,6 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoOpenProperty(object sender, RoutedEventArgs e)
         {
-
             FileListViewNode file = fileListGView.SelectedItem as FileListViewNode;
             if (file == null)
             {
@@ -455,14 +470,16 @@ namespace OneFileManager.CustomUserControl.Main
             switch (file.FileType)
             {
                 case FileType.File:
-                    FilePropertyWindow filePropertyWindow=new FilePropertyWindow(file);
+                    FilePropertyWindow filePropertyWindow = new FilePropertyWindow(file);
                     filePropertyWindow.Show();
                     break;
+
                 case FileType.Directory:
-                  
+
                     break;
             }
         }
+
         /// <summary>
         /// 新建空白文件
         /// </summary>
@@ -470,22 +487,22 @@ namespace OneFileManager.CustomUserControl.Main
         /// <param name="e"></param>
         private void DoCreatNewBlankFile(object sender, RoutedEventArgs e)
         {
-            CreatFileDialog  creatFileDialog=new CreatFileDialog();
-        creatFileDialog.WindowStartupLocation=WindowStartupLocation.CenterScreen;
+            CreatFileDialog creatFileDialog = new CreatFileDialog();
+            creatFileDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             creatFileDialog.ShowDialog();
-            if (creatFileDialog.DialogResult ==true)
+            if (creatFileDialog.DialogResult == true)
             {
-                string fileName=creatFileDialog.FileName.Text;
+                string fileName = creatFileDialog.FileName.Text;
                 if (FileUtil.CheckFileName(fileName))
                 {
-                    File.Create(DirectoryPath+fileName);
+                    File.Create(DirectoryPath + fileName);
+                    Refresh(true);
                 }
                 else
                 {
                     MessageBox.Show("文件名不合法");
                 }
             }
-
         }
 
         /// <summary>
@@ -493,11 +510,24 @@ namespace OneFileManager.CustomUserControl.Main
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-         private void DoCreatNewFolder(object sender, RoutedEventArgs e)
+        private void DoCreatNewFolder(object sender, RoutedEventArgs e)
         {
-
-
+            CreatFolderDialog creatFolderDialog = new CreatFolderDialog();
+            creatFolderDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            creatFolderDialog.ShowDialog();
+            if (creatFolderDialog.DialogResult == true)
+            {
+                string folderName = creatFolderDialog.FileName.Text;
+                if (FileUtil.CheckFileName(folderName))
+                {
+                    Directory.CreateDirectory(DirectoryPath + folderName);
+                    Refresh(true);
+                }
+                else
+                {
+                    MessageBox.Show("文件名不合法");
+                }
+            }
         }
-       
     }
 }
