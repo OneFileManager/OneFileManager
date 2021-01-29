@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OneFileManager.Common.Utils
 {
@@ -32,6 +30,31 @@ namespace OneFileManager.Common.Utils
             }
             return byteSize + "B";
         }
+        /// <summary>
+        /// 检查文件名的合法
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static bool CheckFileName(string fileName)
 
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                return false;
+
+            }
+            StringBuilder description = new StringBuilder();
+
+            Boolean opResult = Regex.IsMatch(fileName, @"(?!((^(con)$)|^(con)\\..*|(^(prn)$)|^(prn)\\..*|(^(aux)$)|^(aux)\\..*|(^(nul)$)|^(nul)\\..*|(^(com)[1-9]$)|^(com)[1-9]\\..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\\..*)|^\\s+|.*\\s$)(^[^\\\\\\/\\:\\<\\>\\*\\?\\\\\\""\\\\|]{1,255}$)");
+
+            if (!opResult)
+            {
+              return false;
+            }
+
+       
+
+            return opResult;
+        }
     }
 }

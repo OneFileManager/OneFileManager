@@ -95,6 +95,7 @@
 	  <Folder Include="View\TabView\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\OneFileManager.Common\OneFileManager.Common.csproj" />
 	  <ProjectReference Include="..\OneFileManager.Core\OneFileManager.Core.csproj" />
 	  <ProjectReference Include="..\OneFileManager.Everything\OneFileManager.EverythingSDK.csproj" />
 	</ItemGroup>

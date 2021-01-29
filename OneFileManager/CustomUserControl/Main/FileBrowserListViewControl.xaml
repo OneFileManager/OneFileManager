@@ -89,6 +89,11 @@
                         <MenuItem Click="DoOpenFolderWithNewWindow" Header="新窗口打开" />
                     </MenuItem>
                     <Separator />
+                    <MenuItem Header="新建">
+                        <MenuItem Click="DoCreatNewBlankFile" Header="文件" />
+                        <MenuItem Click="DoCreatNewFolder" Header="文件夹" />
+                    </MenuItem>
+                    <Separator />
                     <MenuItem Click="DoCopyFile" Header="复制" />
                     <MenuItem Click="DoCopyFilePath" Header="复制路径" />
                     <MenuItem Click="DoCut" Header="剪切" />

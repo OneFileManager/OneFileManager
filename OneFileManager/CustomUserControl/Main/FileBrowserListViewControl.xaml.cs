@@ -1,11 +1,14 @@
-﻿using OneFileManager.Core.Model;
+﻿using OneFileManager.Common.Utils;
+using OneFileManager.Core.Model;
 using OneFileManager.View;
+using OneFileManager.View.Dialog;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -460,7 +463,41 @@ namespace OneFileManager.CustomUserControl.Main
                     break;
             }
         }
+        /// <summary>
+        /// 新建空白文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DoCreatNewBlankFile(object sender, RoutedEventArgs e)
+        {
+            CreatFileDialog  creatFileDialog=new CreatFileDialog();
+        creatFileDialog.WindowStartupLocation=WindowStartupLocation.CenterScreen;
+            creatFileDialog.ShowDialog();
+            if (creatFileDialog.DialogResult ==true)
+            {
+                string fileName=creatFileDialog.FileName.Text;
+                if (FileUtil.CheckFileName(fileName))
+                {
+                    File.Create(DirectoryPath+fileName);
+                }
+                else
+                {
+                    MessageBox.Show("文件名不合法");
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 创建新的文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+         private void DoCreatNewFolder(object sender, RoutedEventArgs e)
+        {
 
 
+        }
+       
     }
 }
