@@ -4,7 +4,7 @@
 
 这是一个WPF写个文件资源管理器
 
-<img src="https://www.morenote.top/api/file/getImage?fileId=0000000012af892440821000">
+[![szx8yV.png](https://s3.ax1x.com/2021/01/27/szx8yV.png)](https://imgchr.com/i/szx8yV)
 
 # 状态
 
