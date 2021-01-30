@@ -20,7 +20,7 @@
                 <MenuItem Header="GitHub" />
             </MenuItem>
             <MenuItem Height="29" Header="视图">
-                <MenuItem Command="cus:CustomCommands.OpenNewTab" Header="新建标签" />
+                <MenuItem Command="cus:OpenNewTabCommand.OpenNewTab" Header="新建标签" />
                 <MenuItem Header="GitHub" />
                 <MenuItem Header="GitHub" />
                 <MenuItem Header="GitHub" />

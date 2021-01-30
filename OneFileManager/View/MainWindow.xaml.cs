@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
@@ -31,10 +32,7 @@ namespace OneFileManager.View
         {
             InitializeComponent();
             DataContext = this;//指定上下文否则绑定无效
-           
-       
           
-
             // this.tabControl.ItemsSource = TabViewModelList;
 
         }
@@ -49,7 +47,7 @@ namespace OneFileManager.View
 
         private void InitCommandBindings()
         {
-            var openNewTabCommand=new CommandBinding(CustomCommands.OpenNewTab);
+            var openNewTabCommand=new CommandBinding(OpenNewTabCommand.OpenNewTab);
             openNewTabCommand.Executed += OpenNewTabCommand_Executed;
             this.CommandBindings.Add(openNewTabCommand);
 
@@ -57,10 +55,37 @@ namespace OneFileManager.View
 
         private void OpenNewTabCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            string path= @"C:\";
+            if (e.Parameter!=null&& e.Parameter.GetType()== typeof(FileListViewNode))
+            {
+                FileListViewNode fileListViewNode =e.Parameter as FileListViewNode;
+                if (fileListViewNode!=null)
+                {
+                    switch (fileListViewNode.FileType)
+                    {
+                        case FileType.File:
+                            path=Path.GetDirectoryName(fileListViewNode.FullName);
+                            break;
+                        case FileType.Directory:
+                            path= fileListViewNode.FullName;
+                            break;
+                        case FileType.Volume:
+                            break;
+                        case FileType.Mtp:
+                            break;
+                        case FileType.Unknown:
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+            }
             TabViewModelList.Add(new TabPage()
             {
                 Display = DisplayType.Disk,
-                Path = @"C:\",
+                Path = path,
             });
             tabControl.SelectedIndex=tabControl.Items.Count-1;
         }

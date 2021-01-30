@@ -1,4 +1,5 @@
-﻿using OneFileManager.Common.Utils;
+﻿using OneFileManager.Commands;
+using OneFileManager.Common.Utils;
 using OneFileManager.Core.Model;
 using OneFileManager.View;
 using OneFileManager.View.Dialog;
@@ -346,7 +347,8 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("此功能未实现");
+            var file=this.fileListGView.SelectedItem as FileListViewNode;
+            OpenNewTabCommand.OpenNewTab.Execute(file,(MenuItem)sender);
         }
 
         private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
@@ -411,9 +413,65 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoRename(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("此功能未实现");
-        }
 
+            var fileInfo= fileListGView.SelectedItem as FileListViewNode;
+            switch (fileInfo.FileType)
+            {   case  FileType.File:
+                    DoReNameFile(fileInfo);
+                    break;
+                case FileType.Directory:
+                    DoReNameDirectory(fileInfo);
+                    break;
+                default:
+
+                    break;
+            }
+
+
+        }
+        private void DoReNameFile(FileListViewNode fileListViewNode)
+        {
+            RenameFileDialog renameFileDialog=new RenameFileDialog();
+            renameFileDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            renameFileDialog.FileName.Text= fileListViewNode.Name;
+            renameFileDialog.ShowDialog();
+            if (renameFileDialog.DialogResult == true)
+            {
+                string fileName = renameFileDialog.FileName.Text;
+                if (FileUtil.CheckFileName(fileName))
+                {
+                    File.Move(fileListViewNode.FullName, Path.GetDirectoryName(fileListViewNode.FullName)+ fileName);
+                    Refresh(true);
+                }
+                else
+                {
+                    MessageBox.Show("文件名不合法");
+                }
+            }
+
+        }
+        private void DoReNameDirectory(FileListViewNode fileListViewNode)
+        {
+            RenameFolderDialog renameFolderDialog = new RenameFolderDialog();
+            renameFolderDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            renameFolderDialog.FileName.Text = fileListViewNode.Name;
+            renameFolderDialog.ShowDialog();
+            if (renameFolderDialog.DialogResult == true)
+            {
+                string fileName = renameFolderDialog.FileName.Text;
+                if (FileUtil.CheckFileName(fileName))
+                {
+
+                    Directory.Move(fileListViewNode.FullName, Path.GetDirectoryName(fileListViewNode.FullName) + fileName);
+                    Refresh(true);
+                }
+                else
+                {
+                    MessageBox.Show("文件名不合法");
+                }
+            }
+
+        }
         private void DoRapidSharing(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("此功能未实现");
@@ -495,7 +553,8 @@ namespace OneFileManager.CustomUserControl.Main
                 string fileName = creatFileDialog.FileName.Text;
                 if (FileUtil.CheckFileName(fileName))
                 {
-                    File.Create(DirectoryPath + fileName);
+                   var fSteam=  File.Create(Path.Combine(DirectoryPath, fileName));
+                    fSteam.Close();
                     Refresh(true);
                 }
                 else
@@ -520,7 +579,7 @@ namespace OneFileManager.CustomUserControl.Main
                 string folderName = creatFolderDialog.FileName.Text;
                 if (FileUtil.CheckFileName(folderName))
                 {
-                    Directory.CreateDirectory(DirectoryPath + folderName);
+                    Directory.CreateDirectory(Path.Combine(DirectoryPath, folderName));
                     Refresh(true);
                 }
                 else

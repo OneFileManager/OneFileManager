@@ -100,6 +100,12 @@
 	  <ProjectReference Include="..\OneFileManager.Everything\OneFileManager.EverythingSDK.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Update="View\Dialog\ReNameFileDialog.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="View\Dialog\RenameFolderDialog.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
 	  <Compile Update="View\Dialog\CreatFolderDialog.xaml.cs">
 	    <SubType>Code</SubType>
 	  </Compile>
@@ -110,6 +116,14 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
+	  <Page Update="View\Dialog\RenameFileDialog.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="View\Dialog\RenameFolderDialog.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
 	  <Page Update="View\Dialog\CreatFolderDialog.xaml">
 	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 	    <SubType>Designer</SubType>

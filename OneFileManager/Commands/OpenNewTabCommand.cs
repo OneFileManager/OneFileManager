@@ -2,15 +2,14 @@
 
 namespace OneFileManager.Commands
 {
-    internal class CustomCommands
+    public class OpenNewTabCommand
     {
-        static CustomCommands()
+        static OpenNewTabCommand()
         {
             var inputOpenNewTab = new InputGestureCollection();
             inputOpenNewTab.Add(new KeyGesture(Key.T, ModifierKeys.Control, "Ctrl+T"));
-            OpenNewTab = new RoutedUICommand("OpenNewTab", "OpenNewTab", typeof(CustomCommands), inputOpenNewTab);
+            OpenNewTab = new RoutedUICommand("OpenNewTab", "OpenNewTab", typeof(OpenNewTabCommand), inputOpenNewTab);
         }
-
         public static RoutedUICommand OpenNewTab { get; }
     }
 }

@@ -27,7 +27,7 @@
         </Style>
     </Window.Resources>
     <TabControl>
-        <TabItem Header="常规">
+        <TabItem x:Name="general" Header="常规">
             <StackPanel MinWidth="350" Margin="20" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
                     <Label Content="文件名称：" />
@@ -55,6 +55,28 @@
                 </StackPanel>
             </StackPanel>
         </TabItem>
+        <TabItem Header="标签">
+            <StackPanel Margin="11">
+                <hc:TagContainer
+                    Name="Container1"
+                    Width="420"
+                    Margin="11"
+                    Padding="5">
+                    <hc:Tag
+                        Margin="5"
+                        hc:TitleElement.Background="{DynamicResource PrimaryBrush}"
+                        Content="标签"
+                        Header="Tag"
+                        ShowCloseButton="False" />
+                </hc:TagContainer>
+
+                <DockPanel Margin="11,0,11,11" LastChildFill="True">
+                    <Button Margin="10,0,0,0" Content="添加标签" DockPanel.Dock="Right" />
+                    <TextBox />
+                </DockPanel>
+            </StackPanel>
+        </TabItem>
+
         <TabItem Header="文件校验">
             <hc:SimplePanel />
         </TabItem>
