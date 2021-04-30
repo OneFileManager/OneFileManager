@@ -140,12 +140,7 @@ namespace OneFileManager.View
             
         }
 
-        private void DiskTreeControl_OnSelectedDiskChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            TreeViewItem treeViewItem = (TreeViewItem) e.NewValue;
-           
-            this.fileListControl.Navigate(treeViewItem.Tag as string);
-        }
+ 
 
         private void DoReLoad(object sender, RoutedEventArgs e)
         {

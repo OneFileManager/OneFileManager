@@ -7,6 +7,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using HandyControl.Controls;
@@ -43,6 +44,12 @@ namespace OneFileManager.View
             InitCommandBindings();
  
 
+        }
+        private void DiskTreeControl_OnSelectedDiskChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            //TreeViewItem treeViewItem = (TreeViewItem) e.NewValue;
+           
+            //this.fileListControl.Navigate(treeViewItem.Tag as string);
         }
 
         private void InitCommandBindings()
@@ -101,9 +108,6 @@ namespace OneFileManager.View
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = @"D:\";
             TabViewModelList.Add(tabPage);
-
-    
-
      
             this.tabControl.SelectedIndex=0;
         }

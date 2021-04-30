@@ -114,6 +114,9 @@
 	  <None Update="InstallPackage_blue_128.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="Resources\UI\Default\MyComputer.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="View\Dialog\RenameFileDialog.xaml">

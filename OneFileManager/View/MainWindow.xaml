@@ -36,12 +36,36 @@
     <hc:Window.NonClientAreaContent>
         <main1:NoUserContent />
     </hc:Window.NonClientAreaContent>
+
     <DockPanel>
+        <StatusBar Height="20" DockPanel.Dock="Bottom">
+            <TextBlock Text="已就绪" />
+        </StatusBar>
+        <DockPanel DockPanel.Dock="Left">
+            <TabControl TabStripPlacement="Left">
+
+                <TabItem Header="本地资源">
+                    <main:DiskTreeControl DockPanel.Dock="Left" SelectedDiskChanged="DiskTreeControl_OnSelectedDiskChanged" />
+                </TabItem>
+                <TabItem Header="远程资源" />
+                <TabItem Header="文件标签" />
+                <TabItem Header="文件回收" />
+                <TabItem Header="搜索文件" />
+                <TabItem Header="版本控制" />
+                <TabItem Header="扩展插件" />
+                <TabItem Header="文件同步" />
+                <TabItem Header="软件工具" />
+                <TabItem Header="浏览网页" />
+            </TabControl>
+
+        </DockPanel>
+
         <hc:TabControl
             x:Name="tabControl"
             ikriv:TabContent.IsCached="True"
             ikriv:TabContent.TemplateSelector="{StaticResource datatemplateSelector}"
             Background="White"
+            DockPanel.Dock="Right"
             IsAnimationEnabled="True"
             IsDraggable="True"
             IsScrollable="True"
@@ -58,5 +82,6 @@
         </hc:TabControl>
 
     </DockPanel>
+
 
 </hc:Window>

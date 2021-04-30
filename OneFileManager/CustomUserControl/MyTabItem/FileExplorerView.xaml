@@ -71,7 +71,7 @@
                 <hc:SearchBar MinWidth="100" Margin="10,0,10,0" CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" />
             </StackPanel>
         </Grid>
-        <main:DiskTreeControl DockPanel.Dock="Left" SelectedDiskChanged="DiskTreeControl_OnSelectedDiskChanged" />
+   
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
