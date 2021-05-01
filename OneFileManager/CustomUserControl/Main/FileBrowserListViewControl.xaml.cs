@@ -159,6 +159,7 @@ namespace OneFileManager.CustomUserControl.Main
         {
             //清除视图
             fileList.Clear();
+            
             string[] dirs = Directory.GetDirectories(path);
 
             foreach (string item in dirs)

@@ -1,21 +1,13 @@
-﻿using System;
+﻿using OneFileManager.Commands;
+using OneFileManager.Core.Model;
+using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using HandyControl.Controls;
-using HandyControl.Data;
-using OneFileManager.Commands;
-using OneFileManager.Core.Model;
-using OneFileManager.EverythingSDK;
-using TabItem = HandyControl.Controls.TabItem;
 
 namespace OneFileManager.View
 {
@@ -33,68 +25,71 @@ namespace OneFileManager.View
         {
             InitializeComponent();
             DataContext = this;//指定上下文否则绑定无效
-          
-            // this.tabControl.ItemsSource = TabViewModelList;
 
+            // this.tabControl.ItemsSource = TabViewModelList;
         }
-      
+
         private void MainWindow_OnInitialized(object? sender, EventArgs e)
         {
             //初始化命令绑定
             InitCommandBindings();
- 
-
         }
-        private void DiskTreeControl_OnSelectedDiskChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+
+        private void DiskTreeControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //TreeViewItem treeViewItem = (TreeViewItem) e.NewValue;
-           
-            //this.fileListControl.Navigate(treeViewItem.Tag as string);
+            TreeViewItem treeViewItem =(TreeViewItem) ((TreeView)e.Source).SelectedItem;
+
+            TabPage tabPage = new TabPage();
+            tabPage.Display = DisplayType.Disk;
+            tabPage.Path = treeViewItem.Tag as string;
+            TabViewModelList.Add(tabPage);
         }
 
         private void InitCommandBindings()
         {
-            var openNewTabCommand=new CommandBinding(OpenNewTabCommand.OpenNewTab);
+            var openNewTabCommand = new CommandBinding(OpenNewTabCommand.OpenNewTab);
             openNewTabCommand.Executed += OpenNewTabCommand_Executed;
             this.CommandBindings.Add(openNewTabCommand);
-
         }
 
         private void OpenNewTabCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            string path= @"C:\";
-            if (e.Parameter!=null&& e.Parameter.GetType()== typeof(FileListViewNode))
+            string path = @"C:\";
+            if (e.Parameter != null && e.Parameter.GetType() == typeof(FileListViewNode))
             {
-                FileListViewNode fileListViewNode =e.Parameter as FileListViewNode;
-                if (fileListViewNode!=null)
+                FileListViewNode fileListViewNode = e.Parameter as FileListViewNode;
+                if (fileListViewNode != null)
                 {
                     switch (fileListViewNode.FileType)
                     {
                         case FileType.File:
-                            path=Path.GetDirectoryName(fileListViewNode.FullName);
+                            path = Path.GetDirectoryName(fileListViewNode.FullName);
                             break;
+
                         case FileType.Directory:
-                            path= fileListViewNode.FullName;
+                            path = fileListViewNode.FullName;
                             break;
+
                         case FileType.Volume:
                             break;
+
                         case FileType.Mtp:
                             break;
+
                         case FileType.Unknown:
                             break;
+
                         default:
                             break;
                     }
-
                 }
-
             }
             TabViewModelList.Add(new TabPage()
             {
                 Display = DisplayType.Disk,
                 Path = path,
             });
-            tabControl.SelectedIndex=tabControl.Items.Count-1;
+            tabControl.SelectedIndex = tabControl.Items.Count - 1;
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -104,12 +99,12 @@ namespace OneFileManager.View
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            TabPage tabPage=new TabPage();
+            TabPage tabPage = new TabPage();
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = @"D:\";
             TabViewModelList.Add(tabPage);
-     
-            this.tabControl.SelectedIndex=0;
+
+            this.tabControl.SelectedIndex = 0;
         }
 
         //初始化相关“查看”选项
@@ -117,15 +112,11 @@ namespace OneFileManager.View
         {
         }
 
-
         private void TabControl_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
-            
-          
-           
             Console.WriteLine("");
         }
+
+    
     }
 }

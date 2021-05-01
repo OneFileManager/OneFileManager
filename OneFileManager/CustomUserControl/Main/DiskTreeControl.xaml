@@ -16,12 +16,24 @@
             MinWidth="225"
             Background="transparent"
             DockPanel.Dock="Left"
+            PreviewMouseRightButtonDown="diskTreeView_PreviewMouseRightButtonDown"
             SelectedItemChanged="DodiskTreeView_OnSelectedItemChanged">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown" />
+                </Style>
+            </TreeView.ItemContainerStyle>
             <TreeViewItem
                 x:Name="myComputer"
                 Expanded="MyComputer_OnExpanded"
                 Header="我的电脑"
                 IsExpanded="True" />
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="当前视图打开" />
+                    <MenuItem Header="新视图打开" />
+                </ContextMenu>
+            </TreeView.ContextMenu>
         </TreeView>
     </Grid>
 </UserControl>

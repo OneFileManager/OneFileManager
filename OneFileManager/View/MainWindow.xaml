@@ -41,11 +41,11 @@
         <StatusBar Height="20" DockPanel.Dock="Bottom">
             <TextBlock Text="已就绪" />
         </StatusBar>
-        <DockPanel DockPanel.Dock="Left">
+        <DockPanel DockPanel.Dock="Left" Visibility="Collapsed">
             <TabControl TabStripPlacement="Left">
 
                 <TabItem Header="本地资源">
-                    <main:DiskTreeControl DockPanel.Dock="Left" SelectedDiskChanged="DiskTreeControl_OnSelectedDiskChanged" />
+                    <main:DiskTreeControl DockPanel.Dock="Left" />
                 </TabItem>
                 <TabItem Header="远程资源" />
                 <TabItem Header="文件标签" />
@@ -54,8 +54,10 @@
                 <TabItem Header="版本控制" />
                 <TabItem Header="扩展插件" />
                 <TabItem Header="文件同步" />
-                <TabItem Header="软件工具" />
+                <TabItem Header="命令工具" />
                 <TabItem Header="浏览网页" />
+                <TabItem Header="连接手机" />
+                <TabItem Header="移动U盘" />
             </TabControl>
 
         </DockPanel>
