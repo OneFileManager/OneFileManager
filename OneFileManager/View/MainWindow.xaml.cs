@@ -101,7 +101,7 @@ namespace OneFileManager.View
         {
             TabPage tabPage = new TabPage();
             tabPage.Display = DisplayType.Disk;
-            tabPage.Path = @"D:\";
+            tabPage.Path = @"C:\";
             TabViewModelList.Add(tabPage);
 
             this.tabControl.SelectedIndex = 0;
