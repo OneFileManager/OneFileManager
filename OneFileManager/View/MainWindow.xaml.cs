@@ -43,6 +43,8 @@ namespace OneFileManager.View
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = treeViewItem.Tag as string;
             TabViewModelList.Add(tabPage);
+
+            StackPanel stackPanel=new StackPanel();
         }
 
         private void InitCommandBindings()
