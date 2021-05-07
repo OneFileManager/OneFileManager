@@ -12,7 +12,7 @@ namespace OneFileManager.Core.AbstractClass
     /// <summary>
     /// 视图组件抽象类
     /// </summary>
-    public abstract  class TabViewComponentBase:StackPanel,ITabViewComponent
+    public abstract  class TabViewComponentBase:UserControl,ITabViewComponent
     {
 
 

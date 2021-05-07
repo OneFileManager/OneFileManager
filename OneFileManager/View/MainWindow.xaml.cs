@@ -33,6 +33,7 @@ namespace OneFileManager.View
         {
             //初始化命令绑定
             InitCommandBindings();
+            //初始化HomeView
         }
 
         private void DiskTreeControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)

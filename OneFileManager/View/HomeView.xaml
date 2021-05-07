@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="OneFileManager.View.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:OneFileManager.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="900"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel Margin="20,20,20,20">
+        <StackPanel>
+            <TextBlock FontSize="20">库</TextBlock>
+            <ListBox>
+                <ListBoxItem>
+                    <hc:Card
+                        MaxWidth="240"
+                        Margin="8"
+                        BorderThickness="0"
+                        Effect="{DynamicResource EffectShadow2}">
+                        <!--  Card 的内容部分  -->
+                        <Border
+                            Width="60"
+                            Height="60"
+                            CornerRadius="4,4,0,0">
+                            <Image
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="/Resources/UI/Default/FolderOrange.png" />
+                        </Border>
+                        <!--  Card 的尾部部分  -->
+                        <hc:Card.Footer>
+                            <StackPanel
+                                Width="100"
+                                Margin="10"
+                                HorizontalAlignment="Center">
+                                <!--  Card 的一级内容  -->
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontSize="20"
+                                    Style="{DynamicResource TextBlockLargeBold}"
+                                    Text="文件夹"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+
+
+                            </StackPanel>
+                        </hc:Card.Footer>
+                    </hc:Card>
+                </ListBoxItem>
+            </ListBox>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
