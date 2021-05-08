@@ -18,14 +18,14 @@ namespace OneFileManager.CustomUserControl.Main
     /// <summary>
     ///     FileListView.xaml 的交互逻辑
     /// </summary>
-    public partial class FileListControl : UserControl, INotifyPropertyChanged
+    public partial class FileBrowserListViewControl : UserControl, INotifyPropertyChanged
     {
         private readonly ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
         private readonly DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
 
-        public FileListControl()
+        public FileBrowserListViewControl()
         {
             InitializeComponent();
         }
@@ -52,10 +52,32 @@ namespace OneFileManager.CustomUserControl.Main
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool CanGoBack => nowNode.PreNode != null;
+        public bool CanGoBack
+        {
+            get
+            {
+                if (nowNode == null)
+                {
+                    return false;
+                }
+                return nowNode.PreNode != null;
+            }
+        }
 
-        public bool CanGoForward => nowNode.NextNode != null;
+            public bool CanGoForward
+        {
+            get
+            {
+                if (nowNode == null)
+                {
+                    return false;
+                }
+                return nowNode.NextNode != null;
+            }
+        }
 
+
+       
         public void GoBack()
         {
             if (CanGoBack)
@@ -159,7 +181,7 @@ namespace OneFileManager.CustomUserControl.Main
         {
             //清除视图
             fileList.Clear();
-            
+
             string[] dirs = Directory.GetDirectories(path);
 
             foreach (string item in dirs)
@@ -348,8 +370,8 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
         {
-            var file=this.fileListGView.SelectedItem as FileListViewNode;
-            OpenNewTabCommand.OpenNewTab.Execute(file,(MenuItem)sender);
+            var file = this.fileListGView.SelectedItem as FileListViewNode;
+            OpenNewTabCommand.OpenNewTab.Execute(file, (MenuItem)sender);
         }
 
         private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
@@ -414,34 +436,35 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void DoRename(object sender, RoutedEventArgs e)
         {
-
-            var fileInfo= fileListGView.SelectedItem as FileListViewNode;
+            var fileInfo = fileListGView.SelectedItem as FileListViewNode;
             switch (fileInfo.FileType)
-            {   case  FileType.File:
+            {
+                case FileType.File:
                     DoReNameFile(fileInfo);
                     break;
+
                 case FileType.Directory:
                     DoReNameDirectory(fileInfo);
                     break;
+
                 default:
 
                     break;
             }
-
-
         }
+
         private void DoReNameFile(FileListViewNode fileListViewNode)
         {
-            RenameFileDialog renameFileDialog=new RenameFileDialog();
+            RenameFileDialog renameFileDialog = new RenameFileDialog();
             renameFileDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            renameFileDialog.FileName.Text= fileListViewNode.Name;
+            renameFileDialog.FileName.Text = fileListViewNode.Name;
             renameFileDialog.ShowDialog();
             if (renameFileDialog.DialogResult == true)
             {
                 string fileName = renameFileDialog.FileName.Text;
                 if (FileUtil.CheckFileName(fileName))
                 {
-                    File.Move(fileListViewNode.FullName, Path.GetDirectoryName(fileListViewNode.FullName)+ fileName);
+                    File.Move(fileListViewNode.FullName, Path.GetDirectoryName(fileListViewNode.FullName) + fileName);
                     Refresh(true);
                 }
                 else
@@ -449,8 +472,8 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show("文件名不合法");
                 }
             }
-
         }
+
         private void DoReNameDirectory(FileListViewNode fileListViewNode)
         {
             RenameFolderDialog renameFolderDialog = new RenameFolderDialog();
@@ -462,7 +485,6 @@ namespace OneFileManager.CustomUserControl.Main
                 string fileName = renameFolderDialog.FileName.Text;
                 if (FileUtil.CheckFileName(fileName))
                 {
-
                     Directory.Move(fileListViewNode.FullName, Path.GetDirectoryName(fileListViewNode.FullName) + fileName);
                     Refresh(true);
                 }
@@ -471,8 +493,8 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show("文件名不合法");
                 }
             }
-
         }
+
         private void DoRapidSharing(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("此功能未实现");
@@ -554,7 +576,7 @@ namespace OneFileManager.CustomUserControl.Main
                 string fileName = creatFileDialog.FileName.Text;
                 if (FileUtil.CheckFileName(fileName))
                 {
-                   var fSteam=  File.Create(Path.Combine(DirectoryPath, fileName));
+                    var fSteam = File.Create(Path.Combine(DirectoryPath, fileName));
                     fSteam.Close();
                     Refresh(true);
                 }

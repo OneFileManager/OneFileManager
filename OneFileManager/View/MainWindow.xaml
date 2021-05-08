@@ -64,24 +64,14 @@
 
         <hc:TabControl
             x:Name="tabControl"
-            ikriv:TabContent.IsCached="True"
-            ikriv:TabContent.TemplateSelector="{StaticResource datatemplateSelector}"
-            Background="White"
             DockPanel.Dock="Right"
             IsAnimationEnabled="True"
             IsDraggable="True"
             IsScrollable="True"
-            ItemsSource="{Binding Path=TabViewModelList, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
             SelectionChanged="TabControl_OnSelectionChanged"
             ShowCloseButton="True"
             ShowScrollButton="True"
-            TabItemWidth="200">
-            <TabControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Header, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-        </hc:TabControl>
+            TabItemWidth="200" />
 
     </DockPanel>
 

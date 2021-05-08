@@ -36,9 +36,18 @@
     <None Remove="Resources\Img\Flag\pt-BR.png" />
     <None Remove="Resources\Img\Flag\ru.png" />
     <None Remove="Resources\Img\Flag\tr.png" />
+    <None Remove="Resources\UI\Default\bg1.jpg" />
+    <None Remove="Resources\UI\Default\bg2.jpg" />
+    <None Remove="Resources\UI\Default\Documents.png" />
+    <None Remove="Resources\UI\Default\Download.png" />
     <None Remove="Resources\UI\Default\File.png" />
     <None Remove="Resources\UI\Default\FolderOrange.png" />
+    <None Remove="Resources\UI\Default\LocalDrive.png" />
     <None Remove="Resources\UI\Default\login.png" />
+    <None Remove="Resources\UI\Default\Music.png" />
+    <None Remove="Resources\UI\Default\MyComputer.png" />
+    <None Remove="Resources\UI\Default\Picture.png" />
+    <None Remove="Resources\UI\Default\Video.png" />
     <None Remove="View\FileManager_128x128.ico" />
   </ItemGroup>
 	<ItemGroup>
@@ -80,10 +89,35 @@
 	  <Resource Include="Resources\Img\Flag\pt-BR.png" />
 	  <Resource Include="Resources\Img\Flag\ru.png" />
 	  <Resource Include="Resources\Img\Flag\tr.png" />
-	  <Resource Include="Resources\UI\Default\File.png" />
-	  <Resource Include="Resources\UI\Default\FolderOrange.png" />
+	  <Resource Include="Resources\UI\Default\bg2.jpg" />
+	  <Resource Include="Resources\UI\Default\Documents.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\Download.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\File.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\FolderOrange.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\bg1.jpg" />
+	  <Resource Include="Resources\UI\Default\LocalDrive.png" />
 	  <Resource Include="Resources\UI\Default\login.png">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\Music.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\MyComputer.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\Picture.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\UI\Default\Video.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="View\FileManager_128x128.ico" />
 	</ItemGroup>
@@ -113,9 +147,6 @@
 	<ItemGroup>
 	  <None Update="InstallPackage_blue_128.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\UI\Default\MyComputer.png">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 	<ItemGroup>

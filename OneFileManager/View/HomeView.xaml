@@ -6,50 +6,147 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:OneFileManager.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="900"
-    d:DesignWidth="800"
+    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
-    <StackPanel Margin="20,20,20,20">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/UI/Default/bg1.jpg" Stretch="UniformToFill" />
+    </UserControl.Background>
+    <UserControl.Resources>
+        <DropShadowEffect
+            x:Key="EffectShadow2021"
+            o:Freeze="True"
+            BlurRadius="5"
+            Direction="270"
+            Opacity=".2"
+            RenderingBias="Performance"
+            ShadowDepth="1"
+            Color="{StaticResource EffectShadowColor}" />
+        <Style x:Key="huise" TargetType="hc:Card">
+            <Setter Property="Effect" Value="{StaticResource EffectShadow2021}" />
+
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Margin="20,20,20,20" HorizontalAlignment="Center">
         <StackPanel>
-            <TextBlock FontSize="20">库</TextBlock>
-            <ListBox>
-                <ListBoxItem>
-                    <hc:Card
-                        MaxWidth="240"
-                        Margin="8"
-                        BorderThickness="0"
-                        Effect="{DynamicResource EffectShadow2}">
-                        <!--  Card 的内容部分  -->
-                        <Border
-                            Width="60"
-                            Height="60"
-                            CornerRadius="4,4,0,0">
-                            <Image
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Source="/Resources/UI/Default/FolderOrange.png" />
-                        </Border>
-                        <!--  Card 的尾部部分  -->
-                        <hc:Card.Footer>
-                            <StackPanel
-                                Width="100"
-                                Margin="10"
-                                HorizontalAlignment="Center">
-                                <!--  Card 的一级内容  -->
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    FontSize="20"
-                                    Style="{DynamicResource TextBlockLargeBold}"
-                                    Text="文件夹"
-                                    TextTrimming="CharacterEllipsis"
-                                    TextWrapping="NoWrap" />
+            <TextBlock
+                Margin="20,0,0,0"
+                FontSize="20"
+                Foreground="Black">
+                库
+            </TextBlock>
+            <ListBox
+                x:Name="ku"
+                HorizontalAlignment="Left"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Style="{DynamicResource WrapPanelHorizontalListBox}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Width="200"
+                            Height="100"
+                            Margin="10"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Effect="{DynamicResource EffectShadow2021}"
+                            Opacity="0.9">
+                            <Button.Content>
+                                <StackPanel>
+                                    <Image
+                                        MaxWidth="40"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Source="{Binding ImagePath}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="20"
+                                        Style="{DynamicResource TextBlockLargeBold}"
+                                        Text="{Binding Name}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="NoWrap" />
+                                </StackPanel>
 
+                            </Button.Content>
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="右键菜单" />
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
 
-                            </StackPanel>
-                        </hc:Card.Footer>
-                    </hc:Card>
-                </ListBoxItem>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
             </ListBox>
+
+            <TextBlock
+                Margin="20,0,0,0"
+                FontSize="20"
+                Foreground="Black">
+                本地驱动器
+            </TextBlock>
+            <ListBox
+                x:Name="localDrive"
+                Margin="10"
+                HorizontalAlignment="Left"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Style="{DynamicResource WrapPanelHorizontalListBox}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Width="300"
+                            Height="100"
+                            Margin="10"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Effect="{DynamicResource EffectShadow2021}"
+                            Opacity="0.9">
+                            <Button.Content>
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <Image
+                                        MaxWidth="50"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Source="{Binding ImagePath}" />
+                                    <StackPanel Margin="20,0,0,0" HorizontalAlignment="Left">
+                                        <TextBlock
+                                            Margin="0,0,0,5"
+                                            FontSize="10"
+                                            FontWeight="Bold"
+                                            Text="{Binding LocalDriveName}" />
+                                        <ProgressBar
+                                            Height="15"
+                                            IsIndeterminate="False"
+                                            Value="{Binding RatioOfSpace}" />
+                                        <StackPanel Margin="0,10,0,0">
+                                            <TextBlock>90GB可用 剩余100GB</TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                            </Button.Content>
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="右键菜单" />
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+            <TextBlock
+                Margin="20,0,0,0"
+                FontSize="20"
+                Foreground="Black">
+                网络驱动器
+            </TextBlock>
         </StackPanel>
     </StackPanel>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using OneFileManager.Commands;
 using OneFileManager.Core.Model;
+using OneFileManager.CustomUserControl.Main;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -16,10 +17,7 @@ namespace OneFileManager.View
     /// </summary>
     public partial class MainWindow
     {
-        /// <summary>
-        /// 页面信息
-        /// </summary>
-        public ObservableCollection<TabPage> TabViewModelList { get; set; } = new ObservableCollection<TabPage>();
+        
 
         public MainWindow()
         {
@@ -35,6 +33,30 @@ namespace OneFileManager.View
             InitCommandBindings();
             //初始化HomeView
         }
+        private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            TabPage tabPage = new TabPage();
+            tabPage.Display = DisplayType.Disk;
+            tabPage.Path = @"C:\";
+       
+            this.tabControl.SelectedIndex = 0;
+
+
+            HandyControl.Controls.TabItem tabItem1=new  HandyControl.Controls.TabItem();
+ 
+            tabItem1.Header="Home";
+            HomeView homeView=new HomeView();
+            tabItem1.Content=homeView;
+
+
+          
+
+            tabControl.Items.Add(tabItem1);
+        
+
+
+         
+        }
 
         private void DiskTreeControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -43,7 +65,7 @@ namespace OneFileManager.View
             TabPage tabPage = new TabPage();
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = treeViewItem.Tag as string;
-            TabViewModelList.Add(tabPage);
+          
 
             StackPanel stackPanel=new StackPanel();
         }
@@ -87,11 +109,7 @@ namespace OneFileManager.View
                     }
                 }
             }
-            TabViewModelList.Add(new TabPage()
-            {
-                Display = DisplayType.Disk,
-                Path = path,
-            });
+         
             tabControl.SelectedIndex = tabControl.Items.Count - 1;
         }
 
@@ -100,15 +118,7 @@ namespace OneFileManager.View
             base.OnContentRendered(e);
         }
 
-        private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            TabPage tabPage = new TabPage();
-            tabPage.Display = DisplayType.Disk;
-            tabPage.Path = @"C:\";
-            TabViewModelList.Add(tabPage);
-
-            this.tabControl.SelectedIndex = 0;
-        }
+   
 
         //初始化相关“查看”选项
         private void InitViewChecks()

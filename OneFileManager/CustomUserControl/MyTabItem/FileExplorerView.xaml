@@ -64,14 +64,16 @@
                 <hc:TextBox
                     Name="pathBox"
                     MinWidth="200"
-                    KeyDown="UIElement_OnKeyDown"
-                    Text="{Binding ElementName=tabControl, Path=SelectedItem.Path, Mode=OneWay}" />
+                    KeyDown="UIElement_OnKeyDown" />
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2">
-                <hc:SearchBar MinWidth="100" Margin="10,0,10,0" CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" />
+                <hc:SearchBar
+                    MinWidth="100"
+                    Margin="10,0,10,0"
+                    CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" />
             </StackPanel>
         </Grid>
-   
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -101,7 +103,10 @@
                 Background="#E0E0E0" />
 
 
-            <main:FileListControl x:Name="fileListControl" Grid.Row="0" Grid.Column="0" />
+            <main:FileBrowserListViewControl
+                x:Name="fileListControl"
+                Grid.Row="0"
+                Grid.Column="0" />
             <StackPanel Grid.Row="0" Grid.Column="2" />
             <StackPanel Grid.Row="2" Grid.Column="0" />
             <StackPanel Grid.Row="2" Grid.Column="2" />
