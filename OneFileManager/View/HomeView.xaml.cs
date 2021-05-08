@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,19 +37,19 @@ namespace OneFileManager.View
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //初始化库
-            
             kuObservableCollection.Add(new FileListViewNode("桌面",@"/Resources/UI/Default/MyComputer.png"));
             kuObservableCollection.Add(new FileListViewNode("下载",@"/Resources/UI/Default/Download.png"));
             kuObservableCollection.Add(new FileListViewNode("文档",@"/Resources/UI/Default/Documents.png"));
             kuObservableCollection.Add(new FileListViewNode("图片",@"/Resources/UI/Default/Picture.png"));
             kuObservableCollection.Add(new FileListViewNode("音乐",@"/Resources/UI/Default/Music.png"));
             kuObservableCollection.Add(new FileListViewNode("视频",@"/Resources/UI/Default/Video.png"));
+            //初始化磁盘
 
-            LocalDriveInfoObservableCollection.Add(new LocalDriveInfo("C"));
-            LocalDriveInfoObservableCollection.Add(new LocalDriveInfo("D"));
-            LocalDriveInfoObservableCollection.Add(new LocalDriveInfo("E"));
-            LocalDriveInfoObservableCollection.Add(new LocalDriveInfo("F"));
-            LocalDriveInfoObservableCollection.Add(new LocalDriveInfo("G"));
+            DriveInfo[] driveInfos = DriveInfo.GetDrives();
+            foreach (var item in driveInfos)
+            {
+                LocalDriveInfoObservableCollection.Add(new LocalDriveInfo(item));
+            }
           
         }
     }

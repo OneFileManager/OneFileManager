@@ -30,6 +30,14 @@ namespace OneFileManager.Common.Utils
             }
             return byteSize + "B";
         }
+        public  static string GetFileSizeGB(long byteSize)
+        {
+            const int GB = 1024 * 1024 * 1024;
+            const int MB = 1024 * 1024;
+            const int KB = 1024;
+           return Math.Round(byteSize / (float)GB, 2) + "GB";
+           ;
+        }
         /// <summary>
         /// 检查文件名的合法
         /// </summary>

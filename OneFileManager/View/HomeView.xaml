@@ -2,6 +2,7 @@
     x:Class="OneFileManager.View.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:OneFileManager.View.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:OneFileManager.View"
@@ -15,6 +16,7 @@
         <ImageBrush ImageSource="/Resources/UI/Default/bg1.jpg" Stretch="UniformToFill" />
     </UserControl.Background>
     <UserControl.Resources>
+        <converter:LocalDriveInfoSpaceStringConverter x:Key="LocalDriveInfoSpaceStringConverter" />
         <DropShadowEffect
             x:Key="EffectShadow2021"
             o:Freeze="True"
@@ -115,15 +117,15 @@
                                     <StackPanel Margin="20,0,0,0" HorizontalAlignment="Left">
                                         <TextBlock
                                             Margin="0,0,0,5"
-                                            FontSize="10"
+                                            FontSize="16"
                                             FontWeight="Bold"
                                             Text="{Binding LocalDriveName}" />
                                         <ProgressBar
-                                            Height="15"
+                                            Height="12"
                                             IsIndeterminate="False"
                                             Value="{Binding RatioOfSpace}" />
                                         <StackPanel Margin="0,10,0,0">
-                                            <TextBlock>90GB可用 剩余100GB</TextBlock>
+                                            <TextBlock Text="{Binding ., Converter={StaticResource LocalDriveInfoSpaceStringConverter}}" />
                                         </StackPanel>
                                     </StackPanel>
 
