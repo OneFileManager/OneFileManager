@@ -48,11 +48,11 @@ namespace OneFileManager.View
             HomeView homeView=new HomeView();
             tabItem1.Content=homeView;
 
-
-          
-
             tabControl.Items.Add(tabItem1);
-        
+
+            FileExplorerView fileExplorerView=new FileExplorerView();
+            HandyControl.Controls.TabItem tabItem2=new  HandyControl.Controls.TabItem();
+                    
 
 
          

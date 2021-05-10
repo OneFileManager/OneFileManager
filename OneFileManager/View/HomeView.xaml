@@ -28,7 +28,6 @@
             Color="{StaticResource EffectShadowColor}" />
         <Style x:Key="huise" TargetType="hc:Card">
             <Setter Property="Effect" Value="{StaticResource EffectShadow2021}" />
-
         </Style>
     </UserControl.Resources>
     <StackPanel Margin="20,20,20,20" HorizontalAlignment="Center">
