@@ -9,11 +9,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="Transparent"
     Initialized="UserControl_Initialized"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
-
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/UI/Default/bg1.jpg" Stretch="UniformToFill" />
+    </UserControl.Background>
 
     <DockPanel LastChildFill="True">
         <Grid Margin="0,5,0,0" DockPanel.Dock="Top">

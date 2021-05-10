@@ -36,7 +36,13 @@ namespace OneFileManager.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //初始化库
+           
+          
+        }
+
+        private void UserControl_Initialized(object sender, EventArgs e)
+        {
+             //初始化库
             kuObservableCollection.Add(new FileListViewNode("桌面",@"/Resources/UI/Default/MyComputer.png"));
             kuObservableCollection.Add(new FileListViewNode("下载",@"/Resources/UI/Default/Download.png"));
             kuObservableCollection.Add(new FileListViewNode("文档",@"/Resources/UI/Default/Documents.png"));
@@ -52,5 +58,7 @@ namespace OneFileManager.View
             }
           
         }
+
+       
     }
 }

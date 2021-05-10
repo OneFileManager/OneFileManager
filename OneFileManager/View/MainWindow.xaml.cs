@@ -1,12 +1,9 @@
 ﻿using OneFileManager.Commands;
 using OneFileManager.Core.Model;
-using OneFileManager.CustomUserControl.Main;
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -17,8 +14,6 @@ namespace OneFileManager.View
     /// </summary>
     public partial class MainWindow
     {
-        
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,41 +28,37 @@ namespace OneFileManager.View
             InitCommandBindings();
             //初始化HomeView
         }
+
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             TabPage tabPage = new TabPage();
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = @"C:\";
-       
+
             this.tabControl.SelectedIndex = 0;
 
+            HandyControl.Controls.TabItem tabItem1 = new HandyControl.Controls.TabItem();
 
-            HandyControl.Controls.TabItem tabItem1=new  HandyControl.Controls.TabItem();
- 
-            tabItem1.Header="Home";
-            HomeView homeView=new HomeView();
-            tabItem1.Content=homeView;
+            tabItem1.Header = "Home";
+            HomeView homeView = new HomeView();
+            tabItem1.Content = homeView;
 
             tabControl.Items.Add(tabItem1);
 
-            FileExplorerView fileExplorerView=new FileExplorerView();
-            HandyControl.Controls.TabItem tabItem2=new  HandyControl.Controls.TabItem();
-                    
+           
 
-
-         
+           
         }
 
         private void DiskTreeControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            TreeViewItem treeViewItem =(TreeViewItem) ((TreeView)e.Source).SelectedItem;
+            TreeViewItem treeViewItem = (TreeViewItem)((TreeView)e.Source).SelectedItem;
 
             TabPage tabPage = new TabPage();
             tabPage.Display = DisplayType.Disk;
             tabPage.Path = treeViewItem.Tag as string;
-          
 
-            StackPanel stackPanel=new StackPanel();
+            StackPanel stackPanel = new StackPanel();
         }
 
         private void InitCommandBindings()
@@ -75,6 +66,24 @@ namespace OneFileManager.View
             var openNewTabCommand = new CommandBinding(OpenNewTabCommand.OpenNewTab);
             openNewTabCommand.Executed += OpenNewTabCommand_Executed;
             this.CommandBindings.Add(openNewTabCommand);
+
+            CommandBinding goToPageCommandBinding = new CommandBinding(NavigationCommands.GoToPage);
+            goToPageCommandBinding.Executed += GoToPageCommandBinding_Executed;
+            this.CommandBindings.Add(goToPageCommandBinding);
+        }
+
+        private void GoToPageCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            string path=e.Parameter as string;
+                
+            HandyControl.Controls.TabItem tabItem2 = new HandyControl.Controls.TabItem();
+            tabItem2.Header = path;
+            FileExplorerView fileExplorerView = new FileExplorerView();
+            tabItem2.Content = fileExplorerView;
+            fileExplorerView.Navigate(path);
+            tabControl.Items.Add(tabItem2);
+            tabControl.SelectedIndex=tabControl.Items.Count-1;//选择最后一个
+
         }
 
         private void OpenNewTabCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -109,7 +118,7 @@ namespace OneFileManager.View
                     }
                 }
             }
-         
+
             tabControl.SelectedIndex = tabControl.Items.Count - 1;
         }
 
@@ -117,8 +126,6 @@ namespace OneFileManager.View
         {
             base.OnContentRendered(e);
         }
-
-   
 
         //初始化相关“查看”选项
         private void InitViewChecks()
@@ -129,7 +136,5 @@ namespace OneFileManager.View
         {
             Console.WriteLine("");
         }
-
-    
     }
 }

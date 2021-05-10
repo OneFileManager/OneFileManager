@@ -9,6 +9,7 @@ namespace OneFileManager.Core.Model
 {
     public class LocalDriveInfo
     {
+       
         public string ImagePath { get; set; }
         public string Name { get; set; }
         public string LocalDriveName{ get;set;}
@@ -35,6 +36,7 @@ namespace OneFileManager.Core.Model
         }
         public LocalDriveInfo(DriveInfo driveInfo)
         {
+            this.Name=driveInfo.Name;
             this.LocalDriveName=$"本地磁盘({driveInfo.Name})";
             this.ImagePath= "/Resources/UI/Default/LocalDrive.png";
             this.AvailableFreeSpace=driveInfo.AvailableFreeSpace;

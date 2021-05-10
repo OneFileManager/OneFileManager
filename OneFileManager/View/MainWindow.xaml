@@ -41,7 +41,7 @@
         <StatusBar Height="20" DockPanel.Dock="Bottom">
             <TextBlock Text="已就绪" />
         </StatusBar>
-        <DockPanel DockPanel.Dock="Left" Visibility="Collapsed">
+        <DockPanel DockPanel.Dock="Left" Visibility="Visible">
             <TabControl TabStripPlacement="Left">
 
                 <TabItem Header="本地资源">
