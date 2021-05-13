@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -13,7 +15,7 @@ namespace OneFileManager.Common.Utils
         /// <returns></returns>
         public static string GetFileSize(long? byteSize)
         {
-            if (byteSize==null)
+            if (byteSize == null)
             {
                 return "UnKnow";
             }
@@ -34,14 +36,16 @@ namespace OneFileManager.Common.Utils
             }
             return byteSize + "B";
         }
-        public  static string GetFileSizeGB(long byteSize)
+
+        public static string GetFileSizeGB(long byteSize)
         {
             const int GB = 1024 * 1024 * 1024;
             const int MB = 1024 * 1024;
             const int KB = 1024;
-           return Math.Round(byteSize / (float)GB, 2) + "GB";
-           ;
+            return Math.Round(byteSize / (float)GB, 2) + "GB";
+            ;
         }
+
         /// <summary>
         /// 检查文件名的合法
         /// </summary>
@@ -53,7 +57,6 @@ namespace OneFileManager.Common.Utils
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 return false;
-
             }
             StringBuilder description = new StringBuilder();
 
@@ -61,12 +64,28 @@ namespace OneFileManager.Common.Utils
 
             if (!opResult)
             {
-              return false;
+                return false;
             }
 
-       
-
             return opResult;
+        }
+
+        public static Icon GetExtractAssociatedIcon(string fileName)
+        {
+            Icon img = System.Drawing.Icon.ExtractAssociatedIcon(fileName);
+            return img;
+        }
+
+        [DllImport("shell32.DLL", EntryPoint = "ExtractAssociatedIcon")]
+        private static extern int ExtractAssociatedIconA(int hInst, string lpIconPath, ref int lpiIcon); //声明函数
+
+     
+
+        public static System.Drawing.Icon GetFileIcon(string path)
+        {
+            int RefInt = 0;
+            System.IntPtr thisHandle = new IntPtr(ExtractAssociatedIconA(0, path, ref RefInt));
+            return System.Drawing.Icon.FromHandle(thisHandle);
         }
     }
 }

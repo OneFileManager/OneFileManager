@@ -26,7 +26,7 @@ namespace OneFileManager.View.Converter
             }
             //todo:1处理图标性能问题
             //todo:2处理图标预览效果问题
-           　BitmapImage img = System.Drawing.Icon.ExtractAssociatedIcon(fileListViewNode.FullName).ToBitmap().ToBitmapImage();
+           　BitmapImage img = ThumbnailHelper.GetInstance().GetBitmapThumbnail(fileListViewNode.FullName).ToBitmapImage();
             return img;
              
 
