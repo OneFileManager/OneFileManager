@@ -181,8 +181,20 @@ namespace OneFileManager.CustomUserControl.Main
         {
             //清除视图
             fileList.Clear();
+             string[] dirs=null;
+            try
+            {
+                dirs=   Directory.GetDirectories(path);
 
-            string[] dirs = Directory.GetDirectories(path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+               return;
+            }
+            
+
+           
 
             foreach (string item in dirs)
             {
