@@ -60,6 +60,7 @@
             </Setter>
         </Style>
         <converter:FileSizeConverter x:Key="FileSizeConverter" />
+        <converter:FileIconConverter x:Key="FileIconConverter" />
     </UserControl.Resources>
     <Grid>
         <ListView
@@ -69,13 +70,12 @@
             Style="{StaticResource listview}">
 
             <ListView.View>
-
                 <GridView>
                     <GridViewColumn Width="40">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="30" Source="{Binding ImagePath}" />
+                                    <Image Width="30" Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
