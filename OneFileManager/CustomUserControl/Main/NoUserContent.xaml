@@ -42,6 +42,10 @@
             </MenuItem>
             <MenuItem Height="29" Header="扩展">
 
+                <MenuItem Header="扩展1" />
+                <MenuItem Header="扩展2" />
+
+                <MenuItem Header="管理扩展" />
                 <MenuItem Header="管理扩展" />
             </MenuItem>
             <MenuItem Height="29" Header="运行">
@@ -154,16 +158,28 @@
                         <Button Style="{StaticResource ButtonCustom}" Tag="zh-cn">
                             <Image Width="32" Source="/Resources/Img/Flag/cn.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="en">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="en">
                             <Image Width="32" Source="/Resources/Img/Flag/en.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="fa">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="fa">
                             <Image Width="32" Source="/Resources/Img/Flag/fa.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="fr">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="fr">
                             <Image Width="32" Source="/Resources/Img/Flag/fr.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="ca-ES">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="ca-ES">
                             <Image Width="32" Source="/Resources/Img/Flag/ca-Es.png" />
                         </Button>
                     </StackPanel>
@@ -171,13 +187,22 @@
                         <Button Style="{StaticResource ButtonCustom}" Tag="ko-KR">
                             <Image Width="32" Source="/Resources/Img/Flag/ko-KR.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="ru">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="ru">
                             <Image Width="32" Source="/Resources/Img/Flag/ru.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="tr">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="tr">
                             <Image Width="32" Source="/Resources/Img/Flag/tr.png" />
                         </Button>
-                        <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="pt-BR">
+                        <Button
+                            Margin="0,10,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="pt-BR">
                             <Image Width="32" Source="/Resources/Img/Flag/pt-BR.png" />
                         </Button>
                     </StackPanel>
@@ -197,7 +222,10 @@
                             BorderThickness="1"
                             CornerRadius="2" />
                     </Button>
-                    <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="{x:Static hc:SkinType.Dark}">
+                    <Button
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ButtonCustom}"
+                        Tag="{x:Static hc:SkinType.Dark}">
                         <Border
                             Width="32"
                             Height="21"
@@ -206,7 +234,10 @@
                             BorderThickness="1"
                             CornerRadius="2" />
                     </Button>
-                    <Button Margin="0,10,0,0" Style="{StaticResource ButtonCustom}" Tag="{x:Static hc:SkinType.Violet}">
+                    <Button
+                        Margin="0,10,0,0"
+                        Style="{StaticResource ButtonCustom}"
+                        Tag="{x:Static hc:SkinType.Violet}">
                         <Border
                             Width="32"
                             Height="21"

@@ -158,5 +158,33 @@ namespace OneFileManager.View
                 }
             }
         }
+        /// <summary>
+        /// 鼠标拖放时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_Drop(object sender, DragEventArgs e)
+        {
+            var strs= (string[])e.Data.GetData(DataFormats.FileDrop);
+          
+            MessageBox.Show("");
+
+        }
+         /// <summary>
+         /// 鼠标拖放进入
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
+        private void UserControl_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects=DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effects=DragDropEffects.None;
+            }
+        }
     }
 }

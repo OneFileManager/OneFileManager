@@ -11,22 +11,26 @@ namespace OneFileManager.Common.Utils
         /// </summary>
         /// <param name="byteSize"></param>
         /// <returns></returns>
-        public string GetFileSize(long byteSize)
+        public static string GetFileSize(long? byteSize)
         {
+            if (byteSize==null)
+            {
+                return "UnKnow";
+            }
             const int GB = 1024 * 1024 * 1024;
             const int MB = 1024 * 1024;
             const int KB = 1024;
             if (byteSize / GB >= 1)
             {
-                return Math.Round(byteSize / (float)GB, 2) + "GB";
+                return Math.Round(byteSize.Value / (float)GB, 2) + "GB";
             }
             if (byteSize / MB >= 1)
             {
-                return Math.Round(byteSize / (float)MB, 2) + "MB";
+                return Math.Round(byteSize.Value / (float)MB, 2) + "MB";
             }
             if (byteSize / KB >= 1)
             {
-                return Math.Round(byteSize / (float)KB, 2) + "KB";
+                return Math.Round(byteSize.Value / (float)KB, 2) + "KB";
             }
             return byteSize + "B";
         }

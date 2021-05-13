@@ -16,7 +16,7 @@ namespace OneFileManager.Core.Model
         public string CreationTime { get; set; }
         public string LastWriteTime { get; set; }
         public string Extension { get; set; }
-        public string Length { get; set; }
+        public long? Length { get; set; }
 
         public FileListViewNode()
         {
@@ -31,7 +31,7 @@ namespace OneFileManager.Core.Model
             this.CreationTime = fileInfo.CreationTime.ToString("G");
             this.LastWriteTime = fileInfo.LastWriteTime.ToString("G");
             this.Extension = fileInfo.Extension;
-            this.Length = fileInfo.Length + "字节";
+            this.Length = fileInfo.Length;
         }
 
         public FileListViewNode(string name, string imagePath)
@@ -40,7 +40,7 @@ namespace OneFileManager.Core.Model
             this.FileType = FileType.Directory;
             this.Name = name;
             this.Extension = "文件夹";
-            this.Length = "";
+            this.Length = null;
         }
 
         public FileListViewNode(DirectoryInfo directoryInfo)
@@ -53,7 +53,7 @@ namespace OneFileManager.Core.Model
             this.CreationTime = directoryInfo.CreationTime.ToString("G");
             this.LastWriteTime = directoryInfo.LastWriteTime.ToString("G");
             this.Extension = "文件夹";
-            this.Length = "";
+            this.Length = null;
         }
     }
 }

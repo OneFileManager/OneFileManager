@@ -35,7 +35,7 @@ namespace OneFileManager.EverythingSDK
                 FullName = this.FullName,
                 LastWriteTime = this.DateModified.ToString("G"),
                 Extension = this.Extension, 
-                Length = this.Size+"字节"
+                Length = this.Size
             };
             return file;
         }
