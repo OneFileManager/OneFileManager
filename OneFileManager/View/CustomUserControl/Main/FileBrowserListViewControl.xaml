@@ -124,8 +124,15 @@
         <myListview:TileView x:Key="ImageView" SelectedBackground="#3996ED">
             <myListview:TileView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Width="100" VerticalAlignment="Top">
-                        <Image Width="100" Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
+                    <StackPanel
+                        Width="100"
+                        VerticalAlignment="Top"
+                        Background="Transparent">
+                        <Image
+                            Width="50"
+                            Height="50"
+                            Source="{Binding ., Converter={StaticResource FileIconConverter}}"
+                            Stretch="Uniform" />
                         <TextBlock
                             HorizontalAlignment="Center"
                             Text="{Binding Name}"
@@ -145,8 +152,10 @@
 
                         <Image
                             Width="50"
+                            Height="50"
                             Margin="5"
-                            Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
+                            Source="{Binding ., Converter={StaticResource FileIconConverter}}"
+                            Stretch="Uniform" />
                         <StackPanel
                             Grid.Column="1"
                             Width="150"
@@ -171,8 +180,8 @@
             x:Name="fileListGView"
             MouseDoubleClick="DoMouseDoubleClick"
             SelectionMode="Extended"
-            Style="{StaticResource listviewStyle2}"
-            View="{StaticResource ImageDetailView}">
+            Style="{StaticResource listviewStyle}"
+            View="{StaticResource GridView}">
 
 
 
