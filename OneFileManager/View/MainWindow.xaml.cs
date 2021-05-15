@@ -63,24 +63,42 @@ namespace OneFileManager.View
 
         private void InitCommandBindings()
         {
-            var openNewTabCommand = new CommandBinding(OpenNewTabCommand.OpenNewTab);
+            var openNewTabCommand = new CommandBinding(ViewNavigationCommands.OpenNewTab);
             openNewTabCommand.Executed += OpenNewTabCommand_Executed;
             this.CommandBindings.Add(openNewTabCommand);
 
-            CommandBinding goToPageCommandBinding = new CommandBinding(NavigationCommands.GoToPage);
-            goToPageCommandBinding.Executed += GoToPageCommandBinding_Executed;
-            this.CommandBindings.Add(goToPageCommandBinding);
+            CommandBinding openLocalDriverCommandBinding = new CommandBinding(ViewNavigationCommands.OpenLocalDriver);
+            openLocalDriverCommandBinding.Executed += OpenLocalDriverCommandBinding_Executed;
+            this.CommandBindings.Add(openLocalDriverCommandBinding);
+
+            CommandBinding openSpecialFolder=new CommandBinding(ViewNavigationCommands.OpenSpecialFolder);
+            openSpecialFolder.Executed += OpenSpecialFolder_Executed;
+            this.CommandBindings.Add(openSpecialFolder);
         }
 
-        private void GoToPageCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void OpenSpecialFolder_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            string path=e.Parameter as string;
-                
+            SpecialFolderInfo specialFolderInfo=e.Parameter as SpecialFolderInfo;
+            
             HandyControl.Controls.TabItem tabItem2 = new HandyControl.Controls.TabItem();
-            tabItem2.Header = path;
+            tabItem2.Header = specialFolderInfo.FolderPath;
             FileExplorerView fileExplorerView = new FileExplorerView();
             tabItem2.Content = fileExplorerView;
-            fileExplorerView.Navigate(path);
+            fileExplorerView.Navigate(specialFolderInfo.FolderPath);
+            tabControl.Items.Add(tabItem2);
+            tabControl.SelectedIndex=tabControl.Items.Count-1;//选择最后一个
+            
+        }
+
+        private void OpenLocalDriverCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LocalDriveInfo driveInfo=e.Parameter as LocalDriveInfo;
+                
+            HandyControl.Controls.TabItem tabItem2 = new HandyControl.Controls.TabItem();
+            tabItem2.Header = driveInfo.Name;
+            FileExplorerView fileExplorerView = new FileExplorerView();
+            tabItem2.Content = fileExplorerView;
+            fileExplorerView.Navigate(driveInfo.Name);
             tabControl.Items.Add(tabItem2);
             tabControl.SelectedIndex=tabControl.Items.Count-1;//选择最后一个
 

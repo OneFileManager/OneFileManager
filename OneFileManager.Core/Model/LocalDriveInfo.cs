@@ -39,6 +39,7 @@ namespace OneFileManager.Core.Model
 
             string label=string.IsNullOrEmpty(driveInfo.VolumeLabel)?"本地磁盘":driveInfo.VolumeLabel;
 
+            
             this.Name=driveInfo.Name;
             this.VolumeLabel=label;
             this.LocalDriveName=$"{label}({driveInfo.Name})";

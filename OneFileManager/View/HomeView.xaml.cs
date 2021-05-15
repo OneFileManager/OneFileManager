@@ -1,4 +1,5 @@
-﻿using OneFileManager.Core.Model;
+﻿using OneFileManager.Common.Utils;
+using OneFileManager.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,7 +24,7 @@ namespace OneFileManager.View
     /// </summary>
     public partial class HomeView : UserControl
     {
-        public ObservableCollection<FileListViewNode> kuObservableCollection=new ObservableCollection<FileListViewNode>();
+        public ObservableCollection<SpecialFolderInfo> kuObservableCollection=new ObservableCollection<SpecialFolderInfo>();
         public ObservableCollection<LocalDriveInfo> LocalDriveInfoObservableCollection=new ObservableCollection<LocalDriveInfo>();
 
         public HomeView()
@@ -43,12 +44,12 @@ namespace OneFileManager.View
         private void UserControl_Initialized(object sender, EventArgs e)
         {
              //初始化库
-            kuObservableCollection.Add(new FileListViewNode("桌面",@"/Resources/UI/Default/MyComputer.png"));
-            kuObservableCollection.Add(new FileListViewNode("下载",@"/Resources/UI/Default/Download.png"));
-            kuObservableCollection.Add(new FileListViewNode("文档",@"/Resources/UI/Default/Documents.png"));
-            kuObservableCollection.Add(new FileListViewNode("图片",@"/Resources/UI/Default/Picture.png"));
-            kuObservableCollection.Add(new FileListViewNode("音乐",@"/Resources/UI/Default/Music.png"));
-            kuObservableCollection.Add(new FileListViewNode("视频",@"/Resources/UI/Default/Video.png"));
+            kuObservableCollection.Add(new SpecialFolderInfo("桌面",@"/Resources/UI/Default/MyComputer.png",Environment.SpecialFolder.DesktopDirectory));
+            kuObservableCollection.Add(new SpecialFolderInfo("下载",@"/Resources/UI/Default/Download.png",FolderUtil.GetDownloadFoler()));
+            kuObservableCollection.Add(new SpecialFolderInfo("文档",@"/Resources/UI/Default/Documents.png",Environment.SpecialFolder.MyDocuments));
+            kuObservableCollection.Add(new SpecialFolderInfo("图片",@"/Resources/UI/Default/Picture.png",Environment.SpecialFolder.MyPictures));
+            kuObservableCollection.Add(new SpecialFolderInfo("音乐",@"/Resources/UI/Default/Music.png",Environment.SpecialFolder.MyMusic));
+            kuObservableCollection.Add(new SpecialFolderInfo("视频",@"/Resources/UI/Default/Video.png",Environment.SpecialFolder.MyVideos));
             //初始化磁盘
 
             DriveInfo[] driveInfos = DriveInfo.GetDrives();

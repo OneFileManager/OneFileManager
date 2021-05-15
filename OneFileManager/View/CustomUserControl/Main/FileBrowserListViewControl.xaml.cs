@@ -385,7 +385,7 @@ namespace OneFileManager.CustomUserControl.Main
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
         {
             var file = this.fileListGView.SelectedItem as FileListViewNode;
-            OpenNewTabCommand.OpenNewTab.Execute(file, (MenuItem)sender);
+            ViewNavigationCommands.OpenNewTab.Execute(file, (MenuItem)sender);
         }
 
         private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
