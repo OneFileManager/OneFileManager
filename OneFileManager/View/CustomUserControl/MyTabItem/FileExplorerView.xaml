@@ -10,14 +10,13 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     AllowDrop="True"
+    Background="White"
     DragEnter="UserControl_DragEnter"
     Drop="UserControl_Drop"
     Initialized="UserControl_Initialized"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
-    <UserControl.Background>
-        <ImageBrush ImageSource="/Resources/UI/Default/bg1.jpg" Stretch="UniformToFill" />
-    </UserControl.Background>
+
 
     <DockPanel LastChildFill="True">
         <Grid Margin="0,5,0,0" DockPanel.Dock="Top">

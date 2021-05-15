@@ -7,14 +7,17 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:OneFileManager.CustomUserControl.Main"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:myListview="clr-namespace:OneFileManager.CustomUserControl.MyListview"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Initialized="UserControl_Initialized"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
 
     <UserControl.Resources>
-        <Style x:Key="listview" TargetType="{x:Type ListView}">
+
+        <Style x:Key="listviewStyle" TargetType="{x:Type ListView}">
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="Margin" Value="5" />
             <Setter Property="Background" Value="transparent" />
@@ -24,6 +27,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
             <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+
             <Setter Property="AlternationCount" Value="2" />
 
             <!--  ListViewItem模板  -->
@@ -59,61 +63,119 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="listviewStyle2" TargetType="{x:Type ListView}">
+
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF282828" />
+            <Setter Property="BorderThickness" Value="0" />
+
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+
+
+            <Setter Property="AlternationCount" Value="2" />
+
+
+        </Style>
         <converter:FileSizeConverter x:Key="FileSizeConverter" />
         <converter:FileIconConverter x:Key="FileIconConverter" />
+        <GridView x:Key="GridView">
+            <GridViewColumn Width="40">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="30" Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn
+                Width="300"
+                DisplayMemberBinding="{Binding Name}"
+                Header="名称" />
+            <GridViewColumn Width="200" Header="标签">
+                <GridViewColumn.CellTemplate>
+
+                    <DataTemplate>
+                        <DockPanel LastChildFill="True">
+                            <hc:TagContainer BorderThickness="0,0,0,0" DockPanel.Dock="Left">
+                                <hc:Tag
+                                    BorderThickness="0,0,0,0"
+                                    Content="标签"
+                                    ShowCloseButton="True" />
+                            </hc:TagContainer>
+                        </DockPanel>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn
+                Width="200"
+                DisplayMemberBinding="{Binding LastWriteTime}"
+                Header="修改日期" />
+            <GridViewColumn
+                Width="200"
+                DisplayMemberBinding="{Binding Extension}"
+                Header="类型" />
+            <GridViewColumn
+                Width="200"
+                DisplayMemberBinding="{Binding Length, Converter={StaticResource FileSizeConverter}}"
+                Header="大小" />
+            <GridViewColumn DisplayMemberBinding="{Binding Length}" Header="备注" />
+        </GridView>
+        <myListview:TileView x:Key="ImageView" SelectedBackground="#3996ED">
+            <myListview:TileView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Width="100" VerticalAlignment="Top">
+                        <Image Width="100" Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="{Binding Name}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </myListview:TileView.ItemTemplate>
+        </myListview:TileView>
+        <myListview:TileView x:Key="ImageDetailView" SelectedBackground="#3996ED">
+            <myListview:TileView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Col2" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Width="50"
+                            Margin="5"
+                            Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
+                        <StackPanel
+                            Grid.Column="1"
+                            Width="150"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            IsHitTestVisible="True">
+                            <TextBlock
+                                FontWeight="Bold"
+                                Text="{Binding Name}"
+                                TextWrapping="Wrap" />
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Extension}" />
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Length, Converter={StaticResource FileSizeConverter}}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </myListview:TileView.ItemTemplate>
+        </myListview:TileView>
     </UserControl.Resources>
     <Grid>
         <ListView
             x:Name="fileListGView"
             MouseDoubleClick="DoMouseDoubleClick"
             SelectionMode="Extended"
-            Style="{StaticResource listview}">
+            Style="{StaticResource listviewStyle2}"
+            View="{StaticResource ImageDetailView}">
 
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="30" Source="{Binding ., Converter={StaticResource FileIconConverter}}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn
-                        Width="300"
-                        DisplayMemberBinding="{Binding Name}"
-                        Header="名称" />
-                    <GridViewColumn Width="200" Header="标签">
-                        <GridViewColumn.CellTemplate>
 
-                            <DataTemplate>
-                                <DockPanel LastChildFill="True">
-                                    <hc:TagContainer BorderThickness="0,0,0,0" DockPanel.Dock="Left">
-                                        <hc:Tag
-                                            BorderThickness="0,0,0,0"
-                                            Content="标签"
-                                            ShowCloseButton="True" />
-                                    </hc:TagContainer>
-                                </DockPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn
-                        Width="200"
-                        DisplayMemberBinding="{Binding LastWriteTime}"
-                        Header="修改日期" />
-                    <GridViewColumn
-                        Width="200"
-                        DisplayMemberBinding="{Binding Extension}"
-                        Header="类型" />
-                    <GridViewColumn
-                        Width="200"
-                        DisplayMemberBinding="{Binding Length, Converter={StaticResource FileSizeConverter}}"
-                        Header="大小" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Length}" Header="备注" />
-                </GridView>
-            </ListView.View>
+
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Click="DoOpenFile" Header="打开" />

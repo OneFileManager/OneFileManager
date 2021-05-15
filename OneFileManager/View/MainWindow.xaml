@@ -38,8 +38,11 @@
     </hc:Window.NonClientAreaContent>
 
     <DockPanel>
-        <StatusBar Height="20" DockPanel.Dock="Bottom">
-            <TextBlock Text="已就绪" />
+        <StatusBar Height="25" DockPanel.Dock="Bottom">
+            <TextBlock
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                Text="已就绪" />
         </StatusBar>
         <DockPanel DockPanel.Dock="Left" Visibility="Visible">
             <TabControl TabStripPlacement="Left">

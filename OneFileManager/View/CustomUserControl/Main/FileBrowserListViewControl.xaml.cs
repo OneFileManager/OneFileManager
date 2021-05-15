@@ -4,6 +4,7 @@ using OneFileManager.Core.Model;
 using OneFileManager.View;
 using OneFileManager.View.Dialog;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace OneFileManager.CustomUserControl.Main
     /// </summary>
     public partial class FileBrowserListViewControl : UserControl, INotifyPropertyChanged
     {
-        private readonly ObservableCollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
+        private readonly ICollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
         private readonly DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
@@ -215,6 +216,7 @@ namespace OneFileManager.CustomUserControl.Main
         private void UserControl_Initialized(object sender, EventArgs e)
         {
             fileListGView.ItemsSource = fileList;
+           
             // ShowFilesList(@"C:\");
             // historyNode = new DoublyLinkedListNode
             // {
@@ -622,6 +624,11 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show("文件名不合法");
                 }
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
