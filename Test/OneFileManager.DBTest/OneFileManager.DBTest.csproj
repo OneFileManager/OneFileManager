@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OneFileManager.Common\OneFileManager.Common.csproj" />
-    <ProjectReference Include="..\..\OneFileManager\OneFileManager.csproj" />
+    <ProjectReference Include="..\..\Code\OneFileManager.Common\OneFileManager.Common.csproj" />
+    <ProjectReference Include="..\..\Code\OneFileManager\OneFileManager.csproj" />
   </ItemGroup>
 
 </Project>
