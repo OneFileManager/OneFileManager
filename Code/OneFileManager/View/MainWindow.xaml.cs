@@ -63,15 +63,15 @@ namespace OneFileManager.View
 
         private void InitCommandBindings()
         {
-            var openNewTabCommand = new CommandBinding(ViewNavigationCommands.OpenNewTab);
+            var openNewTabCommand = new CommandBinding(MyViewNavigationCommands.OpenNewTab);
             openNewTabCommand.Executed += OpenNewTabCommand_Executed;
             this.CommandBindings.Add(openNewTabCommand);
 
-            CommandBinding openLocalDriverCommandBinding = new CommandBinding(ViewNavigationCommands.OpenLocalDriver);
+            CommandBinding openLocalDriverCommandBinding = new CommandBinding(MyViewNavigationCommands.OpenLocalDriver);
             openLocalDriverCommandBinding.Executed += OpenLocalDriverCommandBinding_Executed;
             this.CommandBindings.Add(openLocalDriverCommandBinding);
 
-            CommandBinding openSpecialFolder=new CommandBinding(ViewNavigationCommands.OpenSpecialFolder);
+            CommandBinding openSpecialFolder=new CommandBinding(MyViewNavigationCommands.OpenSpecialFolder);
             openSpecialFolder.Executed += OpenSpecialFolder_Executed;
             this.CommandBindings.Add(openSpecialFolder);
         }

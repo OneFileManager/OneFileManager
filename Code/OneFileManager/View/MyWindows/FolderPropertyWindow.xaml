@@ -1,0 +1,107 @@
+﻿<Window
+    x:Class="OneFileManager.View.FolderPropertyWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:OneFileManager.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="文件夹属性"
+    Width="400"
+    Height="500"
+    MinWidth="400"
+    MinHeight="500"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="MyLableStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="Width" Value="250" />
+
+            <Setter Property="MaxLines" Value="100" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+        <Style x:Key="MyStackPanelStyle" TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+    </Window.Resources>
+    <TabControl>
+        <TabItem x:Name="general" Header="常规">
+            <StackPanel
+                MinWidth="350"
+                Margin="20"
+                HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="文件名称：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="文件类型：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Extension}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="文件路径：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding FullName}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="文件大小：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Length}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="创建时间：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding CreationTime}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
+                    <Label BorderThickness="0" Content="修改时间：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding LastWriteTime}" />
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="标签">
+            <StackPanel Margin="11">
+                <hc:TagContainer
+                    Name="Container1"
+                    Width="420"
+                    Margin="11"
+                    Padding="5">
+                    <hc:Tag
+                        Margin="5"
+                        hc:TitleElement.Background="{DynamicResource PrimaryBrush}"
+                        Content="苹果👦"
+                        ShowCloseButton="True" />
+                </hc:TagContainer>
+
+                <DockPanel Margin="11,0,11,11" LastChildFill="True">
+                    <Button
+                        Margin="10,0,0,0"
+                        Content="添加标签"
+                        DockPanel.Dock="Right" />
+                    <TextBox />
+                </DockPanel>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="文件校验">
+            <hc:SimplePanel />
+        </TabItem>
+    </TabControl>
+</Window>

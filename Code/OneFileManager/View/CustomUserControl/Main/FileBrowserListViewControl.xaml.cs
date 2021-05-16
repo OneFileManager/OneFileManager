@@ -65,7 +65,7 @@ namespace OneFileManager.CustomUserControl.Main
             }
         }
 
-            public bool CanGoForward
+        public bool CanGoForward
         {
             get
             {
@@ -77,8 +77,6 @@ namespace OneFileManager.CustomUserControl.Main
             }
         }
 
-
-       
         public void GoBack()
         {
             if (CanGoBack)
@@ -182,20 +180,16 @@ namespace OneFileManager.CustomUserControl.Main
         {
             //清除视图
             fileList.Clear();
-             string[] dirs=null;
+            string[] dirs = null;
             try
             {
-                dirs=   Directory.GetDirectories(path);
-
+                dirs = Directory.GetDirectories(path);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-               return;
+                return;
             }
-            
-
-           
 
             foreach (string item in dirs)
             {
@@ -216,7 +210,7 @@ namespace OneFileManager.CustomUserControl.Main
         private void UserControl_Initialized(object sender, EventArgs e)
         {
             fileListGView.ItemsSource = fileList;
-           
+
             // ShowFilesList(@"C:\");
             // historyNode = new DoublyLinkedListNode
             // {
@@ -385,7 +379,7 @@ namespace OneFileManager.CustomUserControl.Main
         private void DoOpenFolderWithNewTab(object sender, RoutedEventArgs e)
         {
             var file = this.fileListGView.SelectedItem as FileListViewNode;
-            ViewNavigationCommands.OpenNewTab.Execute(file, (MenuItem)sender);
+            MyViewNavigationCommands.OpenNewTab.Execute(file, (MenuItem)sender);
         }
 
         private void DoOpenFolderWithNewWindow(object sender, RoutedEventArgs e)
@@ -570,8 +564,10 @@ namespace OneFileManager.CustomUserControl.Main
                     break;
 
                 case FileType.Directory:
-
+                    FolderPropertyWindow folderPropertyWindow = new FolderPropertyWindow(file);
+                    folderPropertyWindow.Show();
                     break;
+                   
             }
         }
 
@@ -628,7 +624,6 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

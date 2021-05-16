@@ -28,30 +28,51 @@
     </Window.Resources>
     <TabControl>
         <TabItem x:Name="general" Header="常规">
-            <StackPanel MinWidth="350" Margin="20" HorizontalAlignment="Left">
+            <StackPanel
+                MinWidth="350"
+                Margin="20"
+                HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="文件名称：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Name}" />
+                    <Label BorderThickness="0" Content="文件名称：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Name}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="文件类型：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Extension}" />
+                    <Label BorderThickness="0" Content="文件类型：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Extension}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="文件路径：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding FullName}" />
+                    <Label BorderThickness="0" Content="文件路径：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding FullName}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="文件大小：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding Length}" />
+                    <Label BorderThickness="0" Content="文件大小：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding Length}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="创建时间：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding CreationTime}" />
+                    <Label BorderThickness="0" Content="创建时间：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding CreationTime}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource MyStackPanelStyle}">
-                    <Label Content="修改时间：" />
-                    <hc:TextBox Style="{StaticResource MyLableStyle}" Text="{Binding LastWriteTime}" />
+                    <Label BorderThickness="0" Content="修改时间：" />
+                    <hc:TextBox
+                        BorderThickness="0"
+                        Style="{StaticResource MyLableStyle}"
+                        Text="{Binding LastWriteTime}" />
                 </StackPanel>
             </StackPanel>
         </TabItem>
@@ -65,13 +86,15 @@
                     <hc:Tag
                         Margin="5"
                         hc:TitleElement.Background="{DynamicResource PrimaryBrush}"
-                        Content="标签"
-                        Header="Tag"
-                        ShowCloseButton="False" />
+                        Content="苹果👦"
+                        ShowCloseButton="True" />
                 </hc:TagContainer>
 
                 <DockPanel Margin="11,0,11,11" LastChildFill="True">
-                    <Button Margin="10,0,0,0" Content="添加标签" DockPanel.Dock="Right" />
+                    <Button
+                        Margin="10,0,0,0"
+                        Content="添加标签"
+                        DockPanel.Dock="Right" />
                     <TextBox />
                 </DockPanel>
             </StackPanel>

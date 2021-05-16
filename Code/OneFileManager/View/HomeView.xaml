@@ -44,7 +44,7 @@
                 HorizontalAlignment="Left"
                 Background="{x:Null}"
                 BorderThickness="0"
-                Style="{DynamicResource WrapPanelHorizontalListBox}">
+                Style="{StaticResource WrapPanelHorizontalListBox}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Button
@@ -52,7 +52,7 @@
                             Height="100"
                             Margin="10"
                             BorderThickness="0"
-                            Command="cus:ViewNavigationCommands.OpenSpecialFolder"
+                            Command="cus:MyViewNavigationCommands.OpenSpecialFolder"
                             CommandParameter="{Binding .}"
                             Cursor="Hand"
                             Effect="{DynamicResource EffectShadow2021}"
@@ -106,7 +106,7 @@
                             Height="100"
                             Margin="10"
                             BorderThickness="0"
-                            Command="cus:ViewNavigationCommands.OpenLocalDriver"
+                            Command="cus:MyViewNavigationCommands.OpenLocalDriver"
                             CommandParameter="{Binding .}"
                             Cursor="Hand"
                             Effect="{DynamicResource EffectShadow2021}"

@@ -143,6 +143,9 @@
 	  <Compile Update="View\Dialog\CreatFolderDialog.xaml.cs">
 	    <SubType>Code</SubType>
 	  </Compile>
+	  <Compile Update="View\MyWindows\FolderPropertyWindow.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="InstallPackage_blue_128.ico">
@@ -159,6 +162,10 @@
 	    <SubType>Designer</SubType>
 	  </Page>
 	  <Page Update="View\Dialog\CreatFolderDialog.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="View\MyWindows\FolderPropertyWindow.xaml">
 	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 	    <SubType>Designer</SubType>
 	  </Page>
