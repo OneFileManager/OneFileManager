@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Code\OneFileManager.Core\OneFileManager.Core.csproj" />
+    <ProjectReference Include="..\..\..\Code\OneFileManager\OneFileManager.csproj" />
+  </ItemGroup>
+
+</Project>

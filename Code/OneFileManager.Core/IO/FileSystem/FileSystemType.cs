@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace OneFileManager.Core.AbstractInterface.FileSystem
 {
-    /// <summary>
-    /// 本地虚拟文件系统接口
-    /// </summary>
-    public interface ILocalVirtualFileSystemDriver:IVirtualFileSystemDriver
+    public enum FileSystemType
     {
-
+        Local,Remote
 
     }
 }
