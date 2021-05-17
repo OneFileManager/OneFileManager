@@ -31,11 +31,9 @@ namespace OneFileManager.View
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            TabPage tabPage = new TabPage();
-            tabPage.Display = DisplayType.Disk;
-            tabPage.Path = @"C:\";
+            
 
-            this.tabControl.SelectedIndex = 0;
+           
 
             HandyControl.Controls.TabItem tabItem1 = new HandyControl.Controls.TabItem();
 
@@ -44,6 +42,17 @@ namespace OneFileManager.View
             tabItem1.Content = homeView;
 
             tabControl.Items.Add(tabItem1);
+
+
+               HandyControl.Controls.TabItem tabItem2 = new HandyControl.Controls.TabItem();
+
+            tabItem2.Header = "Home";
+            EdgeWebView2 edgeWebView2=new EdgeWebView2();
+
+            tabItem2.Content = edgeWebView2;
+
+            tabControl.Items.Add(tabItem2);
+
 
            
 

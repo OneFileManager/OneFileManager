@@ -61,7 +61,7 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.664.37" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.818.41" />
 		<PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
