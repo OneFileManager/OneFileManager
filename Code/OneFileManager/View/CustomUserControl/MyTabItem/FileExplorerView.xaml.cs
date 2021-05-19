@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using HandyControl.Data;
 using OneFileManager.EverythingSDK;
+using OneFileManager.Config;
 
 namespace OneFileManager.View
 {
@@ -19,12 +20,7 @@ namespace OneFileManager.View
     /// </summary>
     public partial class FileExplorerView : UserControl
     {
-        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
-            "Source",
-            typeof(string),
-            typeof(FileExplorerView),
-            new PropertyMetadata(@"F:\",ChangeSource)
-        );
+  
         public FileExplorerView()
         {
             InitializeComponent();
@@ -41,6 +37,12 @@ namespace OneFileManager.View
             }
            
         }
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register(
+            "Source",
+            typeof(string),
+            typeof(FileExplorerView)
+           
+        );
         public string Source
         {
             get => (string)GetValue(SourceProperty);
@@ -125,7 +127,10 @@ namespace OneFileManager.View
         private void UserControl_Initialized(object sender, System.EventArgs e)
         { 
             fileListControl.PropertyChanged += FileListControl_PropertyChanged;
+            
         }
+
+       
 
         private void FileListControl_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

@@ -6,6 +6,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Basic/Geometries.xaml" />
+        <ResourceDictionary Source="../Basic/Geometries2.xaml" />
         <ResourceDictionary Source="../Basic/Fonts.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

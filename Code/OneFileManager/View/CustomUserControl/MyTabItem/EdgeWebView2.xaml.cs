@@ -88,6 +88,7 @@ namespace OneFileManager.View
 
         public bool CanGoBack()
         {
+
             return this.myWebBrowser.CanGoBack;
         }
 

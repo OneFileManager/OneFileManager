@@ -8,7 +8,7 @@ namespace OneFileManager.Core.Model
     {
         private string path;
         private string header;
-        public DisplayType Display { get; set; }
+        public TabDisplayType Display { get; set; }
 
         
         public string Path

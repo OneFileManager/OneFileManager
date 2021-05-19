@@ -64,7 +64,7 @@ namespace OneFileManager.View
             TreeViewItem treeViewItem = (TreeViewItem)((TreeView)e.Source).SelectedItem;
 
             TabPage tabPage = new TabPage();
-            tabPage.Display = DisplayType.Disk;
+            tabPage.Display = TabDisplayType.Disk;
             tabPage.Path = treeViewItem.Tag as string;
 
             StackPanel stackPanel = new StackPanel();

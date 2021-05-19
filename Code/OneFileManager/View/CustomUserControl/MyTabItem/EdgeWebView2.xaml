@@ -43,7 +43,7 @@
                     Click="DoGOBack"
                     Cursor="Hand"
                     Foreground="Black"
-                    IsEnabled="{Binding ElementName=fileListControl, Path=CanGoBack}"
+                    IsEnabled="{Binding ElementName=myWebBrowser, Path=CanGoBack}"
                     Style="{StaticResource ButtonIcon}" />
                 <Button
                     Margin="10,0,0,0"
@@ -52,7 +52,7 @@
                     Click="DoGoForward"
                     Cursor="Hand"
                     Foreground="Black"
-                    IsEnabled="{Binding ElementName=fileListControl, Path=CanGoForward}"
+                    IsEnabled="{Binding ElementName=myWebBrowser, Path=CanGoForward}"
                     Style="{StaticResource ButtonIcon}" />
                 <Button
                     Margin="10,0,0,0"
@@ -68,7 +68,8 @@
                 <hc:TextBox
                     Name="pathBox"
                     MinWidth="200"
-                    KeyDown="UIElement_OnKeyDown" />
+                    KeyDown="UIElement_OnKeyDown"
+                    Text="{Binding ElementName=myWebBrowser, Path=Source}" />
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <hc:SearchBar

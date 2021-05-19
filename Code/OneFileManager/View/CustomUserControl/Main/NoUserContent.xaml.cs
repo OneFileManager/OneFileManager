@@ -12,7 +12,7 @@ namespace OneFileManager.CustomUserControl.Main
     /// <summary>
     /// NoUserContent.xaml 的交互逻辑
     /// </summary>
-    public partial class NoUserContent 
+    public partial class NoUserContent:UserControl 
     {
       public NoUserContent()
         {

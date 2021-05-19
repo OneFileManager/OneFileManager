@@ -1,5 +1,6 @@
 ﻿using OneFileManager.Commands;
 using OneFileManager.Common.Utils;
+using OneFileManager.Config;
 using OneFileManager.Core.Model;
 using OneFileManager.View;
 using OneFileManager.View.Dialog;
@@ -19,12 +20,123 @@ namespace OneFileManager.CustomUserControl.Main
     /// <summary>
     ///     FileListView.xaml 的交互逻辑
     /// </summary>
-    public partial class FileBrowserListViewControl : UserControl, INotifyPropertyChanged
+    public partial class FileBrowserListViewControl : UserControl,INotifyPropertyChanged
     {
         private readonly ICollection<FileListViewNode> fileList = new ObservableCollection<FileListViewNode>();
 
         private readonly DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
+
+        #region 初始化
+
+        private void UserControl_Initialized(object sender, EventArgs e)
+        {
+            fileListGView.ItemsSource = fileList;
+
+            // ShowFilesList(@"C:\");
+            // historyNode = new DoublyLinkedListNode
+            // {
+            //     Path = @"C:\"
+            // };
+            // nowNode = historyNode;
+
+            RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig.PropertyChanged += DisplayOptionConfig_PropertyChanged;
+        }
+
+        private void DisplayOptionConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            DisplayOptionConfig displayOptionConfig=RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig;
+
+            switch (RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig.ViewDisplayType)
+            {
+                case ViewDisplayType.List:
+                    fileListGView.View = (ViewBase)FindResource("GridView");
+                    fileListGView.Style = (Style)FindResource("listviewStyle");
+                    break;
+
+                case ViewDisplayType.Tiled:
+                    fileListGView.View = (ViewBase)FindResource("Tiled");
+                    fileListGView.Style = (Style)FindResource("TiledStyle");
+                    break;
+
+                case ViewDisplayType.BigIcon:
+                    fileListGView.View = (ViewBase)FindResource("BigIcon");
+                    fileListGView.Style = (Style)FindResource("BigIconStyle");
+                    break;
+
+                case ViewDisplayType.MediumIcon:
+                    fileListGView.View = (ViewBase)FindResource("MediumIcon");
+                    fileListGView.Style = (Style)FindResource("MediumIconStyle");
+                    break;
+
+                case ViewDisplayType.smallIcon:
+                    fileListGView.View = (ViewBase)FindResource("smallIcon");
+                    fileListGView.Style = (Style)FindResource("smallIconStyle");
+                    break;
+
+                default:
+                    fileListGView.View = (ViewBase)FindResource("ImageView");
+                    fileListGView.Style = (Style)FindResource("listviewStyle");
+                    break;
+            }
+            
+        }
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        #endregion 初始化
+
+        #region 依赖属性
+
+        public static readonly DependencyProperty ViewDisplayTypeProperty = DependencyProperty.Register(
+           "ViewDisplayType",
+           typeof(ViewDisplayType),
+           typeof(FileBrowserListViewControl)
+
+       );
+
+        public static readonly DependencyProperty DisplayHiddenObjectsProperty = DependencyProperty.Register(
+           "DisplayHiddenObjects",
+           typeof(bool?),
+           typeof(FileBrowserListViewControl)
+
+        );
+
+        public static readonly DependencyProperty DisplayExtensionProperty = DependencyProperty.Register(
+           "DisplayExtension",
+           typeof(bool?),
+           typeof(FileBrowserListViewControl)
+        );
+
+        public ViewDisplayType ViewDisplayType
+        {
+            get => (ViewDisplayType)GetValue(ViewDisplayTypeProperty);
+            set => SetValue(ViewDisplayTypeProperty, value);
+        }
+
+        public bool? DisplayHiddenObjects
+        {
+            get => (bool?)GetValue(DisplayHiddenObjectsProperty);
+            set => SetValue(DisplayHiddenObjectsProperty, value);
+        }
+
+        public bool? DisplayExtension
+        {
+            get => (bool?)GetValue(DisplayExtensionProperty);
+            set
+            {
+                SetValue(DisplayExtensionProperty, value);
+                MessageBox.Show(value.ToString());
+            }
+        }
+
+        #endregion 依赖属性
 
         public FileBrowserListViewControl()
         {
@@ -205,18 +317,6 @@ namespace OneFileManager.CustomUserControl.Main
                 FileListViewNode flm = new FileListViewNode(fileinfo);
                 fileList.Add(flm);
             }
-        }
-
-        private void UserControl_Initialized(object sender, EventArgs e)
-        {
-            fileListGView.ItemsSource = fileList;
-
-            // ShowFilesList(@"C:\");
-            // historyNode = new DoublyLinkedListNode
-            // {
-            //     Path = @"C:\"
-            // };
-            // nowNode = historyNode;
         }
 
         private void DoMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -567,7 +667,6 @@ namespace OneFileManager.CustomUserControl.Main
                     FolderPropertyWindow folderPropertyWindow = new FolderPropertyWindow(file);
                     folderPropertyWindow.Show();
                     break;
-                   
             }
         }
 
@@ -620,10 +719,6 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show("文件名不合法");
                 }
             }
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

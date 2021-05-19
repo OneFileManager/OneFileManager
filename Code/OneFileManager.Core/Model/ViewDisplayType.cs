@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OneFileManager.Core.Model
 {
-    public   enum DisplayType
+    public enum ViewDisplayType
     {
-        Disk,Mtp,Webpage,SearchView
+        List=0,Tiled=1,BigIcon=2,MediumIcon=3,smallIcon=4
     }
 }

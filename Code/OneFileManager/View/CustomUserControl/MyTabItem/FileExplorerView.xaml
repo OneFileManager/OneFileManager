@@ -2,6 +2,7 @@
     x:Class="OneFileManager.View.FileExplorerView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:config="clr-namespace:OneFileManager.Config"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:OneFileManager.View"
@@ -67,7 +68,8 @@
                 <hc:TextBox
                     Name="pathBox"
                     MinWidth="200"
-                    KeyDown="UIElement_OnKeyDown" />
+                    KeyDown="UIElement_OnKeyDown"
+                    Text="{Binding ElementName=fileListControl, Path=DirectoryPath, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <hc:SearchBar
@@ -109,7 +111,11 @@
             <main:FileBrowserListViewControl
                 x:Name="fileListControl"
                 Grid.Row="0"
-                Grid.Column="0" />
+                Grid.Column="0"
+                DisplayExtension="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayExtension, Mode=TwoWay}"
+                DisplayHiddenObjects="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayHiddenObjects, Mode=TwoWay}"
+                ViewDisplayType="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.ViewDisplayType, Mode=TwoWay}" />
+
             <StackPanel Grid.Row="0" Grid.Column="2" />
             <StackPanel Grid.Row="2" Grid.Column="0" />
             <StackPanel Grid.Row="2" Grid.Column="2" />

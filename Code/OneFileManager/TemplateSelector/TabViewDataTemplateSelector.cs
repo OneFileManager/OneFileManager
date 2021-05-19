@@ -20,15 +20,15 @@ namespace OneFileManager.TemplateSelector
             {
                 switch (tabViewModel.Display)
                 {
-                    case DisplayType.Disk:
+                    case TabDisplayType.Disk:
                         dt = fe.FindResource("Disk") as DataTemplate;
                         break;
-                    case DisplayType.Mtp:
+                    case TabDisplayType.Mtp:
                         break;
-                    case DisplayType.Webpage:
+                    case TabDisplayType.Webpage:
                         dt = fe.FindResource("Webpage") as DataTemplate;
                         break;
-                    case DisplayType.SearchView:
+                    case TabDisplayType.SearchView:
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

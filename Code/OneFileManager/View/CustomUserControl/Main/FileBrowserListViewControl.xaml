@@ -13,8 +13,6 @@
     Initialized="UserControl_Initialized"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
-
-
     <UserControl.Resources>
 
         <Style x:Key="listviewStyle" TargetType="{x:Type ListView}">
@@ -63,19 +61,27 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="listviewStyle2" TargetType="{x:Type ListView}">
+        <Style x:Key="smallIconStyle" TargetType="{x:Type ListView}">
 
             <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="#FF282828" />
             <Setter Property="BorderThickness" Value="0" />
 
             <Setter Property="VerticalContentAlignment" Value="Center" />
-
-
             <Setter Property="AlternationCount" Value="2" />
-
-
         </Style>
+        <Style
+            x:Key="MediumIconStyle"
+            BasedOn="{StaticResource smallIconStyle}"
+            TargetType="{x:Type ListView}" />
+        <Style
+            x:Key="BigIconStyle"
+            BasedOn="{StaticResource smallIconStyle}"
+            TargetType="{x:Type ListView}" />
+        <Style
+            x:Key="TiledStyle"
+            BasedOn="{StaticResource smallIconStyle}"
+            TargetType="{x:Type ListView}" />
         <converter:FileSizeConverter x:Key="FileSizeConverter" />
         <converter:FileIconConverter x:Key="FileIconConverter" />
         <GridView x:Key="GridView">
@@ -121,7 +127,7 @@
                 Header="大小" />
             <GridViewColumn DisplayMemberBinding="{Binding Length}" Header="备注" />
         </GridView>
-        <myListview:TileView x:Key="ImageView" SelectedBackground="#3996ED">
+        <myListview:TileView x:Key="smallIcon" SelectedBackground="#3996ED">
             <myListview:TileView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel
@@ -141,7 +147,48 @@
                 </DataTemplate>
             </myListview:TileView.ItemTemplate>
         </myListview:TileView>
-        <myListview:TileView x:Key="ImageDetailView" SelectedBackground="#3996ED">
+        <myListview:TileView x:Key="MediumIcon" SelectedBackground="#3996ED">
+            <myListview:TileView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        Width="100"
+                        VerticalAlignment="Top"
+                        Background="Transparent">
+                        <Image
+                            Width="100"
+                            Height="100"
+                            Source="{Binding ., Converter={StaticResource FileIconConverter}}"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="{Binding Name}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </myListview:TileView.ItemTemplate>
+        </myListview:TileView>
+        <myListview:TileView x:Key="BigIcon" SelectedBackground="#3996ED">
+            <myListview:TileView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        Width="200"
+                        VerticalAlignment="Top"
+                        Background="Transparent">
+                        <Image
+                            Width="200"
+                            Height="200"
+                            Source="{Binding ., Converter={StaticResource FileIconConverter}}"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="{Binding Name}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </myListview:TileView.ItemTemplate>
+        </myListview:TileView>
+
+        <myListview:TileView x:Key="Tiled" SelectedBackground="#3996ED">
             <myListview:TileView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

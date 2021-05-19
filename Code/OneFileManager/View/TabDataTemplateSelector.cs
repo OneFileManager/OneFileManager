@@ -20,10 +20,10 @@ namespace OneFileManager.View
             {
                 switch (obj.Display)
                 {
-                    case DisplayType.Disk:
+                    case TabDisplayType.Disk:
                         dt = fe.FindResource("Disk") as DataTemplate;
                         break;
-                       case DisplayType.Webpage:
+                       case TabDisplayType.Webpage:
                         dt = fe.FindResource("Webpage") as DataTemplate;
                            break;
                        default:
