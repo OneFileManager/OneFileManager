@@ -22,6 +22,7 @@ namespace OneFileManager.View.Dialog
         public CreatFileDialog()
         {
             InitializeComponent();
+            this.FileName.Focus();
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
