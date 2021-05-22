@@ -1,4 +1,4 @@
-- [ ] # OneFileManager.
+# OneFileManager.
 
 > Large number of files,OneFileManager  
 > 整理文件，举重若轻
