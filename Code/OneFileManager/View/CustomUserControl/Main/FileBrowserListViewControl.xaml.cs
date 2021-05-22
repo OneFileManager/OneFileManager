@@ -2,6 +2,7 @@
 using OneFileManager.Common.Utils;
 using OneFileManager.Config;
 using OneFileManager.Core.Model;
+using OneFileManager.Service;
 using OneFileManager.View;
 using OneFileManager.View.Dialog;
 using System;
@@ -290,6 +291,7 @@ namespace OneFileManager.CustomUserControl.Main
 
         public void ShowFilesList(string path)
         {
+            TagService tagService=new TagService();
             //清除视图
             fileList.Clear();
             string[] dirs = null;
@@ -307,6 +309,11 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(item);
                 FileListViewNode flvm = new FileListViewNode(dirInfo);
+
+                //foreach (var tag in tagService.GetTagsByPath(flvm.FullName))
+                //{
+                //    flvm.Tags.Add(tag);
+                //}
                 fileList.Add(flvm);
             }
 
@@ -315,6 +322,11 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 FileInfo fileinfo = new FileInfo(item);
                 FileListViewNode flm = new FileListViewNode(fileinfo);
+                //foreach (var tag in tagService.GetTagsByPath(flm.FullName))
+                //{
+                //    flm.Tags.Add(tag);
+                //}
+                
                 fileList.Add(flm);
             }
         }
@@ -719,6 +731,21 @@ namespace OneFileManager.CustomUserControl.Main
                     MessageBox.Show("文件名不合法");
                 }
             }
+        }
+
+        private void TagContainer_Selected(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TagContainer_Closing(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void TagContainer_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("标签被关闭");
         }
     }
 }

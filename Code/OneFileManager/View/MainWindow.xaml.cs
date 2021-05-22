@@ -109,7 +109,7 @@ namespace OneFileManager.View
             tabItem2.Content = fileExplorerView;
             fileExplorerView.Navigate(driveInfo.Name);
             tabControl.Items.Add(tabItem2);
-            tabControl.SelectedIndex=tabControl.Items.Count-1;//选择最后一个
+           tabControl.SelectedIndex=tabControl.Items.Count-1;//选择最后一个
 
         }
 

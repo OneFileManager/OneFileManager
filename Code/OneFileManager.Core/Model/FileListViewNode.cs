@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OneFileManager.Core.Entity;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,7 @@ namespace OneFileManager.Core.Model
         public string LastWriteTime { get; set; }
         public string Extension { get; set; }
         public long? Length { get; set; }
+        public  ICollection<TagEntity> Tags{get;set; } = new ObservableCollection<TagEntity>();
 
         public FileListViewNode()
         {
@@ -24,6 +27,7 @@ namespace OneFileManager.Core.Model
 
         public FileListViewNode(FileInfo fileInfo)
         {
+            
             this.ImagePath = "/Resources/UI/Default/File.png";
             this.FileType = FileType.File;
             this.Name = fileInfo.Name;
@@ -32,7 +36,9 @@ namespace OneFileManager.Core.Model
             this.LastWriteTime = fileInfo.LastWriteTime.ToString("G");
             this.Extension = fileInfo.Extension;
             this.Length = fileInfo.Length;
+          
         }
+        
 
         public FileListViewNode(string name, string imagePath)
         {

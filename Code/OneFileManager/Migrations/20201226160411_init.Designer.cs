@@ -7,7 +7,7 @@ using OneFileManager.DB;
 
 namespace OneFileManager.Migrations
 {
-    [DbContext(typeof(BloggingContext))]
+    [DbContext(typeof(SQLLite3Context))]
     [Migration("20201226160411_init")]
     partial class init
     {

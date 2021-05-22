@@ -35,7 +35,7 @@ namespace OneFileManager.DBTest
             //}
 
 
-             using (var db = new BloggingContext())
+             using (var db = new SQLLite3Context())
             {
                 // Create
                 Console.WriteLine("Inserting a new blog");

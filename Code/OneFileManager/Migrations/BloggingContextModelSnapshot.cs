@@ -6,7 +6,7 @@ using OneFileManager.DB;
 
 namespace OneFileManager.Migrations
 {
-    [DbContext(typeof(BloggingContext))]
+    [DbContext(typeof(SQLLite3Context))]
     partial class BloggingContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

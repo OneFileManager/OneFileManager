@@ -84,6 +84,7 @@
             TargetType="{x:Type ListView}" />
         <converter:FileSizeConverter x:Key="FileSizeConverter" />
         <converter:FileIconConverter x:Key="FileIconConverter" />
+        <converter:TagsConverter x:Key="TagsConverter" />
         <GridView x:Key="GridView">
             <GridViewColumn Width="40">
                 <GridViewColumn.CellTemplate>
@@ -98,16 +99,29 @@
                 Width="300"
                 DisplayMemberBinding="{Binding Name}"
                 Header="名称" />
-            <GridViewColumn Width="200" Header="标签">
+            <GridViewColumn Header="标签">
                 <GridViewColumn.CellTemplate>
-
                     <DataTemplate>
                         <DockPanel LastChildFill="True">
-                            <hc:TagContainer BorderThickness="0,0,0,0" DockPanel.Dock="Left">
-                                <hc:Tag
-                                    BorderThickness="0,0,0,0"
-                                    Content="标签"
-                                    ShowCloseButton="True" />
+                            <hc:TagContainer
+                                hc:Tag.Closed="TagContainer_Closed"
+                                hc:Tag.Closing="TagContainer_Closing"
+                                hc:Tag.Selected="TagContainer_Selected"
+                                BorderThickness="0,0,0,0"
+                                DockPanel.Dock="Left"
+                                ItemsSource="{Binding FullName, Converter={StaticResource TagsConverter}}">
+                                <hc:TagContainer.ItemTemplate>
+                                    <DataTemplate>
+                                        <!--<hc:Tag
+                                            BorderThickness="0,0,0,0"
+                                            Content="标签"
+                                            ShowCloseButton="True" />-->
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Tag}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </hc:TagContainer.ItemTemplate>
+
                             </hc:TagContainer>
                         </DockPanel>
                     </DataTemplate>
