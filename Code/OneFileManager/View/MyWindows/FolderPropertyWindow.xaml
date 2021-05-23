@@ -2,6 +2,7 @@
     x:Class="OneFileManager.View.FolderPropertyWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:OneFileManager.View.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:OneFileManager.View"
@@ -25,6 +26,7 @@
         <Style x:Key="MyStackPanelStyle" TargetType="{x:Type StackPanel}">
             <Setter Property="Margin" Value="0,10,0,0" />
         </Style>
+        <converter:TagsConverter x:Key="TagsConverter" />
     </Window.Resources>
     <TabControl>
         <TabItem x:Name="general" Header="常规">
@@ -79,23 +81,33 @@
         <TabItem Header="标签">
             <StackPanel Margin="11">
                 <hc:TagContainer
-                    Name="Container1"
-                    Width="420"
-                    Margin="11"
-                    Padding="5">
-                    <hc:Tag
-                        Margin="5"
-                        hc:TitleElement.Background="{DynamicResource PrimaryBrush}"
-                        Content="苹果👦"
-                        ShowCloseButton="True" />
-                </hc:TagContainer>
+                    Margin="11,11,11,11"
+                    hc:Tag.Closed="TagContainer_Closed"
+                    hc:Tag.Closing="TagContainer_Closing"
+                    hc:Tag.Selected="TagContainer_Selected"
+                    BorderThickness="0,0,0,0"
+                    DockPanel.Dock="Left"
+                    ItemsSource="{Binding Tags}">
+                    <hc:TagContainer.ItemTemplate>
+                        <DataTemplate>
+                            <!--<hc:Tag
+                                            BorderThickness="0,0,0,0"
+                                            Content="标签"
+                                            ShowCloseButton="True" />-->
+                            <StackPanel>
+                                <TextBlock Text="{Binding Tag}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </hc:TagContainer.ItemTemplate>
 
-                <DockPanel Margin="11,0,11,11" LastChildFill="True">
+                </hc:TagContainer>
+                <DockPanel Margin="11,11,11,11" LastChildFill="True">
                     <Button
                         Margin="10,0,0,0"
+                        Click="AddButton_Click"
                         Content="添加标签"
                         DockPanel.Dock="Right" />
-                    <TextBox />
+                    <TextBox x:Name="tagText" />
                 </DockPanel>
             </StackPanel>
         </TabItem>

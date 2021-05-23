@@ -43,9 +43,9 @@ namespace OneFileManager.Service
                 var tags = db.TagTable.Where(b => b.Tag.Equals(tag.ToLower()) && b.Path.Equals(path.ToLower()));
                 if (tags == null || !tags.Any())
                 {
-                    return true;
+                    return false;
                 }
-                return false;
+                return true;
             }
         }
 

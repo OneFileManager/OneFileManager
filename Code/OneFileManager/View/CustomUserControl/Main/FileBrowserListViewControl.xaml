@@ -95,30 +95,26 @@
                     </DataTemplate>
                 </GridViewColumn.CellTemplate>
             </GridViewColumn>
-            <GridViewColumn
-                Width="300"
-                DisplayMemberBinding="{Binding Name}"
-                Header="名称" />
-            <GridViewColumn Header="标签">
+            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="名称" />
+            <GridViewColumn Width="300" Header="标签">
                 <GridViewColumn.CellTemplate>
                     <DataTemplate>
                         <DockPanel LastChildFill="True">
                             <hc:TagContainer
+                                Width="1000"
                                 hc:Tag.Closed="TagContainer_Closed"
                                 hc:Tag.Closing="TagContainer_Closing"
                                 hc:Tag.Selected="TagContainer_Selected"
                                 BorderThickness="0,0,0,0"
                                 DockPanel.Dock="Left"
-                                ItemsSource="{Binding FullName, Converter={StaticResource TagsConverter}}">
+                                ItemsSource="{Binding Tags}">
                                 <hc:TagContainer.ItemTemplate>
                                     <DataTemplate>
                                         <!--<hc:Tag
                                             BorderThickness="0,0,0,0"
                                             Content="标签"
                                             ShowCloseButton="True" />-->
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Tag}" />
-                                        </StackPanel>
+                                        <TextBlock Text="{Binding Tag}" />
                                     </DataTemplate>
                                 </hc:TagContainer.ItemTemplate>
 

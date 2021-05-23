@@ -16,6 +16,7 @@
     Background="White"
     Initialized="MainWindow_OnInitialized"
     Loaded="Window_Loaded"
+    
     ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">

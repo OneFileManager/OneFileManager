@@ -1,5 +1,6 @@
 ﻿using OneFileManager.Commands;
 using OneFileManager.Core.Model;
+using OneFileManager.Service;
 using System;
 using System.IO;
 using System.Text;
@@ -27,6 +28,8 @@ namespace OneFileManager.View
             //初始化命令绑定
             InitCommandBindings();
             //初始化HomeView
+            TagService tagService=new TagService();
+            tagService.IsExist("","");
         }
 
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)

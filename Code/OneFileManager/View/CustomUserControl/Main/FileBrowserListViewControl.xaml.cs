@@ -1,6 +1,7 @@
 ﻿using OneFileManager.Commands;
 using OneFileManager.Common.Utils;
 using OneFileManager.Config;
+using OneFileManager.Core.Entity;
 using OneFileManager.Core.Model;
 using OneFileManager.Service;
 using OneFileManager.View;
@@ -27,6 +28,7 @@ namespace OneFileManager.CustomUserControl.Main
 
         private readonly DoublyLinkedListNode historyNode;
         private DoublyLinkedListNode nowNode;
+        private TagService tagService = new TagService();
 
         #region 初始化
 
@@ -310,10 +312,10 @@ namespace OneFileManager.CustomUserControl.Main
                 DirectoryInfo dirInfo = new DirectoryInfo(item);
                 FileListViewNode flvm = new FileListViewNode(dirInfo);
 
-                //foreach (var tag in tagService.GetTagsByPath(flvm.FullName))
-                //{
-                //    flvm.Tags.Add(tag);
-                //}
+                foreach (var tag in tagService.GetTagsByPath(flvm.FullName))
+                {
+                    flvm.Tags.Add(tag);
+                }
                 fileList.Add(flvm);
             }
 
@@ -322,11 +324,11 @@ namespace OneFileManager.CustomUserControl.Main
             {
                 FileInfo fileinfo = new FileInfo(item);
                 FileListViewNode flm = new FileListViewNode(fileinfo);
-                //foreach (var tag in tagService.GetTagsByPath(flm.FullName))
-                //{
-                //    flm.Tags.Add(tag);
-                //}
-                
+                foreach (var tag in tagService.GetTagsByPath(flm.FullName))
+                {
+                    flm.Tags.Add(tag);
+                }
+
                 fileList.Add(flm);
             }
         }
@@ -740,12 +742,16 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void TagContainer_Closing(object sender, EventArgs e)
         {
-             
+              var rea = e as RoutedEventArgs;
+            HandyControl.Controls.Tag tag = (HandyControl.Controls.Tag)rea.OriginalSource;
+            TagEntity tagEntity = tag.DataContext as TagEntity;
+
+            tagService.Remove(tagEntity.Tag, tagEntity.Path);
         }
 
         private void TagContainer_Closed(object sender, EventArgs e)
         {
-            MessageBox.Show("标签被关闭");
+           
         }
     }
 }

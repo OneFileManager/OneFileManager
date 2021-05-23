@@ -1,17 +1,12 @@
-﻿using OneFileManager.Core.Model;
+﻿using OneFileManager.Core.Entity;
+using OneFileManager.Core.Model;
+using OneFileManager.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OneFileManager.View
 {
@@ -20,14 +15,54 @@ namespace OneFileManager.View
     /// </summary>
     public partial class FilePropertyWindow : Window
     {
-        public FileListViewNode FileNode{get;set;}
+        public FileListViewNode FileNode { get; set; }
+        private TagService tagService = new TagService();
+
         public FilePropertyWindow(FileListViewNode fileListViewNode)
         {
-            this.FileNode=fileListViewNode;
+            this.FileNode = fileListViewNode;
             InitializeComponent();
-            this.DataContext=FileNode;
-            
+            this.DataContext = FileNode;
         }
-       
+
+        private void TagContainer_Selected(object sender, EventArgs e)
+        {
+        }
+
+        private void TagContainer_Closing(object sender, EventArgs e)
+        {
+            var rea = e as RoutedEventArgs;
+            HandyControl.Controls.Tag tag = (HandyControl.Controls.Tag)rea.OriginalSource;
+            TagEntity tagEntity = tag.DataContext as TagEntity;
+
+            tagService.Remove(tagEntity.Tag, tagEntity.Path);
+        }
+
+        private void TagContainer_Closed(object sender, EventArgs e)
+        {
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FileNode.Tags.Count >= 3)
+            {
+                MessageBox.Show("您最多可以为该文件指派三个标签");
+                return;
+            }
+            var text = this.tagText.Text;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return;
+            }
+            if (tagService.IsExist(text, FileNode.FullName))
+            {
+                return;
+            }
+            if (tagService.Add(text, FileNode.FullName))
+            {
+                FileNode.Tags.Add(new TagEntity(text, FileNode.FullName));
+            }
+        }
     }
 }
