@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="github.hyfree.UpYunLibrary" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Code\OneFileManager.Core\OneFileManager.Core.csproj" />
     <ProjectReference Include="..\..\..\Code\OneFileManager\OneFileManager.csproj" />
   </ItemGroup>
