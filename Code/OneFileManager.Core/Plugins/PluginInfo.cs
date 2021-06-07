@@ -14,7 +14,8 @@ namespace OneFileManager.Core.Plugins
         /// <summary>
         /// 插件名称
         /// </summary>
-        public string PluginName { get;set;}
+        public string PluginName { get; set; }
+        public string PluginID { get;set;}
         /// <summary>
         /// 作者名称
         /// </summary>
@@ -47,6 +48,10 @@ namespace OneFileManager.Core.Plugins
         /// 过滤器
         /// </summary>
         public List<string> Filters { get;set;}
+        /// <summary>
+        /// 依赖其他
+        /// </summary>
+        public List<string> Depend { get;set;}
 
     }
 }

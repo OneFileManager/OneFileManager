@@ -36,8 +36,14 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black">
-                库
+                Foreground="Black" Text="库">
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="添加库">
+                            
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
             </TextBlock>
             <ListBox
                 x:Name="ku"
@@ -74,11 +80,7 @@
                                 </StackPanel>
 
                             </Button.Content>
-                            <Button.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="右键菜单" />
-                                </ContextMenu>
-                            </Button.ContextMenu>
+                         
                         </Button>
 
                     </DataTemplate>
@@ -89,8 +91,15 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black">
-                本地驱动器
+                Foreground="Black" Text="本地驱动器">
+                
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="检查本地驱动器">
+
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
             </TextBlock>
             <ListBox
                 x:Name="localDrive"
@@ -150,8 +159,15 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black">
-                网络驱动器
+                Foreground="Black" Text="网络驱动器">
+               
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="添加网络驱动器">
+
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
             </TextBlock>
         </StackPanel>
     </StackPanel>
