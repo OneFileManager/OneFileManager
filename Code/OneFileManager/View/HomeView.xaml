@@ -36,12 +36,11 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black" Text="库">
+                Foreground="Black"
+                Text="库">
                 <TextBlock.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="添加库">
-                            
-                        </MenuItem>
+                        <MenuItem Header="添加库" />
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>
@@ -80,7 +79,7 @@
                                 </StackPanel>
 
                             </Button.Content>
-                         
+
                         </Button>
 
                     </DataTemplate>
@@ -91,13 +90,12 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black" Text="本地驱动器">
-                
+                Foreground="Black"
+                Text="本地驱动器">
+
                 <TextBlock.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="检查本地驱动器">
-
-                        </MenuItem>
+                        <MenuItem Header="检查本地驱动器" />
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>
@@ -159,13 +157,12 @@
             <TextBlock
                 Margin="20,0,0,0"
                 FontSize="20"
-                Foreground="Black" Text="网络驱动器">
-               
+                Foreground="Black"
+                Text="网络驱动器">
+
                 <TextBlock.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="添加网络驱动器">
-
-                        </MenuItem>
+                        <MenuItem Click="MenuItem_Click" Header="添加网络驱动器" />
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>

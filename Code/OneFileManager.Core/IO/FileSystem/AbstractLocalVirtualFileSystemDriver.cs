@@ -12,5 +12,7 @@ namespace OneFileManager.Core.AbstractInterface.FileSystem
     public abstract class AbstractLocalVirtualFileSystemDriver : IVirtualFileSystemDriver
     {
         public abstract FileSystemType FileSystemType { get; }
+
+
     }
 }

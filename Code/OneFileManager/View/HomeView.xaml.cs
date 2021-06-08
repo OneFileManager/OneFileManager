@@ -1,5 +1,6 @@
 ﻿using OneFileManager.Common.Utils;
 using OneFileManager.Core.Model;
+using OneFileManager.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -60,6 +61,10 @@ namespace OneFileManager.View
           
         }
 
-       
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+           string json=  CoreService.DriverFactories[0].Login();
+            MessageBox.Show(json);
+        }
     }
 }

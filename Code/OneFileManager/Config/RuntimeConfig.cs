@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneFileManager.Core.AbstractInterface.FileSystem;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,9 +14,10 @@ namespace OneFileManager.Config
     public class RuntimeConfig : INotifyPropertyChanged
     {
         private static RuntimeConfig runtimeConfig = new RuntimeConfig();
-        private static Object lockObj=new object();
+        private static Object lockObj=new Object();
+     
 
-        public static RuntimeConfig GetRuntimeConfig
+        public static RuntimeConfig Instance
         {
             get
             {

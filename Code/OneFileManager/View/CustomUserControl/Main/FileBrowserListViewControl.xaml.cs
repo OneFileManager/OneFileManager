@@ -43,7 +43,7 @@ namespace OneFileManager.CustomUserControl.Main
             // };
             // nowNode = historyNode;
 
-            RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig.PropertyChanged += DisplayOptionConfig_PropertyChanged;
+            RuntimeConfig.Instance.DisplayOptionConfig.PropertyChanged += DisplayOptionConfig_PropertyChanged;
         }
 
         private void DisplayOptionConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -53,9 +53,9 @@ namespace OneFileManager.CustomUserControl.Main
 
         private void UpdateView()
         {
-            DisplayOptionConfig displayOptionConfig=RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig;
+            DisplayOptionConfig displayOptionConfig=RuntimeConfig.Instance.DisplayOptionConfig;
 
-            switch (RuntimeConfig.GetRuntimeConfig.DisplayOptionConfig.ViewDisplayType)
+            switch (RuntimeConfig.Instance.DisplayOptionConfig.ViewDisplayType)
             {
                 case ViewDisplayType.List:
                     fileListGView.View = (ViewBase)FindResource("GridView");

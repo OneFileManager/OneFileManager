@@ -9,11 +9,14 @@ using UpYunLibrary;
 
 namespace UpyunDriver
 {
-    public class UpyunClient : AbstractRemoteVirtualFileSystemDriver
+    public class UpyunClient : IVirtualFileSystemDriver
     {
-        public override FileSystemType FileSystemType => FileSystemType.Remote;
+        public  FileSystemType FileSystemType => FileSystemType.Remote;
         private UpYun upyun;
+        public UpyunClient(string jsonConfig)
+        {
 
+        }
         public List<FileListViewNode> ReadDir(string url)
         {
             var list= upyun.ReadDir(url);

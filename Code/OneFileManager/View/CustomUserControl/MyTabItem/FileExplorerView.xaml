@@ -112,9 +112,9 @@
                 x:Name="fileListControl"
                 Grid.Row="0"
                 Grid.Column="0"
-                DisplayExtension="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayExtension, Mode=TwoWay}"
-                DisplayHiddenObjects="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayHiddenObjects, Mode=TwoWay}"
-                ViewDisplayType="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.ViewDisplayType, Mode=TwoWay}" />
+                DisplayExtension="{Binding Source={x:Static config:RuntimeConfig.Instance}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayExtension, Mode=TwoWay}"
+                DisplayHiddenObjects="{Binding Source={x:Static config:RuntimeConfig.Instance}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.DisplayHiddenObjects, Mode=TwoWay}"
+                ViewDisplayType="{Binding Source={x:Static config:RuntimeConfig.Instance}, UpdateSourceTrigger=PropertyChanged, Path=DisplayOptionConfig.ViewDisplayType, Mode=TwoWay}" />
 
             <StackPanel Grid.Row="0" Grid.Column="2" />
             <StackPanel Grid.Row="2" Grid.Column="0" />

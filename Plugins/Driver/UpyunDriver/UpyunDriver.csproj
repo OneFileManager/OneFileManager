@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Code\OneFileManager.Core\OneFileManager.Core.csproj" />
-    <ProjectReference Include="..\..\..\Code\OneFileManager\OneFileManager.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties config_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

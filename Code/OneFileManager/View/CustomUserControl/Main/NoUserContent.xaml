@@ -33,7 +33,7 @@
                             <ComboBox
                                 Width="120"
                                 Margin="20,0,0,0"
-                                SelectedIndex="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, Path=DisplayOptionConfig.ViewDisplayType, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ViewDisplayTypeConverter}, Mode=TwoWay}">
+                                SelectedIndex="{Binding Source={x:Static config:RuntimeConfig.Instance}, Path=DisplayOptionConfig.ViewDisplayType, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ViewDisplayTypeConverter}, Mode=TwoWay}">
                                 <ComboBoxItem Content="列表视图" />
                                 <ComboBoxItem Content="平铺视图" />
                                 <ComboBoxItem Content="大网格视图" />
@@ -45,11 +45,11 @@
                         <CheckBox
                             HorizontalAlignment="Left"
                             Content="显示扩展名"
-                            IsChecked="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, Path=DisplayOptionConfig.DisplayExtension, Mode=TwoWay}" />
+                            IsChecked="{Binding Source={x:Static config:RuntimeConfig.Instance}, Path=DisplayOptionConfig.DisplayExtension, Mode=TwoWay}" />
                         <CheckBox
                             HorizontalAlignment="Left"
                             Content="显示隐藏项目"
-                            IsChecked="{Binding Source={x:Static config:RuntimeConfig.GetRuntimeConfig}, Path=DisplayOptionConfig.DisplayHiddenObjects, Mode=TwoWay}" />
+                            IsChecked="{Binding Source={x:Static config:RuntimeConfig.Instance}, Path=DisplayOptionConfig.DisplayHiddenObjects, Mode=TwoWay}" />
                     </MenuItem>
 
                     <MenuItem Header="GitHub" />
