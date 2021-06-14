@@ -10,14 +10,17 @@ namespace OneFileManager.Service
 {
   public  class CoreService
     {
-        public static List<IVirtualFileSystemDriverFactory> DriverFactories { get; set; }=new List<IVirtualFileSystemDriverFactory>();
+        private   static CoreService coreService=new CoreService();
+        public  RemoteDiskManager remoteDiskManager=new RemoteDiskManager();
 
-        public static  void Init()
+        public static CoreService Instance()
         {
-            IVirtualFileSystemDriverFactory upyun=new UpyunClientFactory();
-            DriverFactories.Add(upyun);
 
-
+            return coreService;
+        }
+        public   void Init()
+        {
+           remoteDiskManager.Init();
         }
     }
 }

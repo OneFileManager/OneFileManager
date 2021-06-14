@@ -18,7 +18,18 @@ namespace OneFileManager.View.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
           LocalDriveInfo localDriveInfo=value as LocalDriveInfo;
-            return $"{FileUtil.GetFileSizeGB(localDriveInfo.AvailableFreeSpace)}可用 共{FileUtil.GetFileSizeGB(localDriveInfo.TotalSize)}";
+            if (localDriveInfo==null|| localDriveInfo.AvailableFreeSpace==null|| localDriveInfo.TotalSize==null)
+            {
+
+                return "容量未知";
+            }
+            else
+            {
+                return $"{FileUtil.GetFileSizeGB(localDriveInfo.AvailableFreeSpace)}可用 共{FileUtil.GetFileSizeGB(localDriveInfo.TotalSize)}";
+            }
+            
+            
+           
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

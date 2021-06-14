@@ -19,7 +19,7 @@ namespace OneFileManager.View
         {
             InitializeComponent();
             DataContext = this;//指定上下文否则绑定无效
-            CoreService.Init();
+            CoreService.Instance().Init();
             // this.tabControl.ItemsSource = TabViewModelList;
         }
 

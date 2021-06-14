@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="OneFileManager.View.Dialog.AddRemoteSystemDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:OneFileManager.View.Dialog"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="添加远程磁盘"
+    Width="400"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="选择驱动类型" />
+                <ComboBox x:Name="diskTypeComboBox" Width="200" />
+            </StackPanel>
+            <StackPanel x:Name="container" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -15,7 +15,7 @@ namespace OneFileManager.Config
     {
         private static RuntimeConfig runtimeConfig = new RuntimeConfig();
         private static Object lockObj=new Object();
-     
+        
 
         public static RuntimeConfig Instance
         {

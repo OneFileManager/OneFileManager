@@ -27,6 +27,7 @@ namespace OneFileManager.View
     {
         public ObservableCollection<SpecialFolderInfo> kuObservableCollection=new ObservableCollection<SpecialFolderInfo>();
         public ObservableCollection<LocalDriveInfo> LocalDriveInfoObservableCollection=new ObservableCollection<LocalDriveInfo>();
+        public ObservableCollection<RemoteDriveInfo> remoteDriveInfoObservableCollection=new ObservableCollection<RemoteDriveInfo>();
 
         public HomeView()
         {
@@ -34,6 +35,8 @@ namespace OneFileManager.View
              DataContext = this;//指定上下文否则绑定无效
             this.ku.ItemsSource = kuObservableCollection;
             this.localDrive.ItemsSource=LocalDriveInfoObservableCollection;
+            this.remoteDriveListBox.ItemsSource=remoteDriveInfoObservableCollection;
+
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -58,12 +61,15 @@ namespace OneFileManager.View
             {
                 LocalDriveInfoObservableCollection.Add(new LocalDriveInfo(item));
             }
-          
+            //初始化远程磁盘
+            remoteDriveInfoObservableCollection.Add(new RemoteDriveInfo("又拍云"));
+
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-           string json=  CoreService.DriverFactories[0].Login();
+            string json=  CoreService.Instance().remoteDiskManager.DriverFactories[0].Login();
             MessageBox.Show(json);
         }
     }
