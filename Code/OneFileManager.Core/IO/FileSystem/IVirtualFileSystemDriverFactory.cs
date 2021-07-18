@@ -13,7 +13,7 @@ namespace OneFileManager.Core.AbstractInterface.FileSystem
     {
         public string GUID{ get;}
         /// <summary>
-        ///  返回虚拟文件系统提供器支持的协议头 比如file:///D:/的file
+        ///  返回虚拟文件系统提供器支持的协议头 比如file、webdav、upyun
         /// </summary>
         public string HeadAgreement{get;}
         public string Name { get;}

@@ -11,7 +11,7 @@ namespace UpyunDriver
 {
     public class UpyunClientFactory : IVirtualFileSystemDriverFactory
     {
-        public string HeadAgreement => "upyun_oos";
+        public string HeadAgreement => "upyun";
 
         public string GUID => "{1222A68D-267A-4956-8387-51FD32E1E20D}";
 
