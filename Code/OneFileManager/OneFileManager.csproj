@@ -51,7 +51,7 @@
     <None Remove="View\FileManager_128x128.ico" />
   </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="HandyControl" Version="3.1.0" />
+		<PackageReference Include="HandyControl" Version="3.2.0" />
 		<PackageReference Include="AvalonEdit" Version="6.0.1" />
 		<PackageReference Include="MediaDevices" Version="1.8.0" />
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.1" />

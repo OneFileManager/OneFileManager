@@ -62,7 +62,7 @@ namespace OneFileManager.View
                 LocalDriveInfoObservableCollection.Add(new LocalDriveInfo(item));
             }
             //初始化远程磁盘
-            remoteDriveInfoObservableCollection.Add(new RemoteDriveInfo("又拍云"));
+            //remoteDriveInfoObservableCollection.Add(new RemoteDriveInfo("又拍云"));
 
 
         }
