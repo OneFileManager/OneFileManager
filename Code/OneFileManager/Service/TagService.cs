@@ -40,8 +40,8 @@ namespace OneFileManager.Service
         {
             using (var db = new SQLLite3Context())
             {
-                var tags = db.TagTable.Where(b => b.Tag.Equals(tag.ToLower()) && b.Path.Equals(path.ToLower()));
-                if (tags == null || !tags.Any())
+                var tags = db.TagTable.Where(b => b.Tag.Equals(tag.ToLower()) && b.Path.Equals(path.ToLower())).Count();
+                if (tags==0)
                 {
                     return false;
                 }

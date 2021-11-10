@@ -24,6 +24,8 @@ namespace HandyControlDemo.Tools
             var netVersion = "CORE 30";
 #elif NETCOREAPP3_1
             var netVersion = "CORE 31";
+#elif NET6
+            var netVersion = "NET 60";
 #endif
             return $"v {versionInfo.FileVersion} {netVersion}";
         }
