@@ -10,6 +10,22 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE ;NET6</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE ;NET6</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>$(DefineConstants)TRACE ;NET6</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>$(DefineConstants)TRACE ;NET6</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Properties\**" />
@@ -50,33 +66,41 @@
     <None Remove="Resources\UI\Default\Video.png" />
     <None Remove="View\FileManager_128x128.ico" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="HandyControl" Version="3.2.0" />
-		<PackageReference Include="AvalonEdit" Version="6.0.1" />
-		<PackageReference Include="MediaDevices" Version="1.8.0" />
-		<PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.8" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+		<PackageReference Include="AvalonEdit" Version="6.1.2.30" />
+		<PackageReference Include="MediaDevices" Version="1.9.1" />
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.818.41" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
 		<PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
-		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="SharpZipLib" Version="1.3.2" />
-		<PackageReference Include="Vanara.PInvoke.CfgMgr32" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.Msi" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.NetApi32" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.NtDll" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.RstrtMgr" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.SetupAPI" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.Shell32" Version="3.3.11" />
-		<PackageReference Include="Vanara.PInvoke.UrlMon" Version="3.3.11" />
-		<PackageReference Include="Vanara.Windows.Shell" Version="3.3.11" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="SharpZipLib" Version="1.3.3" />
+		<PackageReference Include="Vanara.PInvoke.CfgMgr32" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.Msi" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.NetApi32" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.NtDll" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.RstrtMgr" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.SetupAPI" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.Shell32" Version="3.3.14" />
+		<PackageReference Include="Vanara.PInvoke.UrlMon" Version="3.3.14" />
+		<PackageReference Include="Vanara.Windows.Shell" Version="3.3.14" />
 		<PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
-		<PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="5.1.9" />
+		<PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="6.13.0" />
 		<PackageReference Include="ZXing.Net" Version="0.16.6" />
 	</ItemGroup>
 	<ItemGroup>
@@ -141,6 +165,12 @@
 	  <Folder Include="View\TabView\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Include="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+	<ItemGroup>
 	  <ProjectReference Include="..\..\Plugins\Driver\UpyunDriver\UpyunDriver.csproj" />
 	  <ProjectReference Include="..\OneFileManager.Common\OneFileManager.Common.csproj" />
 	  <ProjectReference Include="..\OneFileManager.Core\OneFileManager.Core.csproj" />
@@ -165,7 +195,7 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="OneFileManager.db">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
